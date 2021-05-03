@@ -10,15 +10,13 @@
  */
 #pragma once
 
-#include <cstdint>
+#define GLFW_INCLUDE_NONE
+#include "GLFW/glfw3.h"
+
+
 
 
 class Program {
-    uint32_t  x= 0; 
 
 
-public:
-    Program(uint32_t r) : x(r) {
-
-    }
 };
