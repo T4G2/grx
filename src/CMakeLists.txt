@@ -9,6 +9,8 @@ project(pv112 CXX)
 add_executable(
     ${PROJECT_NAME}
     main.cpp
+    game_application.cpp
+    game_application.hpp
 )
 
 

@@ -5,7 +5,7 @@
 
 
 
-int IApplication::initWindow(){
+int IApplication::init_window(){
 
 
     if (!glfwInit()) {
@@ -36,6 +36,7 @@ int IApplication::initWindow(){
     glViewport(0, 0, width, height);
     std::cout << "OpenGL version: " << glGetString(GL_VERSION) << std::endl;
 
+    last_time = glfwGetTime();
     return 0;
 
 };
@@ -45,12 +46,16 @@ int IApplication::initWindow(){
 int IApplication::loop() {
 
         /* LOOP */
+    
     while(!glfwWindowShouldClose(window)) {
-
+        double tmp_time = glfwGetTime();
+        double delta_time = tmp_time - last_time;
+        last_time = tmp_time;
         //glClear(GL_COLOR_BUFFER_BIT);
 
         // input
         // update
+        update(delta_time);
         // draw
 
         /* OpenGL code */

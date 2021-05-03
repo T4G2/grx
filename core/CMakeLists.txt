@@ -65,7 +65,9 @@ if(NOT TARGET ${PROJECT_NAME})
     target_sources(
         ${PROJECT_NAME}
         PRIVATE include/iapplication.hpp
+                include/resource_manager.hpp
                 include/opengl/program.hpp
                 src/iapplication.cpp
+
                 )
 endif()
