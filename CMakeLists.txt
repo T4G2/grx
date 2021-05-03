@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.14)
 project(main CXX)
 
 # Adds all required subdirectories to the build.
-add_subdirectory(src)
+add_subdirectory(app)
 
 
 # Below is some code that can be used later if you need your own libraries outside vcpgk.

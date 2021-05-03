@@ -21,24 +21,31 @@ class IApplication {
     int height;
     std::string name;
     bool fullscreen;
-    ResourceManager resource_manager;
 
     GLFWwindow* window = nullptr;
 
     double last_time = 0;
 
-
     int init_error_manager();
     int init_window();
+    int init_input();
 
 
     //PRIVATE FUNCTIONS
     int init() {
         //init Others
         init_custom();
-        return init_window();
-    }
+        init_window();
+        init_input();
+        return 0;
+        }
     int loop();
+
+
+protected:
+    GLFWwindow *get_window() {
+        return window;
+    }
 
 public:
     /**
@@ -66,10 +73,15 @@ public:
         return loop();
     }
 
-
-    virtual void input() = 0;
     virtual void update(double delta) = 0;
     virtual void render() = 0;
+
+    virtual void on_resize(int width, int height) = 0;
+
+    virtual void on_key_press(int key, int scancode, int action, int mods) = 0;
+    virtual void on_mouse_move(double x, double y) = 0;
+    virtual void on_mouse_button(int button, int action, int mods) = 0;
+
 
     virtual void init_custom() = 0;
 };

@@ -5,3 +5,10 @@
  * @version 0.1
  * @date 2021-05-01
  */
+
+#include "base_resource.hpp"
+
+class Scene : BaseResource {
+    
+
+}

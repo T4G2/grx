@@ -31,3 +31,21 @@
   
 
 - All resources will be loaded from toml file
+
+
+# How many managers there had to be ??
+
+- Textures
+  - load_from file
+  - create (empty for buffers etc)
+  - create mip-maps
+
+- Models
+  - load
+  - ?? create VAO objects ?
+  - bind
+
+- Scenes
+  - load
+  - create
+  - set_as_active  

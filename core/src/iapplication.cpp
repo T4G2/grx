@@ -7,7 +7,6 @@
 
 int IApplication::init_window(){
 
-
     if (!glfwInit()) {
         std::cout << "Error while glfwInit()";
         return -1;
@@ -40,6 +39,34 @@ int IApplication::init_window(){
     return 0;
 
 };
+
+int IApplication::init_input() {
+    glfwSetWindowUserPointer(window, this);
+
+    auto on_mouse_button = [](GLFWwindow* w, int button , int action, int mods){
+        static_cast<IApplication*>(glfwGetWindowUserPointer(w))->on_mouse_button( button, action, mods );
+    };
+
+    auto on_mouse_move = [](GLFWwindow* w, double x , double y) {
+        static_cast<IApplication*>(glfwGetWindowUserPointer(w))->on_mouse_move( x, y);
+    };
+
+    auto on_key_press = [](GLFWwindow* w, int key, int scancode, int action, int mods) {
+        static_cast<IApplication*>(glfwGetWindowUserPointer(w))->on_key_press( key, scancode, action, mods);
+    };
+
+    auto on_resize = [](GLFWwindow* w, int x, int y) {
+        static_cast<IApplication*>(glfwGetWindowUserPointer(w))->on_resize( x, y);
+    };
+
+
+    glfwSetMouseButtonCallback(window, on_mouse_button);
+    glfwSetCursorPosCallback(window, on_mouse_move);
+    glfwSetKeyCallback(window, on_key_press);
+    glfwSetWindowSizeCallback(window, on_resize);
+
+    return 0;
+}
 
 
 

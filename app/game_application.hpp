@@ -12,16 +12,24 @@
 
 
 
-class GameApplication : public IApplication{
+class GameApplication : public IApplication {
+
+    ResourceManager resource_manager;
 
 public:
 
     GameApplication(int width_a = 1080, int height_a = 720, std::string name_a = "Window", bool fullscreen_a = false):
           IApplication(width_a, height_a, name_a, fullscreen_a){}
 
-    void input() override;
     void update(double delta) override;
     void render() override;
     void init_custom() override;
+
+    void on_resize(int width, int height) override;
+    
+    void on_key_press(int key, int scancode, int action, int mods) override;
+    void on_mouse_move(double x, double y) override;
+    void on_mouse_button(int button, int action, int mods) override;
+
 
 };

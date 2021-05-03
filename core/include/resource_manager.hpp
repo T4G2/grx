@@ -8,25 +8,30 @@
 
 #pragma once
 
+#include <vector>
+#include "base_manager.hpp"
 
 class ResourceManager {
     // managers
-    int data = -1;
+    std::vector<BaseManager> managers;
+
+    
+
 public:
 
     ResourceManager() {
-        data = 0;
     }
 
     void init() {
         
     }
 
-    void setData(int d) {
-        data = d;
+    void register_manager(BaseManager&& man) {
+        managers.push_back(man);
     }
 
-    int getData() {
-        return data;
+template <typename T, size_t i>
+    T get() {
+        return dynamic_cast<T>(managers[i]);
     }
 };
