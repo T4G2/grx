@@ -65,9 +65,10 @@ if(NOT TARGET ${PROJECT_NAME})
     target_sources(
         ${PROJECT_NAME}
         PRIVATE include/iapplication.hpp
-                include/resource_manager.hpp
+                include/main_manager.hpp
                 include/opengl/program.hpp
-                include/managers/base_manager.hpp
+                include/managers/abstract_manager.hpp
+                include/managers/base_resource_manager.hpp
                 include/managers/scene_manager.hpp
                 include/res/scene.hpp
                 include/res/base_resource.hpp

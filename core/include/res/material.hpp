@@ -4,7 +4,11 @@
  * @brief 
  * @version 0.1
  * @date 2021-05-01
- * 
- * @copyright Copyright (c) 2021
- * 
  */
+#pragma once
+
+#include "base_resource.hpp"
+
+class Material : public BaseResource {
+
+}

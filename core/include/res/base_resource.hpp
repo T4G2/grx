@@ -18,6 +18,8 @@
  * 
  */
 class BaseResource {
+
+protected:
     uint32_t resource_id;
     std::string name;
     std::string path;

@@ -10,8 +10,3 @@
  */
 
 
-enum ResourceType {
-    Texture,
-    Mesh,
-    Scene
-};
