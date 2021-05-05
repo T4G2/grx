@@ -58,14 +58,14 @@ if(NOT TARGET ${PROJECT_NAME})
     # Specifies the include directories to use when compiling the library target.
     target_include_directories(
         ${PROJECT_NAME}
-        PUBLIC include include/opengl include/res include/managers ${STB_INCLUDE_DIRS}
+        PUBLIC include include/opengl  include/res include/managers include/libs ${STB_INCLUDE_DIRS}
+
     )
 
     # Collects the source files and specifis them as target sources.
     target_sources(
         ${PROJECT_NAME}
         PRIVATE include/iapplication.hpp
-                include/main_manager.hpp
                 include/res/opengl/program.hpp
                 include/managers/abstract_manager.hpp
                 include/managers/base_resource_manager.hpp
@@ -74,6 +74,10 @@ if(NOT TARGET ${PROJECT_NAME})
                 include/res/base_resource.hpp
 
                 src/iapplication.cpp
+
+
+                libs/stb_image.h
+
 
 
                 )

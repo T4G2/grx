@@ -8,3 +8,15 @@
  * @copyright Copyright (c) 2021
  * 
  */
+#pragma once
+
+#include <sbtsv.h>"
+
+#include "base_resource.hpp"
+
+class Material : BaseResource {
+
+    bool _gl_loaded;
+    bool _memory_loaded;
+    
+};

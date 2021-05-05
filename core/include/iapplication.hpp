@@ -14,7 +14,6 @@
 #include <cstdint>
 #include <string>
 
-#include "main_manager.hpp"
 
 class IApplication {
     int width;
