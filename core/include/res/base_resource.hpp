@@ -26,6 +26,10 @@ protected:
 
 public:
 
+    bool is_empty() {
+        return empty;
+    }
+
     uint32_t get_id() {
         return resource_id;
     }

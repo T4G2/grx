@@ -60,7 +60,7 @@ void Texture::load_to_gl(){
 }
 
 
-void Texture::remove() {
-
+Texture::~Texture() {
+    // Destructor
 }
 

@@ -28,8 +28,6 @@ class Texture : BaseResource {
     
     void load_to_gl();
 
-    void remove();
-
 
 public:
 
@@ -62,7 +60,5 @@ public:
         return _mip_maps;
     }
 
-    ~Texture() {
-        remove();
-    }
+    ~Texture();
 };
