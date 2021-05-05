@@ -33,12 +33,15 @@
 - All resources will be loaded from toml file
 
 
+- Add AppExceptions : std::runtime_exception
+
+
 # How many managers there had to be ??
 
 - Textures
-  - load_from file
-  - create (empty for buffers etc)
-  - create mip-maps
+  - load_from file  DONE
+  - create (empty for buffers etc) 
+  - create mip-maps DONE
 
 - Models
   - load

@@ -51,14 +51,14 @@ if(NOT TARGET ${PROJECT_NAME})
     if (TARGET glm::glm)
         target_link_libraries(
             ${PROJECT_NAME}
-            PUBLIC glad::glad glfw imgui::imgui glm::glm toml11::toml11 tinyobjloader::tinyobjloader
+            PUBLIC glad::glad glfw imgui::imgui glm::glm toml11::toml11 tinyobjloader::tinyobjloader 
         )
     endif()
 
     # Specifies the include directories to use when compiling the library target.
     target_include_directories(
         ${PROJECT_NAME}
-        PUBLIC include include/opengl  include/res include/managers include/libs ${STB_INCLUDE_DIRS}
+        PUBLIC include include/opengl  include/res include/managers  ${STB_INCLUDE_DIRS}
 
     )
 
@@ -72,11 +72,11 @@ if(NOT TARGET ${PROJECT_NAME})
                 include/managers/scene_manager.hpp
                 include/res/scene.hpp
                 include/res/base_resource.hpp
+                include/res/material.hpp
+                include/res/texture.hpp
 
                 src/iapplication.cpp
-
-
-                libs/stb_image.h
+                src/res/texture.cpp
 
 
 

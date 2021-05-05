@@ -11,7 +11,8 @@
 #include "game_application.hpp"
 
 void GameApplication::init_custom() {
-
+    // load 
+    texture_manager.load( Texture("res/textures/img.jpg"));
 }
 
 

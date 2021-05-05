@@ -20,10 +20,12 @@
 class BaseResource {
 
 protected:
+    bool empty = false;
     uint32_t resource_id;
     std::string path; // name == math
 
 public:
+
     uint32_t get_id() {
         return resource_id;
     }

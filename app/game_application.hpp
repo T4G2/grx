@@ -8,11 +8,12 @@
 #pragma once
 
 #include "iapplication.hpp"
-
-
-
+#include "base_resource_manager.hpp"
+#include "texture.hpp"
 
 class GameApplication : public IApplication {
+
+    BaseResourceManager<Texture> texture_manager;
 
 public:
 
