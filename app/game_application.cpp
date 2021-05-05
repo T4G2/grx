@@ -11,7 +11,6 @@
 #include "game_application.hpp"
 
 void GameApplication::init_custom() {
-    resource_manager = ResourceManager();
 
 }
 

@@ -13,18 +13,15 @@
 
 #include "abstract_manager.hpp"
 
-class MainManager {
+// This will be removed
+
+class ManagerIdAssigner {
     // managers
-    std::vector<std::unique_ptr<AbstractManager>> managers;
+    int next_manager_id = 0;
 
 public:
 
-    void register_manager(std::unique_ptr<AbstractManager>&& man) {
-        managers.push_back(man);
-    }
-
-template <typename T>
-    T& get(int i ) {
-        return dynamic_cast<T*>(managers[i]);
+    int register_manager() {
+        return next_manager_id++;
     }
 };

@@ -79,8 +79,9 @@ public:
     virtual void on_resize(int width, int height) = 0;
 
     virtual void on_key_press(int key, int scancode, int action, int mods) = 0;
-    virtual void on_mouse_move(double x, double y) = 0;
     virtual void on_mouse_button(int button, int action, int mods) = 0;
+    virtual void on_mouse_move(double x, double y) = 0;
+    
 
 
     virtual void init_custom() = 0;

@@ -14,8 +14,6 @@
 
 class GameApplication : public IApplication {
 
-    ResourceManager resource_manager;
-
 public:
 
     GameApplication(int width_a = 1080, int height_a = 720, std::string name_a = "Window", bool fullscreen_a = false):

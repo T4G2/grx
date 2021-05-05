@@ -66,7 +66,7 @@ if(NOT TARGET ${PROJECT_NAME})
         ${PROJECT_NAME}
         PRIVATE include/iapplication.hpp
                 include/main_manager.hpp
-                include/opengl/program.hpp
+                include/res/opengl/program.hpp
                 include/managers/abstract_manager.hpp
                 include/managers/base_resource_manager.hpp
                 include/managers/scene_manager.hpp

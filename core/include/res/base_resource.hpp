@@ -21,16 +21,11 @@ class BaseResource {
 
 protected:
     uint32_t resource_id;
-    std::string name;
-    std::string path;
+    std::string path; // name == math
 
 public:
     uint32_t get_id() {
         return resource_id;
-    }
-
-    const std::string& get_name() {
-        return name;
     }
 
     const std::string& get_path() {
