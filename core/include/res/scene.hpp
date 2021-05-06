@@ -5,6 +5,7 @@
  * @version 0.1
  * @date 2021-05-01
  */
+#pragma once
 
 #include "base_resource.hpp"
 

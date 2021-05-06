@@ -10,17 +10,26 @@
 #include <filesystem>
 
 #include "game_application.hpp"
-#include "mylib.hpp"
+
 
 void GameApplication::init_custom() {
     // load 
     //texture_manager.load( Texture("res/textures/img.jpg"));
 
+ /* TESTS*/
     std::cout << "Setting path from: \n";
     std::cout << std::filesystem::current_path() << "\n";
     change_curr_dir_debug(res_path);
     std::cout << "to: \n";
     std::cout << std::filesystem::current_path() << "\n";
+    shader_manager.load(Shader(GL_VERTEX_SHADER, "res/shaders/main.vert"));
+    shader_manager.load(Shader(GL_FRAGMENT_SHADER, "res/shaders/main.frag"));
+    program_manager.load(Program(shader_manager.get_by_name("res/shaders/main.vert"),
+                                    shader_manager.get_by_name("res/shaders/main.frag")));
+
+    texture_manager.load(Texture("res/textures/Planks_01_ALBEDO.png"));
+
+    glClearColor(1, 0, 0, 1);
 
 }
 

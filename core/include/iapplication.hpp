@@ -7,13 +7,14 @@
  */
 #pragma once
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
 
 #include <cstdint>
 #include <string>
 
+#include "mylib.hpp"
+
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 class IApplication {
     int width;

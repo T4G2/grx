@@ -21,10 +21,13 @@
 class Program {
     bool _gl_loaded = false;
     GLuint _gl_id = 0;
-    Shader* _fragment_shader = nullptr;
-    Shader* _vertex_shader = nullptr;
+    Shader& _fragment_shader;
+    Shader& _vertex_shader;
 
-    Program(Shader* fragment, Shader* vertex ):  _fragment_shader(fragment), _vertex_shader(vertex) {}
+public:
+    Program(Shader& fragment, Shader& vertex ):  _fragment_shader(fragment), _vertex_shader(vertex) {
+        std::cout << "Program <" << _gl_id << "> with Shaders <" << _fragment_shader.get_path() << ", " << _vertex_shader.get_path() << "> created succesfully\n";
+    }
 
 
 };

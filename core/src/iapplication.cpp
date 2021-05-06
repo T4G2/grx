@@ -94,7 +94,7 @@ int IApplication::loop() {
         double tmp_time = glfwGetTime();
         double delta_time = tmp_time - last_time;
         last_time = tmp_time;
-        //glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT);
 
         // input
         // update

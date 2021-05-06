@@ -16,7 +16,7 @@
 class GameApplication : public IApplication {
 
     BaseResourceManager<Texture> texture_manager;
-    BaseResourceManager<Shader> program_manager;
+    BaseResourceManager<Program> program_manager;
     BaseResourceManager<Shader> shader_manager;
 
 

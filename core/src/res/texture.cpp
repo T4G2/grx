@@ -62,6 +62,8 @@ void Texture::load_to_gl(){
 
     glTextureSubImage2D(_gl_id, 0, 0, 0, _width, _height, GL_RGBA, GL_UNSIGNED_BYTE, _memory_ptr);
     glGenerateTextureMipmap(_gl_id);
+
+    std::cout << "Texture <" << _path << "> loaded succesfully\n";
 }
 
 

@@ -5,6 +5,7 @@
  * @version 0.1
  * @date 2021-05-03
  */
+#pragma once
 
 
 #include <map>
@@ -29,18 +30,15 @@ public:
     void load(T&& t) {
 
         // maybe iterate and find first empty, or defragment once in a while
-        _resources.push_back(t);
+        _resources.push_back(std::move(t));
          _occupied.push_back(true);
     }
 
-    T* get(uint32_t idx) {
+    T& get(uint32_t idx) {
         return _resources[idx];
     }
 
-    T* get_by_name(std::string name) {
-        if (_path_map.count(name) == 0) {
-            return nullptr;
-        }
+    T& get_by_name(std::string name) {
         return _resources[_path_map[name]];
     }
     virtual void remove(uint32_t idx) {

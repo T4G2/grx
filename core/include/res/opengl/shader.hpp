@@ -8,6 +8,7 @@
  * @copyright Copyright (c) 2021
  * 
  */
+#pragma once
 
 #include "GLFW/glfw3.h"
 
@@ -18,7 +19,9 @@
 
 class Shader: public BaseResource {
     bool _gl_compiled = false;
-    
+
+
+    std::string _code;
     GLuint _gl_id = 0;
     GLenum _shader_type;
     
@@ -28,6 +31,6 @@ public:
 
 
 
-
+    Shader(Shader&&) = default; 
     Shader(const Shader&) = delete;
 };

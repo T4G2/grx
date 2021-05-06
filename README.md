@@ -6,3 +6,8 @@ glfw - Widnwos, inputs, events
 glm - OpenGL Math
 
 
+
+
+Credits:
+
+    https://textures.pixel-furnace.com/
