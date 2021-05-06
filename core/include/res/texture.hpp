@@ -61,4 +61,7 @@ public:
     }
 
     ~Texture();
+
+    // forbid copying
+    Texture(const Texture&) = delete;
 };

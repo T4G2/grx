@@ -8,25 +8,30 @@
 
 #include <iostream>
 
-#include "stb_image.h"
 #include "glad.h"
 #include "GLFW/glfw3.h"
 
 #include "texture.hpp"
 
+// TODo check if in here
+        // i dont understand why it is need to be here in first place...
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
 
 
 
 Texture::Texture(std::string path_a, GLuint format_a, bool mipmaps_enabled) { // TODO Send to BaseResource as initializer (faster ?)
-    path = std::move(path_a);
+    _empty = false;
+    _path = std::move(path_a);
     _format = format_a;
 
     // TODO based on format, send last parameter 
-    _memory_ptr = stbi_load(path.c_str(), &_width, &_height, &_channels, 0); 
+    _memory_ptr = stbi_load(_path.c_str(), &_width, &_height, &_channels, 0); 
 
     if (_memory_ptr == nullptr) {
         // TODO THROW ERROR IN FUTURE
-        std::cout << "Texture::Texture|  Couldn't load texture: " << path << "/n"; 
+        std::cout << "Texture::Texture|  Couldn't load texture: " << _path << "\n"; 
         return;
     }   
 
@@ -42,7 +47,7 @@ void Texture::load_to_gl(){
     if (_memory_ptr == nullptr) {
 
         // TODO THROW ERROR IN FUTURE
-        std::cout << "Texture::load_to_gl|  Texture not loaded in memory: " << path << "/n"; 
+        std::cout << "Texture::load_to_gl|  Texture not loaded in memory: " << _path << "/n"; 
         return;
     }
 
@@ -61,6 +66,6 @@ void Texture::load_to_gl(){
 
 
 Texture::~Texture() {
-    // Destructor
+    // TODO Destructor
 }
 

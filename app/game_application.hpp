@@ -10,10 +10,15 @@
 #include "iapplication.hpp"
 #include "base_resource_manager.hpp"
 #include "texture.hpp"
+#include "shader.hpp"
+#include "program.hpp"
 
 class GameApplication : public IApplication {
 
     BaseResourceManager<Texture> texture_manager;
+    BaseResourceManager<Shader> program_manager;
+    BaseResourceManager<Shader> shader_manager;
+
 
 public:
 

@@ -10,13 +10,21 @@
  */
 #pragma once
 
-#define GLFW_INCLUDE_NONE
+
+
+#include "../base_resource.hpp"
+#include "shader.hpp"
+
 #include "GLFW/glfw3.h"
 
 
-
-
 class Program {
+    bool _gl_loaded = false;
+    GLuint _gl_id = 0;
+    Shader* _fragment_shader = nullptr;
+    Shader* _vertex_shader = nullptr;
+
+    Program(Shader* fragment, Shader* vertex ):  _fragment_shader(fragment), _vertex_shader(vertex) {}
 
 
 };

@@ -20,21 +20,21 @@
 class BaseResource {
 
 protected:
-    bool empty = false;
-    uint32_t resource_id;
-    std::string path; // name == math
+    bool _empty = false;
+    uint32_t _resource_id;
+    std::string _path = std::string(); // name == math
 
 public:
 
     bool is_empty() {
-        return empty;
+        return _empty;
     }
 
     uint32_t get_id() {
-        return resource_id;
+        return _resource_id;
     }
 
     const std::string& get_path() {
-        return path;
+        return _path;
     }
 };

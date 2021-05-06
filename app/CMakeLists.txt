@@ -30,7 +30,6 @@ file(
     GENERATE
     OUTPUT "$<TARGET_FILE_DIR:${PROJECT_NAME}>/configuration.toml"
     CONTENT "
-framework_shaders = \"${CMAKE_SOURCE_DIR}/framework/core/shaders\"
-shaders = \"${CMAKE_CURRENT_SOURCE_DIR}/shaders\"
+res_path = \"${CMAKE_SOURCE_DIR}/\"
 "
 )

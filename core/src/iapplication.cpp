@@ -2,7 +2,24 @@
 
 #include <iostream>
 
+#include "toml.hpp"
 
+//DEBUG
+
+int IApplication::init_path_debug() {
+
+    try {
+        auto data = toml::parse("configuration.toml");
+        // find a value with the specified type from a table
+        res_path = toml::find<std::string>(data, "res_path");
+    }
+
+    catch (std::exception e) {
+        std::cout << "IApplication::init_path_debug| " << e.what() << "\n";
+    }
+
+    return 0;
+}
 
 
 int IApplication::init_window(){
@@ -67,7 +84,6 @@ int IApplication::init_input() {
 
     return 0;
 }
-
 
 
 int IApplication::loop() {

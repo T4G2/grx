@@ -8,3 +8,26 @@
  * @copyright Copyright (c) 2021
  * 
  */
+
+#include "GLFW/glfw3.h"
+
+#include "../base_resource.hpp"
+
+
+
+
+class Shader: public BaseResource {
+    bool _gl_compiled = false;
+    
+    GLuint _gl_id = 0;
+    GLenum _shader_type;
+    
+
+public:
+    Shader(GLenum shader_type, std::string path);
+
+
+
+
+    Shader(const Shader&) = delete;
+};

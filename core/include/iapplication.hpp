@@ -29,22 +29,30 @@ class IApplication {
     int init_window();
     int init_input();
 
+    // REMOVE ON RELEASE
+    int init_path_debug();
+
 
     //PRIVATE FUNCTIONS
     int init() {
         //init Others
-        init_custom();
         init_window();
         init_input();
+        init_path_debug();
+        init_custom();
+
         return 0;
         }
     int loop();
-
 
 protected:
     GLFWwindow *get_window() {
         return window;
     }
+
+    std::string res_path = "";
+
+
 
 public:
     /**

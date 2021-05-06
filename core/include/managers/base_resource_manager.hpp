@@ -44,7 +44,7 @@ public:
         return _resources[_path_map[name]];
     }
     virtual void remove(uint32_t idx) {
-        _resources[idx]; //TODO Remove somehow
+        //_resources[idx]; //TODO Remove somehow
         //TODO remove name from _path_map
     }
 

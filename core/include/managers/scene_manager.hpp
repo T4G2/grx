@@ -16,8 +16,8 @@
 
 class SceneManager {
 
-std::vector<Scene> scenes;
-Scene* active_scene;
+    std::vector<Scene> scenes;
+    Scene* active_scene;
 
 
 };
