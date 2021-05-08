@@ -14,6 +14,9 @@
 #include <fstream>
 #include <tuple>
 #include <filesystem>
+#include <iostream>
+
+#include <GLFW/glfw3.h>
 
 
 /**
@@ -37,3 +40,4 @@ static std::pair<std::string, bool> load_file(std::string path) {
 static void change_curr_dir_debug(std::string path) {
     std::filesystem::current_path(path); //setting path
 }
+

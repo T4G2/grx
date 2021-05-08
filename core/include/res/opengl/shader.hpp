@@ -29,7 +29,9 @@ class Shader: public BaseResource {
 public:
     Shader(GLenum shader_type, std::string path);
 
-
+    GLuint get_gl_id() {
+        return _gl_id;
+    }
 
     Shader(Shader&&) = default; 
     Shader(const Shader&) = delete;

@@ -29,14 +29,29 @@ Texture::Texture(std::string path_a, GLuint format_a, bool mipmaps_enabled) { //
     // TODO based on format, send last parameter 
     _memory_ptr = stbi_load(_path.c_str(), &_width, &_height, &_channels, 0); 
 
+    if (format_a == 0) {
+        switch (_channels) {
+            case 1: 
+                _format = GL_R8;
+                break;
+            case 3: 
+                _format = GL_RGB8;
+                break;
+            case 4:
+                _format = GL_RGBA8;
+                break;
+        }
+    }
+
+
     if (_memory_ptr == nullptr) {
-        // TODO THROW ERROR IN FUTURE
         std::cout << "Texture::Texture|  Couldn't load texture: " << _path << "\n"; 
         return;
     }   
 
+
     if (mipmaps_enabled) {
-        _mip_maps = std::max(_width, _height);
+        _mip_maps = std::log2(std::max(_width, _height));
     }
 
     load_to_gl();

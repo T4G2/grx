@@ -11,49 +11,52 @@
 #include <cstdint>
 #include <string>
 
-#include "mylib.hpp"
-
-#include <glad/glad.h>
+#include <glad.h>
 #include <GLFW/glfw3.h>
 
+#include "mylib.hpp"
+#include "open_gl_error.hpp"
+
 class IApplication {
-    int width;
-    int height;
-    std::string name;
-    bool fullscreen;
 
     GLFWwindow* window = nullptr;
-
-    double last_time = 0;
 
     int init_error_manager();
     int init_window();
     int init_input();
+    int init_gl_callback();
 
     // REMOVE ON RELEASE
     int init_path_debug();
 
 
     //PRIVATE FUNCTIONS
-    int init() {
+    int init(){
         //init Others
         init_window();
+        init_gl_callback();
         init_input();
         init_path_debug();
         init_custom();
 
         return 0;
-        }
+    }
     int loop();
 
 protected:
+    int width;
+    int height;
+    std::string name;
+    bool fullscreen;
+
+    double last_time = 0;
+
+
     GLFWwindow *get_window() {
         return window;
     }
 
     std::string res_path = "";
-
-
 
 public:
     /**
@@ -93,4 +96,8 @@ public:
 
 
     virtual void init_custom() = 0;
+
+  /*  static void GLAPIENTRY opengl_message_callback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length,
+                                                       const GLchar* message, const void* userParam) ;
+*/
 };

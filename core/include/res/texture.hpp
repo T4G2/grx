@@ -13,7 +13,7 @@
 #include "base_resource.hpp"
 #include "GLFW/glfw3.h"
 
-class Texture : BaseResource {
+class Texture : public BaseResource {
     int _width = 0;
     int _height = 0;
     int _channels = 0;
@@ -31,7 +31,7 @@ class Texture : BaseResource {
 
 public:
 
-    Texture(std::string path, GLuint format_a = GL_RGBA8, bool mipmaps_enabled = true);
+    Texture(std::string path, GLuint format_a = 0, bool mipmaps_enabled = true);
 
     bool is_memory_loaded() {
         return _memory_ptr == NULL;

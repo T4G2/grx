@@ -82,5 +82,6 @@ if(NOT TARGET ${PROJECT_NAME})
                 src/res/texture.cpp
 
                 libs/mylib.hpp
+                libs/open_gl_error.hpp
                 )
 endif()
