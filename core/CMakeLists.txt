@@ -71,6 +71,7 @@ if(NOT TARGET ${PROJECT_NAME})
                 include/managers/scene_manager.hpp
                 include/res/scene.hpp
                 include/res/base_resource.hpp
+                include/res/mesh.hpp
                 include/res/opengl/program.hpp
                 include/res/opengl/shader.hpp
 
@@ -80,6 +81,7 @@ if(NOT TARGET ${PROJECT_NAME})
                 src/iapplication.cpp
                 src/res/opengl/shader.cpp
                 src/res/texture.cpp
+                src/res/mesh.cpp
 
                 libs/mylib.hpp
                 libs/open_gl_error.hpp
