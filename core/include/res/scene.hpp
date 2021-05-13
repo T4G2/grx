@@ -7,9 +7,21 @@
  */
 #pragma once
 
+#include <memory>
+#include <string>
+
 #include "base_resource.hpp"
+#include "base_node.hpp"
+#include "node_instance.hpp"
+
 
 class Scene : BaseResource {
-    
+
+    NodeInstance<Camera>* activeCamera = nullptr;
+    std::unique_ptr<BaseNodeInstance> _root = nullptr;
+
+
+public:
+    Scene load_from_file(std::string filepath);
 
 };

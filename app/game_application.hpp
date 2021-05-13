@@ -13,6 +13,7 @@
 #include "shader.hpp"
 #include "program.hpp"
 #include "mesh.hpp"
+#include "scene.hpp"
 
 class GameApplication : public IApplication {
 
@@ -20,6 +21,7 @@ class GameApplication : public IApplication {
     BaseResourceManager<Program> program_manager;
     BaseResourceManager<Shader> shader_manager;
     BaseResourceManager<Mesh> mesh_manager;
+    BaseResourceManager<Scene> scene_manager;
 
 
 public:

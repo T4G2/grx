@@ -9,7 +9,14 @@
 #include <iostream>
 #include <filesystem>
 
+#include "base_node_instance.hpp"
+#include "node_instance.hpp"
+#include "base_node.hpp"
+
+
 #include "game_application.hpp"
+
+
 
 
 void GameApplication::init_custom() {
@@ -27,10 +34,15 @@ void GameApplication::init_custom() {
                                     shader_manager.get_by_name("res/shaders/main.frag")));
     texture_manager.load(Texture("res/textures/Planks_01_ALBEDO.png"));
 
-    mesh_manager.load(Mesh("res/meshs/Koenigsegg.obj"));
+    // mesh_manager.load(Mesh("res/meshs/Koenigsegg.obj"));
+
+    // TRY  TO CREATE NEW NODE OF ANY TYPE
+
 
     glClearColor(0, 0, 0, 1);
     glViewport(0, 0, width, height);
+
+
 
 
 

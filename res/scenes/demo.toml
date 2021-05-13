@@ -1,0 +1,13 @@
+[[ root ]]
+    [[ terrain ]]
+        type="TerrainNode"
+    [[ character ]]
+        pos = "10. 45. 12.44"
+        type="BaseNode"
+        [[character_camera]]
+            type="CamerObject"
+            fov="fov"
+        [[character_render_obj]]
+            type="RenderObj"
+            mesh="character.obj"
+            textures= " ? ? ?"

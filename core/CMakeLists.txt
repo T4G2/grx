@@ -58,7 +58,7 @@ if(NOT TARGET ${PROJECT_NAME})
     # Specifies the include directories to use when compiling the library target.
     target_include_directories(
         ${PROJECT_NAME}
-        PUBLIC include include/res/opengl  include/res include/managers libs  ${STB_INCLUDE_DIRS}
+        PUBLIC include include/res/opengl  include/res include/managers include/nodes libs  ${STB_INCLUDE_DIRS}
 
     )
 
@@ -66,6 +66,7 @@ if(NOT TARGET ${PROJECT_NAME})
     target_sources(
         ${PROJECT_NAME}
         PRIVATE include/iapplication.hpp
+                include/graphics_pipeline.hpp
                 include/managers/abstract_manager.hpp
                 include/managers/base_resource_manager.hpp
                 include/managers/scene_manager.hpp
@@ -74,14 +75,18 @@ if(NOT TARGET ${PROJECT_NAME})
                 include/res/mesh.hpp
                 include/res/opengl/program.hpp
                 include/res/opengl/shader.hpp
-
                 include/res/material.hpp
                 include/res/texture.hpp
+
+                include/nodes/base_node.hpp
+                include/nodes/base_node_instance.hpp
+                include/nodes/node_instance.hpp
 
                 src/iapplication.cpp
                 src/res/opengl/shader.cpp
                 src/res/texture.cpp
                 src/res/mesh.cpp
+                src/res/scene.cpp
 
                 libs/mylib.hpp
                 libs/open_gl_error.hpp
