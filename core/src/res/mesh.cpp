@@ -44,4 +44,8 @@ Mesh::Mesh(std::string path) {
         std::cout << "More than 1 shape in .obj file <"  << _path <<"> (Not implemented yet) \n";
         return;
     }
+
+    if (materials.size() > 1) {
+        std::cout << "More than 1 material in .obj file <"  << _path <<"> (Not implemented yet) \n";
+    }
 }

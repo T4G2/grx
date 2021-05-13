@@ -40,6 +40,10 @@ public:
         return _resources[idx];
     }
 
+    bool exists(std::string name) {
+    return _path_map.count(name);
+    }
+
     T& get_by_name(std::string name) {
         return _resources[_path_map[name]];
     }

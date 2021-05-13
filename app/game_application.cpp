@@ -27,7 +27,7 @@ void GameApplication::init_custom() {
                                     shader_manager.get_by_name("res/shaders/main.frag")));
     texture_manager.load(Texture("res/textures/Planks_01_ALBEDO.png"));
 
-    mesh_manager.load(Mesh("res/meshs/wood_blade.obj"));
+    mesh_manager.load(Mesh("res/meshs/Koenigsegg.obj"));
 
     glClearColor(0, 0, 0, 1);
     glViewport(0, 0, width, height);
