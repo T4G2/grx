@@ -7,7 +7,11 @@
  */
 #pragma once
 
+
+#include "glm/glm.hpp"
+#define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
+
 
 #include "base_resource.hpp"
 #include "program.hpp"
@@ -15,17 +19,25 @@
 
 class Material : public BaseResource {
 
-    Program* program_ptr;
+    glm::vec3 _ambient_color = glm::vec3(-1, -1, -1);
+    glm::vec3 _albedo_color = glm::vec3(-1, -1, -1);
+    glm::vec3 _specular_color = glm::vec3(-1, -1, -1);
+    float _shininess = -1;
 
-    bool _has_albedo_map;
-    bool _has_normal_map;
-    bool _has_specular_map;
+    Texture* _albedo_map_ptr = nullptr;
+    Texture* _normal_map_ptr = nullptr;
+    Texture* _specular_map_ptr = nullptr;
 
-    GLuint _albedo_binding = 0;
-    GLuint _normal_binding = 0;
-    GLuint _specular_binding = 0;
+public:
+    void gl_prepare(Program& gl_program);
 
-    Texture* _albedo_ptr = nullptr;
-    Texture* _normal_ptr = nullptr;
-    Texture* _specular_ptr = nullptr;
+    bool has_ambient_color() {return _ambient_color.r != -1; };
+    bool has_albedo_color() {return _albedo_color.r != -1; };
+    bool has_specular_color() {return _specular_color.r != -1; };
+
+    bool has_albedo_map() { return _albedo_map_ptr != nullptr; };
+    bool has_normal_map() { return _normal_map_ptr != nullptr; };
+    bool has_specular_map() { return _specular_map_ptr != nullptr; };
+    
+
 };

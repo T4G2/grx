@@ -87,8 +87,10 @@ if(NOT TARGET ${PROJECT_NAME})
                 src/res/texture.cpp
                 src/res/mesh.cpp
                 src/res/scene.cpp
+                src/res/material.cpp
 
                 libs/mylib.hpp
                 libs/open_gl_error.hpp
+                libs/glad_include.hpp
                 )
 endif()

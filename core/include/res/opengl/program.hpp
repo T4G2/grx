@@ -10,9 +10,12 @@
  */
 #pragma once
 
+#include <iostream>
 
-
+#include "glad.h"
+#define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
+
 
 #include "../base_resource.hpp"
 #include "shader.hpp"
@@ -50,16 +53,14 @@ public:
     Program(Program&&) = default; 
     Program(const Program&) = delete;
 
+    GLuint get_gl_id() {
+        return _gl_id;
+    }
     /**
      * @brief Set / Get the binding for this program in _bindings (Camera Position Matrix Uniform), textures etc..
-     * 
-     * @return int 
-     */
-    int set_binding(int bind_type, int binding_value) {
-        _bindings[bind_type] = binding_value;
-    }
-    int get_binding(int bind) {
-        return _binding[bind];
-    }
+     **/
+    void set_binding(int bind_type, int binding_value) { _bindings[bind_type] = binding_value; }
+    int get_binding(int bind) { return _bindings[bind]; }
+
 
 };
