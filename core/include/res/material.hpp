@@ -19,9 +19,9 @@
 
 class Material : public BaseResource {
 
-    glm::vec3 _ambient_color = glm::vec3(-1, -1, -1);
-    glm::vec3 _albedo_color = glm::vec3(-1, -1, -1);
-    glm::vec3 _specular_color = glm::vec3(-1, -1, -1);
+    glm::vec3 _ambient_color = glm::vec3(0, 0, 0);
+    glm::vec3 _albedo_color = glm::vec3(0, 0, 0);
+    glm::vec3 _specular_color = glm::vec3(0, 0, 0);
     float _shininess = -1;
 
     Texture* _albedo_map_ptr = nullptr;
@@ -30,10 +30,6 @@ class Material : public BaseResource {
 
 public:
     void gl_prepare(Program& gl_program);
-
-    bool has_ambient_color() {return _ambient_color.r != -1; };
-    bool has_albedo_color() {return _albedo_color.r != -1; };
-    bool has_specular_color() {return _specular_color.r != -1; };
 
     bool has_albedo_map() { return _albedo_map_ptr != nullptr; };
     bool has_normal_map() { return _normal_map_ptr != nullptr; };

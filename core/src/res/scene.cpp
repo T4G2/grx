@@ -23,3 +23,24 @@ Scene Scene::load_from_file(std::string filepath){
 
     return Scene();
 }
+
+void Scene::update(float delta) {
+        if (_root_i == -1) {
+            std::cerr << "Scene::update| No root for scene: <" << get_path() << ">\n"; 
+            return;
+        }
+        get_root().update(delta); 
+        };
+
+void Scene::draw() {
+        if (_root_i == -1) {
+            std::cerr << "Scene::draw| No root for scene: <" << get_path() << ">\n"; 
+            return;
+        }
+        get_root().draw(); 
+        };
+
+BaseNodeInstance& Scene::get_root() {
+    
+    return _nodes[_root_i];
+}

@@ -44,6 +44,10 @@ public:
         return _gl_loaded;
     }
 
+    GLuint get_gl_id() {
+        return _gl_id;
+    }
+
     int get_width() {
         return _width;
     }

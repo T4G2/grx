@@ -13,19 +13,29 @@
 
 #include "base_resource.hpp"
 #include "base_node.hpp"
+#include "base_node_instance.hpp"
 #include "node_instance.hpp"
 
 
 class Scene : public BaseResource {
 
+    using priority_t = int;
+    using material_t = int;
+
     NodeInstance<Camera>* activeCamera = nullptr;
-    std::unique_ptr<BaseNodeInstance> _root = nullptr;
+    int _root_i = -1;
+    std::vector<BaseNodeInstance> _nodes;
+
+    
+    //std::map<priority_t, std::vector<material_t, std::vector<BaseNodeInstance*>>> _render_tree;
 
 public:
     static Scene load_from_file(std::string filepath);
 
     void input(); // inputs
-    void update(float delta) { _root->update(delta); };
-    void draw() { _root->draw(); };
+    void update(float delta);
+    void draw();
+
+    BaseNodeInstance& get_root();
 
 };

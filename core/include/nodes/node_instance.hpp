@@ -19,7 +19,6 @@ class NodeInstance : public BaseNodeInstance {
     R data;
 
     // TODO should i use map  (name referencing)??? 
-    std::vector<BaseNodeInstance> _children;
     BaseNodeInstance* _parent;
 
 

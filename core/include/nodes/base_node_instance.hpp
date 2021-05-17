@@ -11,14 +11,16 @@
 #include <memory>
 
 
+//#include "scene.hpp"
 
 
-class BaseNodeInstance{
+
+class BaseNodeInstance {
     // pos
     // X
 
     // INTO HEAP
-    std::vector<std::unique_ptr<BaseNodeInstance>> _children;
+    std::vector<int> _children_i;
     BaseNodeInstance* _parent = nullptr;
 
 
