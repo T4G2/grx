@@ -1,14 +1,31 @@
-[[ root ]]
 
-    [[ root.terrain ]]
-        type="TerrainNode"
-    [[ root.character ]]
-        pos = "10. 45. 12.44"
-        type="BaseNode"
-        [[root.character.character_camera]]
-            type="Camera"
-            fov="fov"
-        [[root.character.character_render_obj]]
-            type="Render"
-            mesh="character.obj"
-            textures= " ? ? ?"
+[[ terrain ]]
+
+[[ terrain ]]
+    pos = [0, 1, 0]
+    rot = [0, 0, 0]
+    scl = [1, 1, 1]
+    type="TerrainNode"
+    [[terrain.instanced_trees]]
+        pos = [0, 0, 0]
+        rot = [0, 0, 0]
+        scl = [1, 1, 1]
+
+[[ character ]]
+    pos = [1, 7, 3]
+    rot = [0, 0, 0]
+    scl = [1, 1, 1]
+    type="BaseNode"
+    [[character.character_camera]]
+        pos = [0, 2, 0]
+        rot = [0, 0, 0]
+        scl = [1, 1, 1]
+        type="Camera"
+        fov= 70
+
+    [[character.character_render]]
+        pos = [0, 0, 0]
+        rot = [0, 0, 0]
+        scl = [1, 1, 1]
+        type="Render"
+        mesh="character.obj"

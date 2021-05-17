@@ -42,12 +42,8 @@ void GameApplication::init_custom() {
     glClearColor(0, 0, 0, 1);
     glViewport(0, 0, width, height);
 
-    scene_manager.load(Scene::load_from_file("res/scenes/demo.toml"));
-
-
-
+    scene_manager.load(SceneManager::load_from_file("res/scenes/demo.toml"));
 }
-
 
 
 void GameApplication::update(double delta) {

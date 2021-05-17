@@ -9,11 +9,13 @@
 
 #include "iapplication.hpp"
 #include "base_resource_manager.hpp"
+#include "scene_manager.hpp"
 #include "texture.hpp"
 #include "shader.hpp"
 #include "program.hpp"
 #include "mesh.hpp"
 #include "scene.hpp"
+
 
 class GameApplication : public IApplication {
 

@@ -30,7 +30,6 @@ class Scene : public BaseResource {
     //std::map<priority_t, std::vector<material_t, std::vector<BaseNodeInstance*>>> _render_tree;
 
 public:
-    static Scene load_from_file(std::string filepath);
 
     void input(); // inputs
     void update(float delta);

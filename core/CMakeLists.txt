@@ -88,6 +88,7 @@ if(NOT TARGET ${PROJECT_NAME})
                 src/res/mesh.cpp
                 src/res/scene.cpp
                 src/res/material.cpp
+                src/managers/scene_manager.cpp
 
                 libs/mylib.hpp
                 libs/open_gl_error.hpp

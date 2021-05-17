@@ -9,20 +9,7 @@
 #include "toml.hpp"
 
 
-Scene Scene::load_from_file(std::string filepath){
-    try {
-        auto data = toml::parse(filepath);
-        auto x = data.type();
-    }
 
-     catch (std::exception e) {
-         std::cerr << "Scene::load_from_file <" << filepath << "> Error: \n";
-         std::cerr << e.what() << "\n";
-     }
-
-
-    return Scene();
-}
 
 void Scene::update(float delta) {
         if (_root_i == -1) {
@@ -41,6 +28,8 @@ void Scene::draw() {
         };
 
 BaseNodeInstance& Scene::get_root() {
-    
+    if (_root_i == -1) {
+        std::cerr << "Scene::get_root()|  there is not root in this Scene <" << get_path() << "> \n";
+    }
     return _nodes[_root_i];
 }

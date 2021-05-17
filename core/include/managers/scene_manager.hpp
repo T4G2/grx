@@ -13,11 +13,18 @@
 #include <vector>
 
 #include "scene.hpp"
+#include "base_node.hpp"
 
 class SceneManager {
 
     std::vector<Scene> scenes;
     Scene* active_scene;
 
+    std::map<std::string, BaseNode> _registered_nodes;
+
+public:
+    void bind_basic_nodes(); // Binding Nodes = 
+
+    static Scene load_from_file(std::string filepath);
 
 };
