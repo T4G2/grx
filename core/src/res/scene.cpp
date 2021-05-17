@@ -10,7 +10,16 @@
 
 
 Scene Scene::load_from_file(std::string filepath){
-    auto data = toml::parse(filepath);
+    try {
+        auto data = toml::parse(filepath);
+        auto x = data.type();
+    }
+
+     catch (std::exception e) {
+         std::cerr << "Scene::load_from_file <" << filepath << "> Error: \n";
+         std::cerr << e.what() << "\n";
+     }
+
 
     return Scene();
 }

@@ -1,13 +1,14 @@
 [[ root ]]
-    [[ terrain ]]
+
+    [[ root.terrain ]]
         type="TerrainNode"
-    [[ character ]]
+    [[ root.character ]]
         pos = "10. 45. 12.44"
         type="BaseNode"
-        [[character_camera]]
-            type="CamerObject"
+        [[root.character.character_camera]]
+            type="Camera"
             fov="fov"
-        [[character_render_obj]]
-            type="RenderObj"
+        [[root.character.character_render_obj]]
+            type="Render"
             mesh="character.obj"
             textures= " ? ? ?"

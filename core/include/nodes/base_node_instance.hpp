@@ -8,6 +8,8 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <memory>
+
 
 
 
@@ -16,7 +18,7 @@ class BaseNodeInstance{
     // X
 
     // INTO HEAP
-    std::vector<BaseNodeInstance> _children;
+    std::vector<std::unique_ptr<BaseNodeInstance>> _children;
     BaseNodeInstance* _parent = nullptr;
 
 

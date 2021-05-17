@@ -12,10 +12,13 @@
 
 
 
+#include "GLFW/glfw3.h"
+
 #include "../base_resource.hpp"
 #include "shader.hpp"
 
-#include "GLFW/glfw3.h"
+#include "program_bindings.hpp"
+
 
 
 class Program : public BaseResource {
@@ -23,6 +26,8 @@ class Program : public BaseResource {
     GLuint _gl_id = 0;
     Shader& _fragment_shader;
     Shader& _vertex_shader;
+
+    int _bindings[BIND_SIZE] = { -1 };
 
 public:
 
@@ -44,5 +49,17 @@ public:
 
     Program(Program&&) = default; 
     Program(const Program&) = delete;
+
+    /**
+     * @brief Set / Get the binding for this program in _bindings (Camera Position Matrix Uniform), textures etc..
+     * 
+     * @return int 
+     */
+    int set_binding(int bind_type, int binding_value) {
+        _bindings[bind_type] = binding_value;
+    }
+    int get_binding(int bind) {
+        return _binding[bind];
+    }
 
 };
