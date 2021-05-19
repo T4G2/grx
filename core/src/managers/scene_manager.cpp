@@ -39,5 +39,9 @@ Scene SceneManager::load_from_file(std::string filepath){
 
 void SceneManager::register_node(BaseNodeFactory&& factory){
     std::string name = factory.get_name();
-    _registered_nodes[name] = std::move(factory);
+    if (_registered_nodes.count(name)) {
+        std::cerr << "SceneManager::register_node| Node<" << name << "> already registered! \n";
+        throw std::exception("SceneManager::register_node| No already registered!");
+    }
+    _registered_nodes.insert({name, std::make_unique<BaseNodeFactory>(factory)});
 }

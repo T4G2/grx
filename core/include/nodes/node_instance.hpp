@@ -16,7 +16,7 @@
 
 template<class R>
 class NodeInstance : public BaseNodeInstance {
-    R data;
+    R data; // TODO do this a pointer
 
     // TODO should i use map  (name referencing)??? 
 

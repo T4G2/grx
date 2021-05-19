@@ -14,7 +14,7 @@
 #include "node_instance.hpp"
 
 
-class BaseNode{
+class BaseNode {
 public:
 
     inline static const std::string NODE_NAME = "Base";

@@ -20,6 +20,32 @@ Conventions:
     you can view how to construct basic nodes in nodes_demos.md 
 
 
+Classes architecture:
+   ` IApplication` - basic framework for `Application`
+    res - resource Classes
+        all resources are then stored in `BaseResourceManager<res>`
+    nodes - all nodes, you can have in scene and classes that system need to work
+    managers - Managers of different resources
+       ` BaseResourceManager<res> `- look up for description
+
+    libs - my own little libraries , where I implement basic things i need in code 
+
+How to create game:
+- We create class derived from `IApplication`,
+        
+    - in IApplication we already have managers for:
+        Texture, Programs, Shaders, Meshes, Scenes
+    - we must override `IApplication` virtual classes:
+        you cna see in `iapplication.hpp`
+    - Then we must register nodes we want to use in `scene_manager` like `scene_manager.register_node(NodeFactory<Node>());`
+
+Creating new Nodes:
+- New nodes must be inherited from 
+
+
+
+
+
 Credits:
 
     https://textures.pixel-furnace.com/

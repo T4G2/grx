@@ -21,7 +21,7 @@ class SceneManager {
     std::vector<Scene> scenes;
     Scene* active_scene;
 
-    std::map<std::string, BaseNodeFactory> _registered_nodes;
+    std::map<std::string, std::unique_ptr<BaseNodeFactory>> _registered_nodes;
 
 public:
 
@@ -35,6 +35,10 @@ public:
     static Scene load_from_file(std::string filepath);
 
     void register_node(BaseNodeFactory&& factory);
+
+    BaseNodeFactory& get_node_factory(std::string name) {
+        return *_registered_nodes[name];
+    }
 
 
 

@@ -38,16 +38,19 @@ void GameApplication::init_custom() {
 
     // TRY  TO CREATE NEW NODE OF ANY TYPE
 
-    //scene.register_node(NodeFactory<BaseNode>());
-    //scene.register_node(NodeFactory<CameraNode>());
-
-
     glClearColor(0, 0, 0, 1);
     glViewport(0, 0, width, height);
 
-    scene_manager.load(SceneManager::load_from_file("res/scenes/main.toml"));
     scene_manager.register_node(NodeFactory<BaseNode>());
     scene_manager.register_node(NodeFactory<CameraNode>());
+
+    // s = scene_manager.load(SceneManager::load_from_file("res/scenes/main.toml"));
+    auto s = SceneManager::load_from_file("res/scenes/main.toml");
+    auto x = scene_manager.get_node_factory("Camera");
+    // WTF is happening here
+    auto y = x.get_pointer_to_new_instance(nullptr, s );
+     std::cout << typeid(x).name() <<"\n";
+    y->init();
 }
 
 

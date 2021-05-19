@@ -23,7 +23,7 @@ class BaseResource {
 protected:
     bool _empty = false;
     uint32_t _resource_id;
-    std::string _path = std::string(); // name == math
+    std::string _path = std::string(); // name == path
 
 public:
 

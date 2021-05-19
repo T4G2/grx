@@ -5,6 +5,7 @@
  * @version 0.1
  * @date 2021-05-03
  */
+#pragma once
 
 using manager_id = int;
 
