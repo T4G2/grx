@@ -46,6 +46,8 @@ void GameApplication::init_custom() {
     glViewport(0, 0, width, height);
 
     scene_manager.load(SceneManager::load_from_file("res/scenes/main.toml"));
+    scene_manager.register_node(NodeFactory<BaseNode>());
+    scene_manager.register_node(NodeFactory<CameraNode>());
 }
 
 

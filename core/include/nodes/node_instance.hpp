@@ -19,10 +19,11 @@ class NodeInstance : public BaseNodeInstance {
     R data;
 
     // TODO should i use map  (name referencing)??? 
-    BaseNodeInstance* _parent;
-
 
 public:
+
+    NodeInstance(Scene& scene, BaseNodeInstance* parent): BaseNodeInstance(scene, parent) { } ;
+
     R& get_data_ref() {
         return data;
     }

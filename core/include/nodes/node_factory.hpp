@@ -21,11 +21,11 @@ public:
 
 
 template <class T>
-class NodeFactory : BaseNodeFactory {
+class NodeFactory :public BaseNodeFactory {
 
 public:
     std::unique_ptr<BaseNodeInstance>  get_pointer_to_new_instance(BaseNodeInstance& parent, Scene& scene) override {
-        auto to_ret = std::make_unique<T>(scene, &parent);
+        auto to_ret = std::unique_ptr<BaseNodeInstance>(new NodeInstance<T>(scene, &parent));
         return to_ret;
     }
 
