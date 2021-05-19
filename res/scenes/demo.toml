@@ -1,7 +1,5 @@
 
 [[ terrain ]]
-
-[[ terrain ]]
     pos = [0, 1, 0]
     rot = [0, 0, 0]
     scl = [1, 1, 1]

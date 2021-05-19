@@ -1,4 +1,17 @@
-name = "Main Scene"
 
-[nodes]
-    [main_node]
+[[ terrain ]]
+    type="TerrainNode"
+    [[terrain.instanced_trees]]
+        count = 1000
+
+[[ character ]]
+    type="BaseNode"
+    [[character.character_camera]]
+
+        type="Camera"
+        fov= 70
+
+    [[character.character_render]]
+
+        type="Render"
+        mesh="character.obj"

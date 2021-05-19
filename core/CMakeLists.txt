@@ -89,9 +89,11 @@ if(NOT TARGET ${PROJECT_NAME})
                 src/res/scene.cpp
                 src/res/material.cpp
                 src/managers/scene_manager.cpp
+                src/nodes/base_node_instance.cpp
 
                 libs/mylib.hpp
                 libs/open_gl_error.hpp
                 libs/glad_include.hpp
+                #libs/gvector.hpp
                 )
 endif()

@@ -33,3 +33,13 @@ BaseNodeInstance& Scene::get_root() {
     }
     return _nodes[_root_i];
 }
+
+void Scene::create_root() {
+    if (_root_i != -1) {
+        std::cerr << "Scene::create_root()|  there is already a root in this Scene <" << get_path() << "> \n";
+        throw std::exception("Scene::create_root()|  there is already a root in this Scene");
+    }
+
+    _root_i = _nodes.size();
+    _nodes.push_back(BaseNodeInstance(*this));
+}

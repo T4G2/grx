@@ -33,7 +33,7 @@ public:
         std::string path_copy = t.get_path();
         _resources.push_back(std::move(t));
          _occupied.push_back(true);
-         _path_map[std::move(path_copy)] = _resources.size() - 1;
+         _path_map[std::move(path_copy)] = static_cast<uint32_t>(_resources.size() - 1);
     }
 
     T& get(uint32_t idx) {

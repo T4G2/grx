@@ -22,6 +22,8 @@ class Scene : public BaseResource {
     using priority_t = int;
     using material_t = int;
 
+    
+
     NodeInstance<Camera>* activeCamera = nullptr;
     int _root_i = -1;
     std::vector<BaseNodeInstance> _nodes;
@@ -31,10 +33,19 @@ class Scene : public BaseResource {
 
 public:
 
+
+    Scene(){ _empty = true; }
+    Scene(std::string name){_path = name;};
+
     void input(); // inputs
     void update(float delta);
     void draw();
 
+    void create_root();
+
     BaseNodeInstance& get_root();
+    BaseNodeInstance& get_child(int index){ return _nodes[index]; }
+
+
 
 };

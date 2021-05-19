@@ -10,10 +10,13 @@
 #include <string>
 #include <memory>
 
+#pragma once
+
+#include "toml.hpp"
 
 //#include "scene.hpp"
 
-
+class Scene;
 
 class BaseNodeInstance {
     // pos
@@ -22,11 +25,17 @@ class BaseNodeInstance {
     // INTO HEAP
     std::vector<int> _children_i;
     BaseNodeInstance* _parent = nullptr;
+    Scene& _scene;
 
 
 public:
-    virtual void init() = 0;
-    virtual void update(float delta) = 0;
-    virtual void draw() = 0;
+
+    BaseNodeInstance(Scene& scene): _scene(scene){};
+
+    virtual void setup_by_toml(toml::basic_value<struct toml::discard_comments, std::unordered_map, std::vector>);
+
+    virtual void init(){};
+    virtual void update(float delta); //defined in .cpp
+    virtual void draw(){};
 
 };

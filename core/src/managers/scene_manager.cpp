@@ -14,9 +14,19 @@
 
 Scene SceneManager::load_from_file(std::string filepath){
     try {
-        auto data = toml::parse(filepath);
+        toml::basic_value data = toml::parse(filepath);
 
+        
+        Scene final_scene = Scene(filepath);
 
+        final_scene.create_root();
+        BaseNodeInstance& root =  final_scene.get_root();
+
+        root.setup_by_toml(data);
+
+        return final_scene;
+
+        /*
         // TODO DO THIS IN ROOT IBJECT AND THEN RECURSIVELY IN CHILDREN OBJECTS!
         if (!data.is_table()) {
             std::cerr << "SceneManager::load_from_file| The Scene <" << filepath << "> root is not an toml table!\n";
@@ -24,9 +34,11 @@ Scene SceneManager::load_from_file(std::string filepath){
         }
 
         for (auto node: data.as_table()) {
-            
-            std::cout << node.first << "\n";
-        }
+            auto [name, obj ] = node;
+            std::cout << name << "\n";
+            std::cout << obj << "\n";
+            std::cout << typeid(node).name() << std::endl; 
+        }*/
     }
 
      catch (std::exception e) {
@@ -37,3 +49,5 @@ Scene SceneManager::load_from_file(std::string filepath){
 
     return Scene();
 }
+
+
