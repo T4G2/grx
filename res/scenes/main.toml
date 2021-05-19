@@ -1,11 +1,11 @@
 
 [[ terrain ]]
-    type="TerrainNode"
+    type="Terrain"
     [[terrain.instanced_trees]]
         count = 1000
 
 [[ character ]]
-    type="BaseNode"
+    type="Base"
     [[character.character_camera]]
 
         type="Camera"

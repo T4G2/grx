@@ -19,13 +19,6 @@
 
 class GameApplication : public IApplication {
 
-    BaseResourceManager<Texture> texture_manager;
-    BaseResourceManager<Program> program_manager;
-    BaseResourceManager<Shader> shader_manager;
-    BaseResourceManager<Mesh> mesh_manager;
-    BaseResourceManager<Scene> scene_manager;
-
-
 public:
 
     GameApplication(int width_a = 1080, int height_a = 720, std::string name_a = "Window", bool fullscreen_a = false):

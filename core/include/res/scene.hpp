@@ -22,9 +22,9 @@ class Scene : public BaseResource {
     using priority_t = int;
     using material_t = int;
 
-    
 
-    NodeInstance<Camera>* activeCamera = nullptr;
+
+    //NodeInstance<Camera>* activeCamera = nullptr;
     int _root_i = -1;
     std::vector<BaseNodeInstance> _nodes;
 

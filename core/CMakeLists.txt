@@ -81,6 +81,7 @@ if(NOT TARGET ${PROJECT_NAME})
                 include/nodes/base_node.hpp
                 include/nodes/base_node_instance.hpp
                 include/nodes/node_instance.hpp
+                include/nodes/node_factory.hpp
 
                 src/iapplication.cpp
                 src/res/opengl/shader.cpp
@@ -90,6 +91,7 @@ if(NOT TARGET ${PROJECT_NAME})
                 src/res/material.cpp
                 src/managers/scene_manager.cpp
                 src/nodes/base_node_instance.cpp
+                src/nodes/node_factory.cpp
 
                 libs/mylib.hpp
                 libs/open_gl_error.hpp

@@ -41,5 +41,5 @@ void Scene::create_root() {
     }
 
     _root_i = _nodes.size();
-    _nodes.push_back(BaseNodeInstance(*this));
+    _nodes.push_back(BaseNodeInstance(*this, nullptr));
 }

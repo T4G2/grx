@@ -18,7 +18,16 @@
 #include "mylib.hpp"
 #include "open_gl_error.hpp"
 
+#include "base_resource_manager.hpp"
+#include "texture.hpp"
+#include "shader.hpp"
+#include "program.hpp"
+#include "mesh.hpp"
+#include "scene.hpp"
+#include "scene_manager.hpp"
+
 class IApplication {
+
 
     GLFWwindow* window = nullptr;
 
@@ -45,6 +54,12 @@ class IApplication {
     int loop();
 
 protected:
+
+    BaseResourceManager<Texture> texture_manager;
+    BaseResourceManager<Program> program_manager;
+    BaseResourceManager<Shader> shader_manager;
+    BaseResourceManager<Mesh> mesh_manager;
+    SceneManager scene_manager;
     int width;
     int height;
     std::string name;

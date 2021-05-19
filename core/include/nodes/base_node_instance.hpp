@@ -10,7 +10,6 @@
 #include <string>
 #include <memory>
 
-#pragma once
 
 #include "toml.hpp"
 
@@ -27,10 +26,9 @@ class BaseNodeInstance {
     BaseNodeInstance* _parent = nullptr;
     Scene& _scene;
 
-
 public:
 
-    BaseNodeInstance(Scene& scene): _scene(scene){};
+    BaseNodeInstance(Scene& scene, BaseNodeInstance* parent): _scene(scene),  _parent(parent) { };
 
     virtual void setup_by_toml(toml::basic_value<struct toml::discard_comments, std::unordered_map, std::vector>);
 

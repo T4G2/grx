@@ -17,6 +17,8 @@
 class BaseNode{
 public:
 
+    inline static const std::string NODE_NAME = "Base";
+
     virtual void  init() {
         std::cout << "Not defined Node< <<" << "BaseNode" << ">::init \n";
     }   
@@ -29,9 +31,11 @@ public:
     }
 };
 
-class Camera : BaseNode {
+class CameraNode : BaseNode {
 
 public:
+
+    inline static const std::string NODE_NAME = "Camera";
     int look_at = 0;
 
     void init() override {

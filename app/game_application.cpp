@@ -12,7 +12,7 @@
 #include "base_node_instance.hpp"
 #include "node_instance.hpp"
 #include "base_node.hpp"
-
+#include "node_factory.hpp"
 
 #include "game_application.hpp"
 
@@ -37,6 +37,9 @@ void GameApplication::init_custom() {
     // mesh_manager.load(Mesh("res/meshs/Koenigsegg.obj"));
 
     // TRY  TO CREATE NEW NODE OF ANY TYPE
+
+    //scene.register_node(NodeFactory<BaseNode>());
+    //scene.register_node(NodeFactory<CameraNode>());
 
 
     glClearColor(0, 0, 0, 1);
