@@ -31,7 +31,7 @@ BaseNodeInstance& Scene::get_root() {
     if (_root_i == -1) {
         std::cerr << "Scene::get_root()|  there is not root in this Scene <" << get_path() << "> \n";
     }
-    return _nodes[_root_i];
+    return *(_nodes[_root_i]);
 }
 
 void Scene::create_root() {
@@ -41,5 +41,5 @@ void Scene::create_root() {
     }
 
     _root_i = _nodes.size();
-    _nodes.push_back(BaseNodeInstance(*this, nullptr));
+    //_nodes.push_back(); TODO
 }

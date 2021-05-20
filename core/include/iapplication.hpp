@@ -113,7 +113,4 @@ public:
 
     virtual void init_custom() = 0;
 
-  /*  static void GLAPIENTRY opengl_message_callback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length,
-                                                       const GLchar* message, const void* userParam) ;
-*/
 };

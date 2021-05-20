@@ -34,7 +34,19 @@ public:
 
     static Scene load_from_file(std::string filepath);
 
-    void register_node(BaseNodeFactory&& factory);
+    //template <class T>
+    //void register_node();
+
+    template <class T>
+    void register_node(){
+        std::string name = T::NODE_NAME;
+        if (_registered_nodes.count(name)) {
+            std::cerr << "SceneManager::register_node| Node<" << name << "> already registered! \n";
+            throw std::exception("SceneManager::register_node| No already registered!");
+        }
+    _registered_nodes.insert({name, std::make_unique<NodeFactory<T>>()});
+}
+
 
     BaseNodeFactory& get_node_factory(std::string name) {
         return *_registered_nodes[name];

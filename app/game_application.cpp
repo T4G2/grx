@@ -41,16 +41,15 @@ void GameApplication::init_custom() {
     glClearColor(0, 0, 0, 1);
     glViewport(0, 0, width, height);
 
-    scene_manager.register_node(NodeFactory<BaseNode>());
-    scene_manager.register_node(NodeFactory<CameraNode>());
+    scene_manager.register_node<BaseNode>();
+    scene_manager.register_node<CameraNode>();
 
     // s = scene_manager.load(SceneManager::load_from_file("res/scenes/main.toml"));
     auto s = SceneManager::load_from_file("res/scenes/main.toml");
-    auto x = scene_manager.get_node_factory("Camera");
+    auto x = scene_manager.get_node_factory("Camera").get_pointer_to_new_instance(nullptr, s );
     // WTF is happening here
-    auto y = x.get_pointer_to_new_instance(nullptr, s );
      std::cout << typeid(x).name() <<"\n";
-    y->init();
+    x->init();
 }
 
 

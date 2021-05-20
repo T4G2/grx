@@ -25,8 +25,8 @@ class Scene : public BaseResource {
 
 
     //NodeInstance<Camera>* activeCamera = nullptr;
-    int _root_i = -1;
-    std::vector<BaseNodeInstance> _nodes;
+    long int _root_i = -1;
+    std::vector<std::unique_ptr<BaseNodeInstance>> _nodes;
 
     
     //std::map<priority_t, std::vector<material_t, std::vector<BaseNodeInstance*>>> _render_tree;
@@ -44,8 +44,7 @@ public:
     void create_root();
 
     BaseNodeInstance& get_root();
-    BaseNodeInstance& get_child(int index){ return _nodes[index]; }
+    BaseNodeInstance& get_child(int index){ return *_nodes[index]; }
 
-
-
+    
 };
