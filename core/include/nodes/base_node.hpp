@@ -29,6 +29,12 @@ public:
     virtual void draw() {
         std::cout << "Not defined Node< <<" << "BaseNode"  << ">::draw \n";
     }
+
+    virtual void init_custom_toml(BaseNodeInstance::toml_properties_t props) {
+        std::cout << "BASE CUSTOM TOML\n";
+    };
+
+    virtual ~BaseNode()= default;
 };
 
 class CameraNode : BaseNode {
@@ -49,6 +55,13 @@ public:
     void draw() override {
         std::cout << "Not defined Node< <<" << "CameraNode" << ">::draw \n";
     }
+
+
+    virtual ~CameraNode()= default ;
+
+    void init_custom_toml(BaseNodeInstance::toml_properties_t props) override {
+        std::cout << "BASE CAMERA TOML\n";
+    };
 
 };
 

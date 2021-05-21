@@ -45,11 +45,11 @@ void GameApplication::init_custom() {
     scene_manager.register_node<CameraNode>();
 
     // s = scene_manager.load(SceneManager::load_from_file("res/scenes/main.toml"));
-    auto s = SceneManager::load_from_file("res/scenes/main.toml");
-    auto x = scene_manager.get_node_factory("Camera").get_pointer_to_new_instance(nullptr, s );
+    scene_manager.load_from_file("res/scenes/main.toml");
+    //auto x = scene_manager.get_node_factory("Camera").get_pointer_to_new_instance(nullptr, s );
     // WTF is happening here
-     std::cout << typeid(x).name() <<"\n";
-    x->init();
+    // std::cout << typeid(x).name() <<"\n";
+    //x->init();
 }
 
 

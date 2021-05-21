@@ -40,7 +40,9 @@ How to create game:
     - Then we must register nodes we want to use in `scene_manager` like `scene_manager.register_node(NodeFactory<Node>());`
 
 Creating new Nodes:
-- New nodes must be inherited from 
+- New nodes must be inherited from `BaseNode`
+  - `BaseNode` already has position, rotation and scale
+  - `BaseNode` has input(), draw(), update() funtions
 
 
 

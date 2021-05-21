@@ -1,6 +1,6 @@
 
 [[ terrain ]]
-    type="Terrain"
+    type="Camera"
     [[terrain.instanced_trees]]
         count = 1000
 
@@ -12,6 +12,8 @@
         fov= 70
 
     [[character.character_render]]
-
-        type="Render"
+        type="Camera"
         mesh="character.obj"
+        [[character.character_render.random]]
+            type = "Camera"
+            property = 125

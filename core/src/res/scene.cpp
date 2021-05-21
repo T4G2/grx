@@ -41,5 +41,5 @@ void Scene::create_root() {
     }
 
     _root_i = _nodes.size();
-    //_nodes.push_back(); TODO
+    _nodes.push_back(std::make_unique<BaseNodeInstance>(*this, nullptr));
 }

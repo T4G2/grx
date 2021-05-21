@@ -16,26 +16,28 @@
 #include "base_node_instance.hpp"
 #include "node_instance.hpp"
 
+class SceneManager;
+
 
 class Scene : public BaseResource {
 
     using priority_t = int;
     using material_t = int;
 
+    SceneManager& _scene_manager;
 
-
-    //NodeInstance<Camera>* activeCamera = nullptr;
+    NodeInstance<CameraNode>* activeCamera = nullptr;
     long int _root_i = -1;
     std::vector<std::unique_ptr<BaseNodeInstance>> _nodes;
+
 
     
     //std::map<priority_t, std::vector<material_t, std::vector<BaseNodeInstance*>>> _render_tree;
 
 public:
 
-
-    Scene(){ _empty = true; }
-    Scene(std::string name){_path = name;};
+    Scene(SceneManager& scene_manager): _scene_manager(scene_manager) { _empty = true; }
+    Scene(SceneManager& scene_manager, std::string name): _scene_manager(scene_manager) {_path = name;};
 
     void input(); // inputs
     void update(float delta);
@@ -45,6 +47,14 @@ public:
 
     BaseNodeInstance& get_root();
     BaseNodeInstance& get_child(int index){ return *_nodes[index]; }
+
+    SceneManager& get_scene_manager() {return _scene_manager;};
+
+    int insert_child(std::unique_ptr<BaseNodeInstance>&& node) {
+        int index = static_cast<int>(_nodes.size());
+        _nodes.push_back(std::move(node));
+        return index;
+    }
 
     
 };

@@ -39,4 +39,8 @@ public:
          data.draw();
     }
 
+    void init_custom_toml(toml_properties_t prop) override {
+        data.init_custom_toml(prop);
+    }
+
 };

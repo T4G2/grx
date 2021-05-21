@@ -32,13 +32,11 @@ public:
 
     void bind_basic_nodes(); // Binding Nodes = 
 
-    static Scene load_from_file(std::string filepath);
+    void load_from_file(std::string filepath);
 
-    //template <class T>
-    //void register_node();
 
     template <class T>
-    void register_node(){
+    void register_node() {
         std::string name = T::NODE_NAME;
         if (_registered_nodes.count(name)) {
             std::cerr << "SceneManager::register_node| Node<" << name << "> already registered! \n";
@@ -49,9 +47,14 @@ public:
 
 
     BaseNodeFactory& get_node_factory(std::string name) {
+        if (!_registered_nodes.contains(name)) {
+            std::cerr<< "SceneManager::get_node_factory| No factory with name <" << name <<">\n ";
+            throw std::exception("SceneManager::get_node_factory| No factory with given name");
+        }
         return *_registered_nodes[name];
     }
 
 
+    std::unique_ptr<BaseNodeInstance> get_root_unique_ptr(toml::basic_value<struct toml::discard_comments, std::unordered_map, std::vector> data);
 
 };

@@ -12,27 +12,24 @@
 
 
 
-Scene SceneManager::load_from_file(std::string filepath){
+void SceneManager::load_from_file(std::string filepath) {
     try {
         toml::basic_value data = toml::parse(filepath);
 
         
-        Scene final_scene = Scene(filepath);
+        Scene final_scene = Scene(*this, filepath);
 
         final_scene.create_root();
         BaseNodeInstance& root =  final_scene.get_root();
 
         root.setup_by_toml(data);
 
-        return final_scene;
+        this->load(std::move(final_scene));
     }
 
      catch (std::exception e) {
          std::cerr << "Scene::load_from_file <" << filepath << "> Error: \n";
          std::cerr << e.what() << "\n";
      }
-
-
-    return Scene();
 }
 

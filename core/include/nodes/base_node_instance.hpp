@@ -18,6 +18,7 @@
 class Scene;
 
 class BaseNodeInstance {
+
     // pos
     // X
 
@@ -28,6 +29,8 @@ class BaseNodeInstance {
 
 public:
 
+    using toml_properties_t = std::vector<std::pair<std::string, toml::basic_value<struct toml::discard_comments, std::unordered_map, std::vector>>>;  
+
     BaseNodeInstance(Scene& scene, BaseNodeInstance* parent): _scene(scene),  _parent(parent) { };
 
     virtual void setup_by_toml(toml::basic_value<struct toml::discard_comments, std::unordered_map, std::vector>);
@@ -35,5 +38,9 @@ public:
     virtual void init(){};
     virtual void update(float delta); //defined in .cpp
     virtual void draw(){};
+    virtual void init_custom_toml(toml_properties_t);
 
+    void insert_child(int idx) {_children_i.push_back(idx);};
+
+    virtual ~BaseNodeInstance()= default;
 };
