@@ -78,10 +78,12 @@ if(NOT TARGET ${PROJECT_NAME})
                 include/res/material.hpp
                 include/res/texture.hpp
 
-                include/nodes/base_node.hpp
                 include/nodes/base_node_instance.hpp
                 include/nodes/node_instance.hpp
                 include/nodes/node_factory.hpp
+
+                include/nodes/base_node.hpp
+                include/nodes/camera_node.hpp
 
                 src/iapplication.cpp
                 src/res/opengl/shader.cpp
@@ -90,8 +92,11 @@ if(NOT TARGET ${PROJECT_NAME})
                 src/res/scene.cpp
                 src/res/material.cpp
                 src/managers/scene_manager.cpp
+
                 src/nodes/base_node_instance.cpp
                 src/nodes/node_factory.cpp
+                src/nodes/base_node.cpp
+                src/nodes/camera_node.cpp
 
                 libs/mylib.hpp
                 libs/open_gl_error.hpp

@@ -19,10 +19,6 @@ class Scene;
 
 class BaseNodeInstance {
 
-    // pos
-    // X
-
-    // INTO HEAP
     std::vector<BaseNodeInstance*> _children_i;
     BaseNodeInstance* _parent = nullptr;
     Scene& _scene;

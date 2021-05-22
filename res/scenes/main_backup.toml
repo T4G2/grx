@@ -1,0 +1,33 @@
+
+[[ terrain ]]
+    type="Camera"
+    pos = [0, 1, 0]
+    rot = [0, 0, 0]
+    scl = [1, 1, 1]
+    [[terrain.instanced_trees]]
+        count = 1000
+
+[[ character ]]
+    type="Base"
+    pos = [0, 1, 0]
+    rot = [0, 0, 0]
+    scl = [1, 1, 1]
+    [[character.character_camera]]
+        type="Camera"
+        pos = [0, 1, 0]
+        rot = [0, 0, 0]
+        scl = [1, 1, 1]
+        fov= 70
+
+    [[character.character_render]]
+        type="Camera"
+        pos = [0, 1, 0]
+        rot = [0, 0, 0]
+        scl = [1, 1, 1]
+        mesh="character.obj"
+        [[character.character_render.random]]
+            type = "Camera"
+            pos = [0, 1, 0]
+            rot = [0, 0, 0]
+            scl = [1, 1, 1]
+            property = 125

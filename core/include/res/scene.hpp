@@ -12,9 +12,10 @@
 #include <map>
 
 #include "base_resource.hpp"
-#include "base_node.hpp"
 #include "base_node_instance.hpp"
 #include "node_instance.hpp"
+
+#include "camera_node.hpp"
 
 class SceneManager;
 
