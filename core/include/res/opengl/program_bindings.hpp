@@ -13,7 +13,7 @@ const int VIEW_MATRIX = 0;
 const int PROJECTION_MATRIX = 1;
 
 /** can be written by any Render object, which need to change its position while drawing **/
-const int POS_MATRIX = 2;
+const int LOCAL_POS_MATRIX = 2;
 
 /** LIGHTS**/
 

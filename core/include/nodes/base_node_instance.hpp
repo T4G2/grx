@@ -41,6 +41,7 @@ public:
     virtual BaseNode* get_data() {return nullptr;};
     void insert_child(BaseNodeInstance* instance) {_children_i.push_back(instance);};
     BaseNodeInstance* get_parent() {return _parent; };
+    std::vector<BaseNodeInstance*>& get_children() {return _children_i;};
 
     virtual ~BaseNodeInstance()= default;
 };

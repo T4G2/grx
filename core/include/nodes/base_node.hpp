@@ -50,11 +50,21 @@ public:
     virtual void update(float delta);
     virtual void draw();
 
-   void init_pos( toml_value value);
-   void init_rot( toml_value value);
-   void init_scl( toml_value value);
+    void init_pos( toml_value value);
+    void init_rot( toml_value value);
+    void init_scl( toml_value value);
+
+
+    void set_pos(glm::vec3 new_pos);
+    void set_rot(glm::vec3 new_rot);
+    void set_scl(glm::vec3 new_scl);
+
+    void add_pos(glm::vec3 new_pos);
+    void add_rot(glm::vec3 new_rot);
+    void mul_scl(glm::vec3 new_scl);
 
    void update_matrix_if_needed();
+   void been_updated_position();
 
     virtual ~BaseNode()= default;
 };

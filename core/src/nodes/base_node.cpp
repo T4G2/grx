@@ -40,6 +40,8 @@
                 glm::translate(local_space_matrix, pos);
 
         }
+
+        _updated_position = false;
     }
 
     void BaseNode::update(float delta) {
@@ -125,3 +127,39 @@
         scl.y = static_cast<float>(array.at(1).as_floating());
         scl.z = static_cast<float>(array.at(2).as_floating()); 
    }
+
+
+
+ void BaseNode::set_pos(glm::vec3 new_pos) {
+    pos = new_pos;
+    been_updated_position();
+ }
+void BaseNode::set_rot(glm::vec3 new_rot) {
+    rot = new_rot;
+    been_updated_position();
+}
+void BaseNode::set_scl(glm::vec3 new_scl) {
+    scl = new_scl;
+    been_updated_position();
+}
+
+void BaseNode::add_pos(glm::vec3 new_pos) {
+    pos += new_pos;
+    been_updated_position();
+}
+void BaseNode::add_rot(glm::vec3 new_rot) {
+    rot += new_rot;
+    been_updated_position();
+}
+void BaseNode::mul_scl(glm::vec3 new_scl) {
+    scl *= new_scl;
+    been_updated_position();
+}
+
+
+void BaseNode::been_updated_position() {
+    _updated_position = true;
+    for (auto child :  this->instance.get_children()) {
+        child->get_data()->been_updated_position();
+    }
+}
