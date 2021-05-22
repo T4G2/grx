@@ -21,9 +21,9 @@ using init_prop = void (T::*)(toml_value);
 
 class BaseNode {
 
-    glm::vec3 pos;
-    glm::vec3 rot;
-    glm::vec3 scl;
+    glm::vec3 pos = glm::vec3(0.0, 0.0, 0.0);
+    glm::vec3 rot = glm::vec3(0.0, 0.0, 0.0);
+    glm::vec3 scl = glm::vec3(1.0, 1.0, 1.0);
 
     std::map<std::string, init_prop<BaseNode>> prop_func = 
     {

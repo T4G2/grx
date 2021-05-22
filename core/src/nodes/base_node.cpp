@@ -51,9 +51,9 @@
                 return;
         }
 
-        pos.x = array.at(0).as_floating();
-        pos.y = array.at(1).as_floating();
-        pos.z = array.at(2).as_floating(); 
+        pos.x = static_cast<float>(array.at(0).as_floating());
+        pos.y = static_cast<float>(array.at(1).as_floating());
+        pos.z = static_cast<float>(array.at(2).as_floating()); 
 
    }
    void BaseNode::init_rot( toml_value value) {
@@ -74,9 +74,9 @@
                 return;
         }
 
-        rot.x = array.at(0).as_floating();
-        rot.y = array.at(1).as_floating();
-        rot.z = array.at(2).as_floating(); 
+        rot.x = static_cast<float>(array.at(0).as_floating());
+        rot.y = static_cast<float>(array.at(1).as_floating());
+        rot.z = static_cast<float>(array.at(2).as_floating()); 
    }
    void BaseNode::init_scl( toml_value value) {
        if (!value.is_array()) {
@@ -96,7 +96,7 @@
                 return;
         }
 
-        scl.x = array.at(0).as_floating();
-        scl.y = array.at(1).as_floating();
-        scl.z = array.at(2).as_floating(); 
+        scl.x = static_cast<float>(array.at(0).as_floating());
+        scl.y = static_cast<float>(array.at(1).as_floating());
+        scl.z = static_cast<float>(array.at(2).as_floating()); 
    }

@@ -84,6 +84,7 @@ if(NOT TARGET ${PROJECT_NAME})
 
                 include/nodes/base_node.hpp
                 include/nodes/camera_node.hpp
+                include/nodes/render_node.hpp
 
                 src/iapplication.cpp
                 src/res/opengl/shader.cpp

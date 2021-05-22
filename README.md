@@ -45,7 +45,7 @@ Creating new Nodes:
   - `BaseNode` has input(), draw(), update() funtions
 
 
-
+Do not Create New Nodes with properties, type(default type), scl, rot, pos
 
 
 Credits:

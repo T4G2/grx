@@ -1,9 +1,33 @@
 
 [[ terrain ]]
     type="Camera"
-    pos = [0.0, 1.0, 0.0]
+    pos = [0.0, 1.0, 0.0] # if 0.0 , then all shoulde be zero (little trickt to make this less painfull :D)
     rot = [0.0, 0.0, 0.0]
     scl = [1.0, 1.0, 1.0]
     [[terrain.instanced_trees]]
         count = 1000
 
+[[ character ]]
+    type="Base"
+    pos = [0.0, 1.0, 0.0]
+    rot = [0.0, 0.0, 0.0]
+    scl = [1.0, 1.0, 1.0]
+    [[character.character_camera]]
+        type="Camera"
+        pos = [0.0, 1.0, 0.0]
+        rot = [0.0, 0.0, 0.0]
+        scl = [1.0, 1.0, 1.0]
+        fov= 70
+
+    [[character.character_render]]
+        type="Camera"
+        pos = [0.0, 1.0, 0.0]
+        rot = [0.0, 0.0, 0.0]
+        scl = [1.0, 1.0, 1.0]
+        mesh="character.obj"
+        [[character.character_render.random]]
+            type = "Camera"
+            pos = [0.0, 1.0, 0.0]
+            rot = [0.0, 0.0, 0.0]
+            scl = [1.0, 1.0, 1.0]
+            property = 125

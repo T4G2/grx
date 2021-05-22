@@ -9,7 +9,10 @@
 ```
 [[ name ]]
     fov = float
-    postprocess = str
+    postprocess = str  // TODO
+    projection_type = "perspective"/"orthogonal"
+    auto_size = bool
+    size = [1084 545]
 ```
 
 # Render Node
