@@ -22,7 +22,7 @@ class NodeInstance : public BaseNodeInstance {
 
 public:
 
-    NodeInstance(Scene& scene, BaseNodeInstance* parent): BaseNodeInstance(scene, parent) { } ;
+    NodeInstance(Scene& scene, BaseNodeInstance* parent,std::string name): BaseNodeInstance(scene, parent), data(name) { } ;
 
     R& get_data_ref() {
         return data;

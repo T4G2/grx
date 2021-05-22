@@ -1,9 +1,9 @@
 
 [[ terrain ]]
     type="Camera"
-    pos = [0, 1, 0]
-    rot = [0, 0, 0]
-    scl = [1, 1, 1]
+    pos = [0.0, 1.0, 0.0]
+    rot = [0.0, 0.0, 0.0]
+    scl = [1.0, 1.0, 1.0]
     [[terrain.instanced_trees]]
         count = 1000
 

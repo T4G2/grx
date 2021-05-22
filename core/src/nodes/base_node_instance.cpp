@@ -67,7 +67,7 @@ void BaseNodeInstance::setup_by_toml(toml::basic_value<struct toml::discard_comm
             // this is another node inside
 
             SceneManager& manager = _scene.get_scene_manager();
-            auto new_instance = manager.get_node_factory(node_name).get_pointer_to_new_instance(this, _scene);
+            auto new_instance = manager.get_node_factory(node_name).get_pointer_to_new_instance(this, _scene, name);
 
             new_instance.get()->setup_by_toml(obj.as_array().at(0).as_table());
             insert_child(_scene.insert_child(std::move(new_instance)));
@@ -79,10 +79,10 @@ void BaseNodeInstance::setup_by_toml(toml::basic_value<struct toml::discard_comm
             properties.push_back({name, obj});
         }
 
-        init_custom_toml(properties);
         //std::cout << name << "\n";
         //std::cout << obj << "\n";
     }
+    init_custom_toml(properties);
 
 }
 

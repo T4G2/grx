@@ -12,7 +12,7 @@
 
 class BaseNodeFactory {
 public:
-    virtual std::unique_ptr<BaseNodeInstance>  get_pointer_to_new_instance(BaseNodeInstance* parent, Scene& scene)
+    virtual std::unique_ptr<BaseNodeInstance>  get_pointer_to_new_instance(BaseNodeInstance* parent, Scene& scene, std::string name)
     {
         std::cerr<< "BaseNodeFactory::get_pointer_to_new_instance| Can't create New Instance from <BaseNodeFactory>\n";
         throw std::exception("BaseNodeFactory::get_pointer_to_new_instance| Can't create New Instance from <BaseNodeFactory>");
@@ -26,8 +26,8 @@ template <class T>
 class NodeFactory : public BaseNodeFactory {
 
 public:
-    std::unique_ptr<BaseNodeInstance>  get_pointer_to_new_instance(BaseNodeInstance* parent, Scene& scene) override {
-        auto to_ret = std::unique_ptr<NodeInstance<T>>(new NodeInstance<T>(scene, parent));
+    std::unique_ptr<BaseNodeInstance>  get_pointer_to_new_instance(BaseNodeInstance* parent, Scene& scene, std::string name) override {
+        auto to_ret = std::unique_ptr<NodeInstance<T>>(new NodeInstance<T>(scene, parent, name));
         return to_ret;
     }
 

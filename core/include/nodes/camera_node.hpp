@@ -14,6 +14,8 @@ class CameraNode : BaseNode {
 
 public:
 
+    CameraNode(std::string name_a): BaseNode(name_a) {};
+
     inline static const std::string NODE_NAME = "Camera";
     int look_at = 0;
 
@@ -24,7 +26,7 @@ public:
 
 
 
-   virtual void init_custom_toml(BaseNodeInstance::toml_properties_t& props) override;
+   virtual void init_custom_toml(BaseNodeInstance::toml_properties_t props) override;
 
    virtual ~CameraNode()= default;
 

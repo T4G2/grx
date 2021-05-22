@@ -23,7 +23,7 @@ void CameraNode::draw() {
 
 
 
-void CameraNode::init_custom_toml(BaseNodeInstance::toml_properties_t& props) {
+void CameraNode::init_custom_toml(BaseNodeInstance::toml_properties_t props) {
     std::cout << "CAMERA TOML\n";
 
     BaseNode::init_custom_toml(props);

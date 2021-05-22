@@ -13,26 +13,34 @@
 #include <map>
 
 #include "node_instance.hpp"
+#include "glm/glm.hpp"
 
 using toml_value = toml::basic_value<toml::discard_comments,std::unordered_map,std::vector>; 
 template <class T>
 using init_prop = void (T::*)(toml_value);
 
 class BaseNode {
- std::map<std::string, init_prop<BaseNode>> prop_func = 
- {
-     {"pos", &BaseNode::init_pos},
-     {"rot", &BaseNode::init_rot},
-     {"scl", &BaseNode::init_scl},
- };
+
+    glm::vec3 pos;
+    glm::vec3 rot;
+    glm::vec3 scl;
+
+    std::map<std::string, init_prop<BaseNode>> prop_func = 
+    {
+        {"pos", &BaseNode::init_pos},
+        {"rot", &BaseNode::init_rot},
+        {"scl", &BaseNode::init_scl},
+    };
 
 public:
 
+    const std::string name;
 
     inline static const std::string NODE_NAME = "Base";
 
+    BaseNode(std::string name_a) : name(name_a) {};
     
-    virtual void init_custom_toml(BaseNodeInstance::toml_properties_t& props);
+    virtual void init_custom_toml(BaseNodeInstance::toml_properties_t props);
 
     virtual void  init();
     virtual void update(float delta);
