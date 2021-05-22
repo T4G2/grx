@@ -26,6 +26,6 @@ public:
 
    virtual void init_custom_toml(BaseNodeInstance::toml_properties_t& props) override;
 
-   virtual ~CameraNode()= default ;
+   virtual ~CameraNode()= default;
 
 };

@@ -1,3 +1,5 @@
+// NOT USED ANYWHERE
+
 /**
  * @file settings.hpp
  * @author your name (you@domain.com)

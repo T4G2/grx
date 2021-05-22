@@ -1,3 +1,7 @@
+
+// NOT USED ANYWHERE
+
+
 #ifndef __glad_h_
     #define __glad_h_
 

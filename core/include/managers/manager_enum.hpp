@@ -7,6 +7,9 @@
  */
 #pragma once
 
+//NOT USED ANYWHERE
+
+
 using manager_id = int;
 
 //const manager_id UNKNOWN_MANAGER = 0;
