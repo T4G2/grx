@@ -10,12 +10,24 @@
  */
 #pragma once
 #include <iostream>
+#include <map>
 
 #include "node_instance.hpp"
 
+using toml_value = toml::basic_value<toml::discard_comments,std::unordered_map,std::vector>; 
+template <class T>
+using init_prop = void (T::*)(toml_value);
 
 class BaseNode {
+ std::map<std::string, init_prop<BaseNode>> prop_func = 
+ {
+     {"pos", &BaseNode::init_pos},
+     {"rot", &BaseNode::init_rot},
+     {"scl", &BaseNode::init_scl},
+ };
+
 public:
+
 
     inline static const std::string NODE_NAME = "Base";
 
@@ -30,14 +42,34 @@ public:
         std::cout << "Not defined Node< <<" << "BaseNode"  << ">::draw \n";
     }
 
-    virtual void init_custom_toml(BaseNodeInstance::toml_properties_t props) {
-        std::cout << "BASE CUSTOM TOML\n";
+    virtual void init_custom_toml(BaseNodeInstance::toml_properties_t& props) {
+        std::cout << "BASE TOML\n";
+
+        for (auto& [name, obj] : props) {
+            std::cout << "\t" << name << "\n";
+            if (prop_func.contains(name)) {
+                (this->*prop_func.at(name))(obj);
+            }
+            //pos, rot, scale
+        }
     };
+
+   void init_pos( toml_value value) {
+       std::cout << "init pos in BASE \n";
+   }
+   void init_rot( toml_value value) {
+       std::cout << "init rot in BASE \n";
+   }
+   void init_scl( toml_value value) {
+       std::cout << "init scl in BASE \n";
+   }
 
     virtual ~BaseNode()= default;
 };
 
 class CameraNode : BaseNode {
+
+    std::map<std::string, void (CameraNode::*)(BaseNodeInstance::toml_properties_t)> prop_func;
 
 public:
 
@@ -59,8 +91,14 @@ public:
 
     virtual ~CameraNode()= default ;
 
-    void init_custom_toml(BaseNodeInstance::toml_properties_t props) override {
-        std::cout << "BASE CAMERA TOML\n";
+    void init_custom_toml(BaseNodeInstance::toml_properties_t& props) override {
+        std::cout << "CAMERA TOML\n";
+
+        BaseNode::init_custom_toml(props);
+
+        for (auto [name, obj] : props) {
+
+        }
     };
 
 };

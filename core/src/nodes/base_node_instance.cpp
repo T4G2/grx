@@ -73,6 +73,9 @@ void BaseNodeInstance::setup_by_toml(toml::basic_value<struct toml::discard_comm
             insert_child(_scene.insert_child(std::move(new_instance)));
         } else {
             // Is attribute
+            if (name == "type") {
+                continue;
+            }
             properties.push_back({name, obj});
         }
 
