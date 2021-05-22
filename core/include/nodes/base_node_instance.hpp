@@ -16,6 +16,7 @@
 //#include "scene.hpp"
 
 class Scene;
+class BaseNode;
 
 class BaseNodeInstance {
 
@@ -35,8 +36,11 @@ public:
     virtual void update(float delta); //defined in .cpp
     virtual void draw(){};
     virtual void init_custom_toml(toml_properties_t);
+    
 
+    virtual BaseNode* get_data() {return nullptr;};
     void insert_child(BaseNodeInstance* instance) {_children_i.push_back(instance);};
+    BaseNodeInstance* get_parent() {return _parent; };
 
     virtual ~BaseNodeInstance()= default;
 };

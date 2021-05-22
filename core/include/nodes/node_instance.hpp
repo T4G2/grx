@@ -16,13 +16,11 @@
 
 template<class R>
 class NodeInstance : public BaseNodeInstance {
-    R data; // TODO do this a pointer
-
-    // TODO should i use map  (name referencing)??? 
+    R data; 
 
 public:
 
-    NodeInstance(Scene& scene, BaseNodeInstance* parent,std::string name): BaseNodeInstance(scene, parent), data(name) { } ;
+    NodeInstance(Scene& scene, BaseNodeInstance* parent,std::string name): BaseNodeInstance(scene, parent), data(name, *this) { } ;
 
     R& get_data_ref() {
         return data;
@@ -42,5 +40,7 @@ public:
     void init_custom_toml(toml_properties_t prop) override {
         data.init_custom_toml(prop);
     }
+
+    virtual BaseNode* get_data() override { return dynamic_cast<BaseNode*>(&data);};
 
 };

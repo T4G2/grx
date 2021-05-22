@@ -35,10 +35,14 @@ class BaseNode {
 public:
 
     const std::string name;
+    BaseNodeInstance& instance;
+
+    bool _updated_position = true;
+    glm::mat4 local_space_matrix;
 
     inline static const std::string NODE_NAME = "Base";
 
-    BaseNode(std::string name_a) : name(name_a) {};
+    BaseNode(std::string name_a, BaseNodeInstance& _instance) : name(name_a), instance(_instance) { };
     
     virtual void init_custom_toml(BaseNodeInstance::toml_properties_t props);
 
@@ -49,6 +53,8 @@ public:
    void init_pos( toml_value value);
    void init_rot( toml_value value);
    void init_scl( toml_value value);
+
+   void update_matrix_if_needed();
 
     virtual ~BaseNode()= default;
 };

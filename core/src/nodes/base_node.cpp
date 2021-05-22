@@ -7,29 +7,54 @@
  */
 
 #include "base_node.hpp"
+#include "glm/gtx/transform.hpp"
 
 
 
     void  BaseNode::init() {
-        std::cout << "Not defined Node< <<" << "BaseNode" << ">::init \n";
+        update_matrix_if_needed();
     }   
 
+    void BaseNode::update_matrix_if_needed() {
+        if (_updated_position) {
+            BaseNodeInstance* parent = instance.get_parent();
+            if (parent  == nullptr) {
+                // do it by myself
+                local_space_matrix = glm::mat4(1.0f); // construct identity matrix
+
+            } else {
+                local_space_matrix = parent->get_data()->local_space_matrix;
+            }
+
+
+            //scale
+                //rotate
+                // move
+                glm::scale(local_space_matrix, scl);
+
+                auto rotation_matrix = glm::rotate(rot.x, glm::vec3(1, 0, 0));
+                rotation_matrix *= glm::rotate(rot.y, glm::vec3(0, 1, 0));
+                rotation_matrix *= glm::rotate(rot.z, glm::vec3(0, 0, 1));
+                local_space_matrix *= rotation_matrix;
+
+                glm::translate(local_space_matrix, pos);
+
+        }
+    }
+
     void BaseNode::update(float delta) {
-        std::cout << "Not defined Node< <<" << "BaseNode"  << ">::update \n";
+        update_matrix_if_needed();
     }
     void BaseNode::draw() {
-        std::cout << "Not defined Node< <<" << "BaseNode"  << ">::draw \n";
     }
 
     void BaseNode::init_custom_toml(BaseNodeInstance::toml_properties_t props) {
-        std::cout << "BASE TOML\n";
 
         for (auto& [name, obj] : props) {
-            std::cout << "\t" << name << "\n";
+            //std::cout << "\t" << name << "\n";
             if (prop_func.contains(name)) {
                 (this->*prop_func.at(name))(obj);
             }
-            //pos, rot, scale
         }
     };
 

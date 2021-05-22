@@ -9,30 +9,29 @@
 
 
 void CameraNode::init() {
-    std::cout << "Not defined Node< <<" << "CameraNode" << ">::init \n";
+
 }   
 
 void CameraNode::update(float delta) {
-    std::cout << "Not defined Node< <<" << "CameraNode" << ">::update \n";
+    BaseNode::update(delta);
+
 }
 void CameraNode::draw() {
-    std::cout << "Not defined Node< <<" << "CameraNode" << ">::draw \n";
+
 }
 
 
 
 
 void CameraNode::init_custom_toml(BaseNodeInstance::toml_properties_t props) {
-    std::cout << "CAMERA TOML\n";
 
     BaseNode::init_custom_toml(props);
 
     for (auto& [name, obj] : props) {
-            std::cout << "\t" << name << "\n";
+            //std::cout << "\t" << name << "\n";
             if (prop_func.contains(name)) {
                 (this->*prop_func.at(name))(obj);
             }
-            //pos, rot, scale
         }
 };
 
@@ -100,5 +99,5 @@ void CameraNode::init_size(toml_value data) {
 
     width = static_cast<int>(array.at(0).as_integer());
     height = static_cast<int>(array.at(1).as_integer());
-    
+
 }

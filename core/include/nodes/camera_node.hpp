@@ -26,7 +26,7 @@ class CameraNode : BaseNode {
 
 public:
 
-    CameraNode(std::string name_a): BaseNode(name_a) {};
+    CameraNode(std::string name_a, BaseNodeInstance& instance): BaseNode(name_a, instance) {};
 
     inline static const std::string NODE_NAME = "Camera";
 
