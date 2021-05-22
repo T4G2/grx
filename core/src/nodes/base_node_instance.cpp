@@ -12,8 +12,8 @@
 #include "scene_manager.hpp"
 
 void BaseNodeInstance::update(float delta){
-        for (int index : _children_i) {
-            _scene.get_child(index);
+        for (BaseNodeInstance* child : _children_i) {
+            child->update(delta);
         }
     };
 

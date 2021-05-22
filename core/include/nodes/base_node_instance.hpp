@@ -23,7 +23,7 @@ class BaseNodeInstance {
     // X
 
     // INTO HEAP
-    std::vector<int> _children_i;
+    std::vector<BaseNodeInstance*> _children_i;
     BaseNodeInstance* _parent = nullptr;
     Scene& _scene;
 
@@ -40,7 +40,7 @@ public:
     virtual void draw(){};
     virtual void init_custom_toml(toml_properties_t);
 
-    void insert_child(int idx) {_children_i.push_back(idx);};
+    void insert_child(BaseNodeInstance* instance) {_children_i.push_back(instance);};
 
     virtual ~BaseNodeInstance()= default;
 };

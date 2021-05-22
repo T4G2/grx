@@ -50,10 +50,10 @@ public:
 
     SceneManager& get_scene_manager() {return _scene_manager;};
 
-    int insert_child(std::unique_ptr<BaseNodeInstance>&& node) {
+    BaseNodeInstance* insert_child(std::unique_ptr<BaseNodeInstance>&& node) {
         int index = static_cast<int>(_nodes.size());
         _nodes.push_back(std::move(node));
-        return index;
+        return _nodes[index].get();
     }
 
     
