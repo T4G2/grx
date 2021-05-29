@@ -8,13 +8,18 @@
 #include "base_node.hpp"
 
 
+inline const glm::vec3 X_AXIS = {1.0 , 0.0 , 0.0};
+inline const glm::vec3 Y_AXIS = {1.0 , 0.0 , 0.0};
+inline const glm::vec3 Z_AXIS = {1.0 , 0.0 , 0.0};
+
+
 enum ProjectionType {
     Perspective = 0,
     Orthogonal
 };
 
 
-class CameraNode : BaseNode {
+class CameraNode : public BaseNode {
 
     std::map<std::string, init_prop<CameraNode>> prop_func = 
     {
@@ -35,6 +40,11 @@ public:
     ProjectionType projection_type = ProjectionType::Perspective;
     int width = 1080;
     int height = 720;
+
+    float z_close = 0.01;
+    float z_far = 1000;
+
+    glm::mat4 camera_matrix = glm::mat4(1);
 
     virtual void init() override;
     virtual void update(float delta) override;

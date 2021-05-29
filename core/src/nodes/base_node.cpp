@@ -132,34 +132,34 @@
 
  void BaseNode::set_pos(glm::vec3 new_pos) {
     pos = new_pos;
-    been_updated_position();
+    update_matrix();
  }
 void BaseNode::set_rot(glm::vec3 new_rot) {
     rot = new_rot;
-    been_updated_position();
+    update_matrix();
 }
 void BaseNode::set_scl(glm::vec3 new_scl) {
     scl = new_scl;
-    been_updated_position();
+    update_matrix();
 }
 
 void BaseNode::add_pos(glm::vec3 new_pos) {
     pos += new_pos;
-    been_updated_position();
+    update_matrix();
 }
 void BaseNode::add_rot(glm::vec3 new_rot) {
     rot += new_rot;
-    been_updated_position();
+    update_matrix();
 }
 void BaseNode::mul_scl(glm::vec3 new_scl) {
     scl *= new_scl;
-    been_updated_position();
+    update_matrix();
 }
 
 
-void BaseNode::been_updated_position() {
+void BaseNode::update_matrix() {
     _updated_position = true;
     for (auto child :  this->instance.get_children()) {
-        child->get_data()->been_updated_position();
+        child->get_data()->update_matrix();
     }
 }

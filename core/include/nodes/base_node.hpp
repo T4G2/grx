@@ -21,9 +21,8 @@ using init_prop = void (T::*)(toml_value);
 
 class BaseNode {
 
-    glm::vec3 pos = glm::vec3(0.0, 0.0, 0.0);
-    glm::vec3 rot = glm::vec3(0.0, 0.0, 0.0);
-    glm::vec3 scl = glm::vec3(1.0, 1.0, 1.0);
+
+
 
     std::map<std::string, init_prop<BaseNode>> prop_func = 
     {
@@ -31,6 +30,11 @@ class BaseNode {
         {"rot", &BaseNode::init_rot},
         {"scl", &BaseNode::init_scl},
     };
+
+protected:
+    glm::vec3 pos = glm::vec3(0.0, 0.0, 0.0);
+    glm::vec3 rot = glm::vec3(0.0, 0.0, 0.0);
+    glm::vec3 scl = glm::vec3(1.0, 1.0, 1.0);
 
 public:
 
@@ -64,7 +68,7 @@ public:
     void mul_scl(glm::vec3 new_scl);
 
    void update_matrix_if_needed();
-   void been_updated_position();
+   void update_matrix();
 
     virtual ~BaseNode()= default;
 };

@@ -6,6 +6,7 @@
  * @date 2021-05-22
  */
 #include "camera_node.hpp"
+#include "glm/gtx/transform.hpp"
 
 
 void CameraNode::init() {
@@ -13,7 +14,15 @@ void CameraNode::init() {
 }   
 
 void CameraNode::update(float delta) {
-    BaseNode::update(delta);
+
+    if (_updated_position) {
+        BaseNode::update(delta);
+        camera_matrix = local_space_matrix;
+        if (projection_type == ProjectionType::Perspective) {
+            camera_matrix *= glm::perspective(fov, static_cast<float>(width) / height, z_close, z_far);
+        }
+    }
+
 
 }
 void CameraNode::draw() {

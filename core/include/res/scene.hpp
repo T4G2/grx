@@ -57,5 +57,10 @@ public:
         return _nodes[index].get();
     }
 
-    
+    void update_scene_pointers() {
+        for (auto& node: _nodes) {
+            node->update_scene_pointer(this);
+        }
+    }
+
 };

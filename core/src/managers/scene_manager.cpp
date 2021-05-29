@@ -12,7 +12,7 @@
 
 
 
-void SceneManager::load_from_file(std::string filepath) {
+void SceneManager::load_from_file(std::string filepath,bool set_as_active) {
     try {
         toml::basic_value data = toml::parse(filepath);
 
@@ -24,7 +24,8 @@ void SceneManager::load_from_file(std::string filepath) {
 
         root.setup_by_toml(data);
 
-        this->load(std::move(final_scene));
+        this->load(std::move(final_scene), set_as_active);
+
     }
 
      catch (std::exception e) {

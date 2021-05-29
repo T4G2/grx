@@ -22,13 +22,13 @@ class BaseNodeInstance {
 
     std::vector<BaseNodeInstance*> _children_i;
     BaseNodeInstance* _parent = nullptr;
-    Scene& _scene;
+    Scene* _scene;
 
 public:
 
     using toml_properties_t = std::vector<std::pair<std::string, toml::basic_value<struct toml::discard_comments, std::unordered_map, std::vector>>>;  
 
-    BaseNodeInstance(Scene& scene, BaseNodeInstance* parent): _scene(scene),  _parent(parent) { };
+    BaseNodeInstance(Scene* scene, BaseNodeInstance* parent): _scene(scene),  _parent(parent) { };
 
     virtual void setup_by_toml(toml::basic_value<struct toml::discard_comments, std::unordered_map, std::vector>);
 
@@ -38,10 +38,21 @@ public:
     virtual void init_custom_toml(toml_properties_t);
     
 
+    void update_scene_pointer(Scene* scene) {
+        _scene = scene;
+    }
+
     virtual BaseNode* get_data() {return nullptr;};
     void insert_child(BaseNodeInstance* instance) {_children_i.push_back(instance);};
     BaseNodeInstance* get_parent() {return _parent; };
     std::vector<BaseNodeInstance*>& get_children() {return _children_i;};
+    Scene* get_scene() {return _scene;}
+
+    void update_children(float delta) {
+        for (auto child :_children_i) {
+            child->update(delta);
+        }
+    }
 
     virtual ~BaseNodeInstance()= default;
 };

@@ -20,7 +20,7 @@ class NodeInstance : public BaseNodeInstance {
 
 public:
 
-    NodeInstance(Scene& scene, BaseNodeInstance* parent,std::string name): BaseNodeInstance(scene, parent), data(name, *this) { } ;
+    NodeInstance(Scene* scene, BaseNodeInstance* parent,std::string name): BaseNodeInstance(scene, parent), data(name, *this) { } ;
 
     R& get_data_ref() {
         return data;
@@ -29,8 +29,9 @@ public:
         data.init();
     }
 
-    void update(float delta) override  {
-         data.update( delta);
+    void update(float delta) override {
+        data.update( delta);
+        update_children(delta);
     }
 
     void draw() override  {
@@ -41,6 +42,6 @@ public:
         data.init_custom_toml(prop);
     }
 
-    virtual BaseNode* get_data() override { return dynamic_cast<BaseNode*>(&data);};
+    BaseNode* get_data() override { return dynamic_cast<BaseNode*>(&data);};
 
 };

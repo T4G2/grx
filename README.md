@@ -45,6 +45,13 @@ Creating new Nodes:
   - `BaseNode` has input(), draw(), update() funtions
 
 
+Tags on Nodes:
+
+- Every node can have tags,
+  - every node added into scene with given tag will be specially processed by  SceneManager 
+    - (Mostly RenderNodes and Light Nodes, special fro rendering)
+
+
 Do not Create New Nodes with properties, type(default type), scl, rot, pos
 
 

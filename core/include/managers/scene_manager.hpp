@@ -25,15 +25,19 @@ class SceneManager {
 
 public:
 
-    void load(Scene&& scene) {
+    void load(Scene&& scene, bool set_as_active) {
         scenes.push_back(std::move(scene));
-        active_scene = &scenes[scenes.size() - 1];
+        scenes[scenes.size() - 1].update_scene_pointers();
+        if (set_as_active){
+            active_scene = &scenes[scenes.size() - 1];
+        }
     }
 
     void bind_basic_nodes(); // Binding Nodes = 
 
-    void load_from_file(std::string filepath);
+    void load_from_file(std::string filepath, bool set_as_active);
 
+    Scene* get_active_scene() { return active_scene; };
 
     template <class T>
     void register_node() {

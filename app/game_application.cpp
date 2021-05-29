@@ -45,7 +45,7 @@ void GameApplication::init_custom() {
     scene_manager.register_node<CameraNode>();
 
     // s = scene_manager.load(SceneManager::load_from_file("res/scenes/main.toml"));
-    scene_manager.load_from_file("res/scenes/main.toml");
+    scene_manager.load_from_file("res/scenes/main.toml", true);
     //auto x = scene_manager.get_node_factory("Camera").get_pointer_to_new_instance(nullptr, s );
     // WTF is happening here
     // std::cout << typeid(x).name() <<"\n";
@@ -55,6 +55,8 @@ void GameApplication::init_custom() {
 
 void GameApplication::update(double delta) {
    // std::cout << "Delta time:" << delta << " \n";
+   scene_manager.get_active_scene()->update(delta);
+   
 }
 
 void GameApplication::render() {
