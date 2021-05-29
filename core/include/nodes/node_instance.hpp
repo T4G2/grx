@@ -27,6 +27,7 @@ public:
     }
     void init() override {
         data.init();
+        init_children();
     }
 
     void update(float delta) override {

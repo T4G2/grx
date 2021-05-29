@@ -11,6 +11,7 @@
 /** Those two can be changed onlyu by camera **/
 const int VIEW_MATRIX = 0;
 const int PROJECTION_MATRIX = 1;
+const int PROJ_VIEW_MATRIX = 11;
 
 /** can be written by any Render object, which need to change its position while drawing **/
 const int LOCAL_POS_MATRIX = 2;

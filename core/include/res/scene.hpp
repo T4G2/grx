@@ -15,6 +15,7 @@
 #include "base_node_instance.hpp"
 #include "node_instance.hpp"
 
+
 #include "camera_node.hpp"
 
 class SceneManager;
@@ -27,7 +28,7 @@ class Scene : public BaseResource {
 
     SceneManager& _scene_manager;
 
-    NodeInstance<CameraNode>* activeCamera = nullptr;
+    CameraNode* activeCamera = nullptr;
     long int _root_i = -1;
     std::vector<std::unique_ptr<BaseNodeInstance>> _nodes;
 
@@ -40,6 +41,9 @@ public:
     Scene(SceneManager& scene_manager): _scene_manager(scene_manager) { _empty = true; }
     Scene(SceneManager& scene_manager, std::string name): _scene_manager(scene_manager) {_path = name;};
 
+    friend void CameraNode::init();
+
+    void init();
     void input(); // inputs
     void update(float delta);
     void draw();

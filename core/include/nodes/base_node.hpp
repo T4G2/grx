@@ -50,7 +50,7 @@ public:
     
     virtual void init_custom_toml(BaseNodeInstance::toml_properties_t props);
 
-    virtual void  init();
+    virtual void init();
     virtual void update(float delta);
     virtual void draw();
 

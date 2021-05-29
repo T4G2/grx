@@ -5,7 +5,10 @@
  * @version 0.1
  * @date 2021-05-22
  */
+#pragma once
+
 #include "base_node.hpp"
+
 
 
 inline const glm::vec3 X_AXIS = {1.0 , 0.0 , 0.0};
@@ -26,7 +29,8 @@ class CameraNode : public BaseNode {
         {"fov", &CameraNode::init_fov},
         {"projection_type", &CameraNode::init_projection_type},
         {"auto_size", &CameraNode::init_auto_size},
-        {"size", &CameraNode::init_size}
+        {"size", &CameraNode::init_size},
+        {"active_camera", &CameraNode::init_active}
     };
 
 public:
@@ -40,9 +44,11 @@ public:
     ProjectionType projection_type = ProjectionType::Perspective;
     int width = 1080;
     int height = 720;
+    bool is_active = false;
 
-    float z_close = 0.01;
-    float z_far = 1000;
+    float z_close = 0.01f;
+    float z_far = 1000.0f;
+
 
     glm::mat4 camera_matrix = glm::mat4(1);
 
@@ -54,6 +60,7 @@ public:
     void init_projection_type(toml_value);
     void init_auto_size(toml_value);
     void init_size(toml_value);
+    void init_active(toml_value);
 
 
 

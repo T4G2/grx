@@ -34,6 +34,10 @@ void GameApplication::init_custom() {
                                     shader_manager.get_by_name("res/shaders/main.frag")));
     texture_manager.load(Texture("res/textures/Planks_01_ALBEDO.png"));
 
+    auto& p = program_manager.get(0);
+    p.set_binding( PROJ_VIEW_MATRIX, 0);
+    p.set_binding( LOCAL_POS_MATRIX, 1);
+
     // mesh_manager.load(Mesh("res/meshs/Koenigsegg.obj"));
 
     // TRY  TO CREATE NEW NODE OF ANY TYPE
@@ -50,12 +54,14 @@ void GameApplication::init_custom() {
     // WTF is happening here
     // std::cout << typeid(x).name() <<"\n";
     //x->init();
+    scene_manager.get_active_scene()->init();
 }
 
 
 void GameApplication::update(double delta) {
    // std::cout << "Delta time:" << delta << " \n";
    scene_manager.get_active_scene()->update(delta);
+   scene_manager.get_active_scene()->draw();
    
 }
 

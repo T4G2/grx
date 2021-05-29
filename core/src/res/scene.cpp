@@ -10,6 +10,14 @@
 
 
 
+void Scene::init() {
+if (_root_i == -1) {
+            std::cerr << "Scene::init| No root for scene: <" << get_path() << ">\n"; 
+            return;
+        }
+        get_root().init(); 
+    };
+
 
 void Scene::update(float delta) {
         if (_root_i == -1) {
@@ -17,13 +25,19 @@ void Scene::update(float delta) {
             return;
         }
         get_root().update(delta); 
-        };
+    };
 
 void Scene::draw() {
         if (_root_i == -1) {
             std::cerr << "Scene::draw| No root for scene: <" << get_path() << ">\n"; 
             return;
         }
+
+        if (activeCamera == nullptr) {
+            std::cerr << "Scene::draw| No active camera for scene: <" << get_path() << ">\n"; 
+            return;
+        }
+        CameraNode* camera_data  = activeCamera;
         get_root().draw(); 
         };
 

@@ -54,5 +54,11 @@ public:
         }
     }
 
+    void init_children() {
+        for (auto child :_children_i) {
+            child->init();
+        }
+    }
+
     virtual ~BaseNodeInstance()= default;
 };

@@ -7,10 +7,14 @@
  */
 #include "camera_node.hpp"
 #include "glm/gtx/transform.hpp"
+#include "scene.hpp"
 
 
 void CameraNode::init() {
-
+    if (is_active) {
+       instance.get_scene()->activeCamera = this;
+       // FUCKING CROSS REFERENCE alebo aka koktoina
+    }
 }   
 
 void CameraNode::update(float delta) {
@@ -26,7 +30,6 @@ void CameraNode::update(float delta) {
 
 }
 void CameraNode::draw() {
-
 }
 
 
@@ -87,6 +90,14 @@ void CameraNode::init_auto_size(toml_value data){
         return;
     }
     bool is_auto_size = data.as_boolean();
+}
+
+void CameraNode::init_active(toml_value data) {
+    if (!data.is_boolean()) {
+        std::cerr << "WARNING, init_active in <" << name << "> is not a boolean. example: init_auto_size = true/false\n";
+        return;
+    }
+    is_active = true;
 }
 
 void CameraNode::init_size(toml_value data) {
