@@ -15,6 +15,7 @@
 #include "scene.hpp"
 #include "base_node.hpp"
 #include "node_factory.hpp"
+#include "input_struct.hpp"
 
 class SceneManager {
 
@@ -61,4 +62,8 @@ public:
 
     std::unique_ptr<BaseNodeInstance> get_root_unique_ptr(toml::basic_value<struct toml::discard_comments, std::unordered_map, std::vector> data);
 
+
+    void input(input_struct event) {
+        active_scene->get_root().get_data()->input(event);
+    }
 };

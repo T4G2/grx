@@ -4,8 +4,8 @@ vert = "res/shaders/main.vert"
 frag = "res/shaders/main.frag"
 
 # for .vert
-VIEW_MATRIX_LOCATION = 0
-MODEL_MATRIX_LOCATION = 1
+VIEW_MATRIX_LOCATION = 1
+MODEL_MATRIX_LOCATION = 0
 PROJECTION_MATRIX_LOCATION = 2
 
 #for .frag

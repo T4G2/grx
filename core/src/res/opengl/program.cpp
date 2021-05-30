@@ -100,6 +100,13 @@ Program::Program(std::string filepath, BaseResourceManager<Shader>& shader_manag
                 this->set_binding(SPECULAR_TEXTURE_BINDING, n);
             }
         }
+
+        _gl_id = glCreateProgram();
+        _gl_loaded = true;
+        glAttachShader(_gl_id, _vertex_shader->get_gl_id());
+        glAttachShader(_gl_id, _fragment_shader->get_gl_id());
+
+        glLinkProgram(_gl_id);
     }
 
      catch (std::exception e) {

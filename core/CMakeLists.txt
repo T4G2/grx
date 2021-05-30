@@ -79,6 +79,7 @@ if(NOT TARGET ${PROJECT_NAME})
                 include/res/opengl/light_ssbo.hpp
                 include/res/material.hpp
                 include/res/texture.hpp
+                include/res/input_struct.hpp
 
 
                 include/nodes/base_node_instance.hpp

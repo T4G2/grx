@@ -30,18 +30,25 @@
             //scale
                 //rotate
                 // move
-                glm::scale(local_space_matrix, scl);
+                local_space_matrix = glm::scale(local_space_matrix, scl);
 
-                auto rotation_matrix = glm::rotate(rot.x, glm::vec3(1, 0, 0));
+                
+                rotation_matrix = glm::rotate(rot.x, glm::vec3(1, 0, 0));
                 rotation_matrix *= glm::rotate(rot.y, glm::vec3(0, 1, 0));
                 rotation_matrix *= glm::rotate(rot.z, glm::vec3(0, 0, 1));
-                local_space_matrix *= rotation_matrix;
+                local_space_matrix = rotation_matrix * local_space_matrix;
 
-                glm::translate(local_space_matrix, pos);
+                local_space_matrix = glm::translate(local_space_matrix, pos);
 
         }
 
         _updated_position = false;
+    }
+
+    void BaseNode::input(input_struct event) {
+        for (auto child : instance.get_children()) {
+            child->get_data()->input(event);
+        }
     }
 
     void BaseNode::update(float delta) {

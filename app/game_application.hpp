@@ -6,6 +6,7 @@
  * @date 2021-05-03
  */
 #pragma once
+#include <set>
 
 #include "iapplication.hpp"
 #include "base_resource_manager.hpp"
@@ -20,6 +21,13 @@
 class GameApplication : public IApplication {
 
 public:
+
+    int last_x = -1;
+    int last_y = -1;
+ 
+    std::set<int> keys_pressed = {};
+    std::set<int> mouse_pressed = {};
+
 
     GameApplication(int width_a = 1080, int height_a = 720, std::string name_a = "Window", bool fullscreen_a = false):
           IApplication(width_a, height_a, name_a, fullscreen_a){}

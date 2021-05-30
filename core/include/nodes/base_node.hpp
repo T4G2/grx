@@ -14,6 +14,7 @@
 
 #include "node_instance.hpp"
 #include "glm/glm.hpp"
+#include "input_struct.hpp"
 
 using toml_value = toml::basic_value<toml::discard_comments,std::unordered_map,std::vector>; 
 template <class T>
@@ -43,6 +44,7 @@ public:
 
     bool _updated_position = true;
     glm::mat4 local_space_matrix;
+    glm::mat4 rotation_matrix;
 
     inline static const std::string NODE_NAME = "Base";
 
@@ -50,9 +52,13 @@ public:
     
     virtual void init_custom_toml(BaseNodeInstance::toml_properties_t props);
 
+
+
     virtual void init();
     virtual void update(float delta);
     virtual void draw();
+    virtual void input(input_struct event);
+
 
     void init_pos( toml_value value);
     void init_rot( toml_value value);

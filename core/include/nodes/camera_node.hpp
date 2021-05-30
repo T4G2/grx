@@ -56,6 +56,7 @@ public:
     virtual void init() override;
     virtual void update(float delta) override;
     virtual void draw() override;
+    virtual void input(input_struct event) override;
 
     void init_fov(toml_value);
     void init_projection_type(toml_value);
