@@ -21,14 +21,15 @@
 #include "shader.hpp"
 
 #include "program_bindings.hpp"
+#include "base_resource_manager.hpp"
 
 
 
 class Program : public BaseResource {
     bool _gl_loaded = false;
     GLuint _gl_id = 0;
-    Shader& _fragment_shader;
-    Shader& _vertex_shader;
+    Shader* _fragment_shader;
+    Shader* _vertex_shader;
 
     int _bindings[BIND_SIZE] = { -1 };
 
@@ -38,17 +39,20 @@ public:
         glUseProgram(_gl_id);
     }
 
-    Program(std::string name, Shader& vertex, Shader& fragment ):  _fragment_shader(fragment), _vertex_shader(vertex) {
+        /** DEPRECATED **/
+    Program(std::string name, Shader* vertex, Shader* fragment ):  _fragment_shader(fragment), _vertex_shader(vertex) {
         _path = name;
         _gl_id = glCreateProgram();
         _gl_loaded = true;
-        glAttachShader(_gl_id, _vertex_shader.get_gl_id());
-        glAttachShader(_gl_id, _fragment_shader.get_gl_id());
+        glAttachShader(_gl_id, _vertex_shader->get_gl_id());
+        glAttachShader(_gl_id, _fragment_shader->get_gl_id());
 
         glLinkProgram(_gl_id);
 
-        std::cout << "Program <" << _gl_id << "> with Shaders <" << _fragment_shader.get_path() << ", " << _vertex_shader.get_path() << "> created succesfully\n";
+        std::cout << "Program <" << _gl_id << "> with Shaders <" << _fragment_shader->get_path() << ", " << _vertex_shader->get_path() << "> created succesfully\n";
     }
+
+    Program(std::string filepath, BaseResourceManager<Shader>& shader_manager);
 
     Program(Program&&) = default; 
     Program(const Program&) = delete;

@@ -13,7 +13,9 @@
 void CameraNode::init() {
     if (is_active) {
        instance.get_scene()->activeCamera = this;
-       // FUCKING CROSS REFERENCE alebo aka koktoina
+       if (projection_type == ProjectionType::Perspective) {
+            projection_matrix = glm::perspective(fov, static_cast<float>(width) / height, z_close, z_far);
+        }
     }
 }   
 
@@ -22,9 +24,6 @@ void CameraNode::update(float delta) {
     if (_updated_position) {
         BaseNode::update(delta);
         camera_matrix = local_space_matrix;
-        if (projection_type == ProjectionType::Perspective) {
-            camera_matrix *= glm::perspective(fov, static_cast<float>(width) / height, z_close, z_far);
-        }
     }
 
 

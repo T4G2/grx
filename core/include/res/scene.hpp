@@ -29,6 +29,9 @@ class Scene : public BaseResource {
     SceneManager& _scene_manager;
 
     CameraNode* activeCamera = nullptr;
+    //std::vector<LightNode*> lights = {};
+    // material_program_sorter, // with function, which c  
+
     long int _root_i = -1;
     std::vector<std::unique_ptr<BaseNodeInstance>> _nodes;
 
@@ -52,6 +55,7 @@ public:
 
     BaseNodeInstance& get_root();
     BaseNodeInstance& get_child(int index){ return *_nodes[index]; }
+    CameraNode* get_active_camera() {return activeCamera; };                
 
     SceneManager& get_scene_manager() {return _scene_manager;};
 

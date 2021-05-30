@@ -70,13 +70,16 @@ if(NOT TARGET ${PROJECT_NAME})
                 include/managers/abstract_manager.hpp
                 include/managers/base_resource_manager.hpp
                 include/managers/scene_manager.hpp
+                include/managers/graphics_manager.hpp
                 include/res/scene.hpp
                 include/res/base_resource.hpp
                 include/res/mesh.hpp
                 include/res/opengl/program.hpp
                 include/res/opengl/shader.hpp
+                include/res/opengl/light_ssbo.hpp
                 include/res/material.hpp
                 include/res/texture.hpp
+
 
                 include/nodes/base_node_instance.hpp
                 include/nodes/node_instance.hpp
@@ -88,11 +91,13 @@ if(NOT TARGET ${PROJECT_NAME})
 
                 src/iapplication.cpp
                 src/res/opengl/shader.cpp
+                src/res/opengl/program.cpp
                 src/res/texture.cpp
                 src/res/mesh.cpp
                 src/res/scene.cpp
                 src/res/material.cpp
                 src/managers/scene_manager.cpp
+                src/managers/graphics_manager.cpp
 
                 src/nodes/base_node_instance.cpp
                 src/nodes/node_factory.cpp

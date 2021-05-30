@@ -25,6 +25,7 @@
 #include "mesh.hpp"
 #include "scene.hpp"
 #include "scene_manager.hpp"
+#include "graphics_manager.hpp"
 
 class IApplication {
 
@@ -53,13 +54,15 @@ class IApplication {
     }
     int loop();
 
-protected:
+public:
 
     BaseResourceManager<Texture> texture_manager;
     BaseResourceManager<Program> program_manager;
     BaseResourceManager<Shader> shader_manager;
     BaseResourceManager<Mesh> mesh_manager;
     SceneManager scene_manager;
+    GraphicsManager graphics_manager;
+
     int width;
     int height;
     std::string name;
@@ -74,7 +77,6 @@ protected:
 
     std::string res_path = "";
 
-public:
     /**
      * @brief Construct a new IApplication object
      * 

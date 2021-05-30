@@ -30,13 +30,13 @@ void GameApplication::init_custom() {
     std::cout << std::filesystem::current_path() << "\n";
     shader_manager.load(Shader(GL_VERTEX_SHADER, "res/shaders/main.vert"));
     shader_manager.load(Shader(GL_FRAGMENT_SHADER, "res/shaders/main.frag"));
-    program_manager.load(Program( "debug_program", shader_manager.get_by_name("res/shaders/main.vert"),
-                                    shader_manager.get_by_name("res/shaders/main.frag")));
+    //program_manager.load(Program( "debug_program", shader_manager.get_by_name("res/shaders/main.vert"),
+    //                                shader_manager.get_by_name("res/shaders/main.frag")));
+    program_manager.load(Program("res/shaders/programs.toml", shader_manager));
     texture_manager.load(Texture("res/textures/Planks_01_ALBEDO.png"));
 
-    auto& p = program_manager.get(0);
-    p.set_binding( PROJ_VIEW_MATRIX, 0);
-    p.set_binding( LOCAL_POS_MATRIX, 1);
+    graphics_manager = GraphicsManager(& scene_manager, &texture_manager,&program_manager, this);
+
 
     // mesh_manager.load(Mesh("res/meshs/Koenigsegg.obj"));
 
@@ -66,15 +66,7 @@ void GameApplication::update(double delta) {
 }
 
 void GameApplication::render() {
-
-    glBindVertexArray(0);
-
-    glViewport(0, 0, width / 2, height);
-
-    program_manager.get(0).use();
-    glDrawArrays(GL_TRIANGLES, NULL, 3);
- 
-
+    graphics_manager.draw();
 }
 
 void GameApplication::on_resize(int width_a, int height_a) {

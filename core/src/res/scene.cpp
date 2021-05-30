@@ -38,6 +38,7 @@ void Scene::draw() {
             return;
         }
         CameraNode* camera_data  = activeCamera;
+        
         get_root().draw(); 
         };
 

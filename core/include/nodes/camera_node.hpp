@@ -51,6 +51,7 @@ public:
 
 
     glm::mat4 camera_matrix = glm::mat4(1);
+    glm::mat4 projection_matrix = glm::mat4(1);
 
     virtual void init() override;
     virtual void update(float delta) override;

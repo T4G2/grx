@@ -9,24 +9,26 @@
 
 
 /** Those two can be changed onlyu by camera **/
-const int VIEW_MATRIX = 0;
-const int PROJECTION_MATRIX = 1;
-const int PROJ_VIEW_MATRIX = 11;
+const int VIEW_MATRIX_LOCATION = 0;
+const int PROJECTION_MATRIX_LOCATION = 1;
 
 /** can be written by any Render object, which need to change its position while drawing **/
-const int LOCAL_POS_MATRIX = 2;
+const int MODEL_MATRIX_LOCATION = 2;
 
 /** LIGHTS**/
 
 /** Will be changed by current MATERIAL**/
 
-const int AMBIENT_COLOR_BIND = 3;
-const int DIFFUSE_COLOR_BIND = 4;
-const int SPECULAR_COLOR_BIND = 5;
-const int SHININESS_BIND = 6;
+const int MATERIAL_AMBIENT_COLOR_LOCATION = 3;
+const int MATERIAL_DIFFUSE_COLOR_LOCATION = 4;
+const int MATERIAL_SPECULAR_COLOR_LOCATION = 5;
+const int MATERIAL_SHININESS_LOCATION = 6;
 
-const int ALBEDO_MAP_BIND = 7;
-const int NORMAL_MAP_BIND = 8;
-const int SPECULAR_MAP_BIND = 9;
+const int DIFFUSE_TEXTURE_BINDING = 7;
+const int NORMAL_TEXTURE_BINDING = 8;
+const int SPECULAR_TEXTURE_BINDING = 9;
 
-const int BIND_SIZE = 10;
+const int LIGHTS_BINDING = 10;
+const int INSTANCED_BINDING = 11;
+
+const int BIND_SIZE = 12;
