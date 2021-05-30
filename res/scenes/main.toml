@@ -1,8 +1,13 @@
 
-[[ terrain ]]
-    type="Camera"
-    pos = [0.0, 0.0, -1.0] # if 0.0 , then all shoulde be zero (little trickt to make this less painfull :D)
-    rot = [0.0, 0.0, 0.0]
-    scl = [1.0, 1.0, 1.0]
-    active_camera = true
-    fov= 70
+
+[[ mov]]
+    type = "Movement"
+    sensitivity = 0.005
+    speed = 0.005
+    [[ mov.main_cam ]]
+        type="Camera"
+        pos = [0.0, 0.0, -1.0] # if 0.0 , then all shoulde be zero (little trickt to make this less painfull :D)
+        rot = [0.0, 0.0, 0.0]
+        scl = [1.0, 1.0, 1.0]
+        active_camera = true
+        fov= 70

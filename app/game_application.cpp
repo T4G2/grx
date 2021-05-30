@@ -16,6 +16,7 @@
 
 #include "game_application.hpp"
 
+#include "nodes/movement_node.hpp"
 
 
 
@@ -47,6 +48,7 @@ void GameApplication::init_custom() {
 
     scene_manager.register_node<BaseNode>();
     scene_manager.register_node<CameraNode>();
+    scene_manager.register_node<MovementNode>();
 
     // s = scene_manager.load(SceneManager::load_from_file("res/scenes/main.toml"));
     scene_manager.load_from_file("res/scenes/main.toml", true);
@@ -123,7 +125,7 @@ void GameApplication::on_mouse_move(double x, double y){
         last_y = y;
         return;
     }
-    std::cout << "x: " << x << ", y:" << y << "\n";
+    //std::cout << "x: " << x << ", y:" << y << "\n";
     input_struct event;
     event.input_type = MOUSE_MOVE;
 

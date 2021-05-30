@@ -34,41 +34,6 @@ void CameraNode::draw() {
 }
 
 void CameraNode::input(input_struct event) {
-//std::cout << event.input_type << "\n";
-if (event.input_type == MOUSE_MOVE) {
-    float sensitivity = 0.001f;
-    float dx = event.dx * sensitivity;
-    float dy = event.dy * sensitivity;
-    //std::cout << "<" << dx << ", " << dy << ">\n";
-    add_rot(glm::vec3(dy, dx, 0));
-}
-
-if (event.input_type == KEY_DOWN) {
-    float speed = 0.01; 
-    
-    glm::vec4 movement = glm::vec4(0);
-    movement.w = 1;
-    switch (event.key) {
-        case GLFW_KEY_W:
-            movement.z++;
-            break;
-        case GLFW_KEY_S:
-            movement.z--;
-            break;
-        case GLFW_KEY_A:
-            movement.x++;
-            break;
-        case GLFW_KEY_D:
-            movement.x--;
-            break;
-
-    }
-    movement = glm::inverse(rotation_matrix) * movement;
-    std::cout << "(" << movement.x << ", " << movement.y << ", " << movement.z << ") \n";
-
-    add_pos(movement * speed);
-
-}
 BaseNode::input(event); // propagate to children
 }
 
