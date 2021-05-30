@@ -19,8 +19,8 @@ void main()
 	float x = triangle[gl_VertexID].x;
 	float y = triangle[gl_VertexID].y;
 
-	float z = 0.0;
-	//float z = 0.1 * sin(x * y * time * 50);
+	//float z = 0.0;
+	float z = 0.1 * sin(x * y * time * 50);
 	vec3 pos = vec3(x, y, z);
 
 

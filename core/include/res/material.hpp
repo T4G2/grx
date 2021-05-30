@@ -20,7 +20,7 @@
 class Material : public BaseResource {
 
     glm::vec3 _ambient_color = glm::vec3(0, 0, 0);
-    glm::vec3 _albedo_color = glm::vec3(0, 0, 0);
+    glm::vec3 _diffuse_color = glm::vec3(0, 0, 0);
     glm::vec3 _specular_color = glm::vec3(0, 0, 0);
     float _shininess = -1;
 

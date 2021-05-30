@@ -32,5 +32,6 @@ const int LIGHTS_BINDING = 10;
 const int INSTANCED_BINDING = 11;
 
 const int TIME_LOCATION = 12;
+const int EYE_POS_LOCATION = 13;
 
-const int BIND_SIZE = 13;
+const int BIND_SIZE = 14;

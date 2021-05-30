@@ -100,6 +100,8 @@ Program::Program(std::string filepath, BaseResourceManager<Shader>& shader_manag
                 this->set_binding(SPECULAR_TEXTURE_BINDING, n);
             } else if (name == "TIME_LOCATION") {
                 this->set_binding(TIME_LOCATION, n);
+            } else if (name == "EYE_POS_LOCATION") {
+                this->set_binding(EYE_POS_LOCATION, n);
             }
         }
 

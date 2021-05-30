@@ -16,15 +16,16 @@
 #include "node_instance.hpp"
 
 
+
 #include "camera_node.hpp"
 
 class SceneManager;
+class RenderNode;
 
 
 class Scene : public BaseResource {
 
     using priority_t = int;
-    using material_t = int;
 
     SceneManager& _scene_manager;
 
@@ -35,11 +36,10 @@ class Scene : public BaseResource {
     long int _root_i = -1;
     std::vector<std::unique_ptr<BaseNodeInstance>> _nodes;
 
-
-    
-    //std::map<priority_t, std::vector<material_t, std::vector<BaseNodeInstance*>>> _render_tree;
-
 public:
+    /**  PRIORITY OF NODE,   PTR_TO_SHADER, PTR_TO_MATERIAL, NODE **/
+    //std::map<priority_t,std::map<Program*, std::map<Material*, RenderNode*>>> _render_struct;
+
 
     Scene(SceneManager& scene_manager): _scene_manager(scene_manager) { _empty = true; }
     Scene(SceneManager& scene_manager, std::string name): _scene_manager(scene_manager) {_path = name;};
