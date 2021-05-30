@@ -3,7 +3,7 @@
 
 
 
-//layout(location = 0) uniform mat4 model;
+layout(location = 0) uniform mat4 model;
 layout(location = 1) uniform mat4 view;
 layout(location = 2) uniform mat4 proj;
 layout(location = 3) uniform float time;
@@ -24,5 +24,5 @@ void main()
 	vec3 pos = vec3(x, y, z);
 
 
-    gl_Position =  proj * view *vec4(pos, 1);
+    gl_Position =  proj * view * model *vec4(pos, 1);
 }

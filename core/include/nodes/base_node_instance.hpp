@@ -60,5 +60,5 @@ public:
         }
     }
 
-    virtual ~BaseNodeInstance()= default;
+    virtual ~BaseNodeInstance() = default;
 };

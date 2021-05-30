@@ -45,4 +45,6 @@ public:
 
     BaseNode* get_data() override { return dynamic_cast<BaseNode*>(&data);};
 
+    //virtual ~NodeInstance () = default;
+
 };

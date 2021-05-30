@@ -14,7 +14,8 @@
 
 #include "graphics_manager.hpp"
 #include "iapplication.hpp"
-
+#include "material.hpp"
+#include "render_node.hpp"
 
 
 
@@ -37,5 +38,23 @@ void GraphicsManager::draw() {
     glUniformMatrix4fv(proj_uniform_location, 1, 0, glm::value_ptr(active_camera->projection_matrix));
     glUniformMatrix4fv(view_uniform_location, 1, 0, glm::value_ptr(active_camera->camera_matrix));
 
-    glDrawArrays(GL_TRIANGLES, NULL, 3);
+    for (auto& [ program, material_map] : scene_manager->get_active_scene()->_render_struct[0]) {
+        // bind program
+        if (program == nullptr) {
+            std::cerr << "GraphicsManager::draw()| ERROR Some object do not have Program Defined!\n";
+        }
+
+        program->use();
+
+        for (auto& [ material, nodes]: material_map) {
+            if (material) {
+                std::cerr << "GraphicsManager::draw()| WARNING Some object do not have material!\n";
+                material->gl_prepare(*program);
+            }
+            for (auto& node : nodes) {
+                node->upload_to_program(*program);
+                node->draw();
+            }
+        }
+    }
 };

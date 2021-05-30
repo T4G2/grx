@@ -66,4 +66,6 @@ public:
     void set_binding(int bind_type, int binding_value) { _bindings[bind_type] = binding_value; }
     int get_binding(int bind) { return _bindings[bind]; }
 
+
+    //virtual ~Program() = default;
 };

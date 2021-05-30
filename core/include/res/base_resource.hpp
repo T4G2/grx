@@ -38,4 +38,6 @@ public:
     const std::string& get_path() {
         return _path;
     }
+
+   // virtual ~BaseResource() = default;
 };

@@ -90,7 +90,8 @@ public:
         width(width_a),
         height(height_a),
         name(name_a),
-        fullscreen(fullscreen_a)
+        fullscreen(fullscreen_a),
+        scene_manager(*this)
         {};
 
     int run() {

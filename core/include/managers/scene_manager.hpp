@@ -17,14 +17,22 @@
 #include "node_factory.hpp"
 #include "input_struct.hpp"
 
+
+class IApplication;
+
 class SceneManager {
 
     std::vector<Scene> scenes;
     Scene* active_scene;
 
+
     std::map<std::string, std::unique_ptr<BaseNodeFactory>> _registered_nodes;
 
 public:
+
+    IApplication& app;
+
+    SceneManager(IApplication& app_a): app(app_a) {};
 
     void load(Scene&& scene, bool set_as_active) {
         scenes.push_back(std::move(scene));

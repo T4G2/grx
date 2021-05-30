@@ -35,5 +35,5 @@ public:
     bool has_normal_map() { return _normal_map_ptr != nullptr; };
     bool has_specular_map() { return _specular_map_ptr != nullptr; };
     
-
+    //virtual ~Material() = default;
 };

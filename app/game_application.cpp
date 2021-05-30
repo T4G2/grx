@@ -17,7 +17,7 @@
 #include "game_application.hpp"
 
 #include "nodes/movement_node.hpp"
-
+#include "triangle_debug_node.hpp"
 
 
 void GameApplication::init_custom() {
@@ -49,6 +49,7 @@ void GameApplication::init_custom() {
     scene_manager.register_node<BaseNode>();
     scene_manager.register_node<CameraNode>();
     scene_manager.register_node<MovementNode>();
+    scene_manager.register_node<TriangleDebugNode>();
 
     // s = scene_manager.load(SceneManager::load_from_file("res/scenes/main.toml"));
     scene_manager.load_from_file("res/scenes/main.toml", true);

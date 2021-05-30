@@ -1,4 +1,4 @@
-[[basic_phong]]
+[[triangle_test]]
 
 vert = "res/shaders/main.vert"
 frag = "res/shaders/main.frag"

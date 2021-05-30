@@ -24,5 +24,5 @@ public:
     Mesh(Mesh&&) = default; 
     Mesh(const Mesh&) = delete;
 
-
+  //virtual ~Mesh() = default;
 };

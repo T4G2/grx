@@ -82,7 +82,4 @@ void Texture::load_to_gl(){
 }
 
 
-Texture::~Texture() {
-    // TODO Destructor
-}
 

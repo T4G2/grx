@@ -55,6 +55,8 @@ Tags on Nodes:
 Do not Create New Nodes with properties, type(default type), scl, rot, pos
 
 
+THERE ARE 10 LAYERS OF DRAWING 
+
 Credits:
 
     https://textures.pixel-furnace.com/

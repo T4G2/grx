@@ -35,4 +35,6 @@ public:
 
     Shader(Shader&&) = default; 
     Shader(const Shader&) = delete;
+
+    //virtual ~Shader() = default;
 };

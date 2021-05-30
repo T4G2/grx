@@ -64,7 +64,7 @@ public:
         return _mip_maps;
     }
 
-    ~Texture();
+    virtual ~Texture() = default;
 
     // forbid copying
     Texture(Texture&&) = default; 

@@ -10,6 +10,7 @@
 #include <memory>
 #include <string>
 #include <map>
+#include <array>
 
 #include "base_resource.hpp"
 #include "base_node_instance.hpp"
@@ -18,9 +19,13 @@
 
 
 #include "camera_node.hpp"
+//#include "program.hpp"
+//#include "material.hpp"
 
 class SceneManager;
 class RenderNode;
+class Material;
+class Program;
 
 
 class Scene : public BaseResource {
@@ -39,10 +44,12 @@ class Scene : public BaseResource {
 public:
     /**  PRIORITY OF NODE,   PTR_TO_SHADER, PTR_TO_MATERIAL, NODE **/
     //std::map<priority_t,std::map<Program*, std::map<Material*, RenderNode*>>> _render_struct;
+    //std::map<int, int> _render_struct;
 
-
-    Scene(SceneManager& scene_manager): _scene_manager(scene_manager) { _empty = true; }
-    Scene(SceneManager& scene_manager, std::string name): _scene_manager(scene_manager) {_path = name;};
+        /** 10 LEVELS FOR RENDERING **/
+    std::vector<std::map<Program*, std::map<Material*, std::vector<RenderNode*>>>> _render_struct;
+    Scene(SceneManager& scene_manager): _scene_manager(scene_manager) { _empty = true; _render_struct.resize(10); }
+    Scene(SceneManager& scene_manager, std::string name): _scene_manager(scene_manager) {_path = name; _render_struct.resize(10); };
 
     friend void CameraNode::init();
 
@@ -71,4 +78,6 @@ public:
         }
     }
 
+
+    //virtual ~Scene() = default;
 };
