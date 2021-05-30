@@ -28,6 +28,12 @@ void GraphicsManager::draw() {
     auto proj_uniform_location = program_manager->get(0).get_binding(PROJECTION_MATRIX_LOCATION);
     auto view_uniform_location = program_manager->get(0).get_binding(VIEW_MATRIX_LOCATION);
 
+    auto time_uniform_location = program_manager->get(0).get_binding(TIME_LOCATION);
+
+    if (time_uniform_location != -1 ) {
+        glUniform1f(time_uniform_location, glfwGetTime());
+    }
+
     glUniformMatrix4fv(proj_uniform_location, 1, 0, glm::value_ptr(active_camera->projection_matrix));
     glUniformMatrix4fv(view_uniform_location, 1, 0, glm::value_ptr(active_camera->camera_matrix));
 

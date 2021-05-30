@@ -31,4 +31,6 @@ const int SPECULAR_TEXTURE_BINDING = 9;
 const int LIGHTS_BINDING = 10;
 const int INSTANCED_BINDING = 11;
 
-const int BIND_SIZE = 12;
+const int TIME_LOCATION = 12;
+
+const int BIND_SIZE = 13;
