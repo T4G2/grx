@@ -15,14 +15,17 @@
 #include <glm/gtc/type_ptr.hpp>
 
 class RenderNode: public BaseNode {
-    Program* program_ptr = nullptr;
-    Material* material_ptr = nullptr;
     int priority = 0; // WONT CHANGE
 
     std::map<std::string, init_prop<RenderNode>> prop_func = 
     {
         {"program", &RenderNode::init_program},
     };
+
+protected:
+
+    Program* program_ptr = nullptr;
+    Material* material_ptr = nullptr;
 
 public:
 

@@ -24,6 +24,7 @@
 #include "program.hpp"
 #include "mesh.hpp"
 #include "scene.hpp"
+#include "material.hpp"
 #include "scene_manager.hpp"
 #include "graphics_manager.hpp"
 
@@ -60,6 +61,7 @@ public:
     BaseResourceManager<Program> program_manager;
     BaseResourceManager<Shader> shader_manager;
     BaseResourceManager<Mesh> mesh_manager;
+    BaseResourceManager<Material> material_manager;
     SceneManager scene_manager;
     GraphicsManager graphics_manager;
 

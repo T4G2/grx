@@ -41,6 +41,8 @@ Shader::Shader(GLenum shader_type, std::string path): _shader_type(shader_type) 
     // Source to GL
     glShaderSource(_gl_id, 1, &ptr, &size);
 
+    _gl_compiled = true;
+
     // Compile
     glCompileShader(_gl_id);
     std::cout << "Shader <" << _path << "> ready \n";

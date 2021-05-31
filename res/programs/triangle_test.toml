@@ -1,7 +1,7 @@
 [[triangle_test]]
 
-vert = "res/shaders/main.vert"
-frag = "res/shaders/main.frag"
+vert = "res/shaders/triangle_test.vert"
+frag = "res/shaders/triangle_test.frag"
 
 # for .vert
 VIEW_MATRIX_LOCATION = 1

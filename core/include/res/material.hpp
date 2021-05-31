@@ -19,6 +19,8 @@
 
 class Material : public BaseResource {
 
+
+
     glm::vec3 _ambient_color = glm::vec3(0, 0, 0);
     glm::vec3 _diffuse_color = glm::vec3(0, 0, 0);
     glm::vec3 _specular_color = glm::vec3(0, 0, 0);
@@ -29,6 +31,9 @@ class Material : public BaseResource {
     Texture* _specular_map_ptr = nullptr;
 
 public:
+
+    Material(std::string path);
+
     void gl_prepare(Program& gl_program);
 
     bool has_albedo_map() { return _albedo_map_ptr != nullptr; };

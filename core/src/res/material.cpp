@@ -9,6 +9,43 @@
 
 #include "material.hpp"
 #include "glm/ext.hpp" // value_ptr   ext = external
+#include "tiny_obj_loader.h"
+#include "mylib.hpp"
+
+Material::Material(std::string path) {
+
+    tinyobj::ObjReader reader;
+    auto [mtl_file, err] = load_file(path);
+    if (err) {
+         std::cerr << "Material::Material| file " << path << "do not exist \n";
+    }
+
+    if (!reader.ParseFromString("mtllib *", mtl_file )) {
+        if (!reader.Error().empty()) {
+            std::cerr << "TinyObjReader: " << reader.Error() << "\n";
+        }
+    }
+
+    if (!reader.Warning().empty()) {
+        std::cout << "TinyObjReader: " << reader.Warning() << "\n";
+    }
+
+    auto& materials = reader.GetMaterials();
+
+    if (materials.empty()) {
+         std::cerr << "Material::Material| file " << path << " was loaded with no materials\n";
+    }
+    auto& material = materials.at(0);
+
+    _ambient_color = glm::vec3( material.ambient[0], material.ambient[1], material.ambient[2]);
+    _diffuse_color = glm::vec3( material.diffuse[0], material.diffuse[1], material.diffuse[2]);
+    _specular_color = glm::vec3( material.specular[0], material.specular[1], material.specular[2]);
+    _shininess = material.shininess;
+
+    // TODO MAP
+
+}
+
 
 void Material::gl_prepare(Program& gl_program) {
 

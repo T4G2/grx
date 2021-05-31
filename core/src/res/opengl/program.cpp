@@ -11,6 +11,10 @@
 #include "toml.hpp"
 
 Program::Program(std::string filepath, BaseResourceManager<Shader>& shader_manager) {
+
+    for (auto& x : _bindings) {
+        x = -1;
+    }
     try {
         toml::basic_value data = toml::parse(filepath);
 

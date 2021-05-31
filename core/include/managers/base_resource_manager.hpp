@@ -19,7 +19,7 @@ template <class T>
 class BaseResourceManager: public AbstractManager{
 
      // path = name
-    std::vector<T> _resources;
+    std::vector<std::unique_ptr<T>> _resources;
     std::vector<bool> _occupied;
     std::map<std::string, uint32_t> _path_map; // 
 
@@ -31,13 +31,13 @@ public:
 
         // maybe iterate and find first empty, or defragment once in a while
         std::string path_copy = t.get_path();
-        _resources.push_back(std::move(t));
+        _resources.push_back(std::make_unique<T>(std::move(t)));
          _occupied.push_back(true);
          _path_map[std::move(path_copy)] = static_cast<uint32_t>(_resources.size() - 1);
     }
 
     T& get(uint32_t idx) {
-        return _resources[idx];
+        return *_resources[idx];
     }
 
     bool exists(std::string name) {
@@ -45,7 +45,7 @@ public:
     }
 
     T& get_by_name(std::string name) {
-        return _resources[_path_map[name]];
+        return *_resources[_path_map[name]];
     }
     virtual void remove(uint32_t idx) {
         //_resources[idx]; //TODO Remove somehow

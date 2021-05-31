@@ -18,7 +18,7 @@
 
 #include "nodes/movement_node.hpp"
 #include "triangle_debug_node.hpp"
-
+#include "mesh_node.hpp"
 
 void GameApplication::init_custom() {
 
@@ -29,12 +29,14 @@ void GameApplication::init_custom() {
     change_curr_dir_debug(res_path);
     std::cout << "to: \n";
     std::cout << std::filesystem::current_path() << "\n";
-    shader_manager.load(Shader(GL_VERTEX_SHADER, "res/shaders/main.vert"));
-    shader_manager.load(Shader(GL_FRAGMENT_SHADER, "res/shaders/main.frag"));
+    //shader_manager.load(Shader(GL_VERTEX_SHADER, "res/shaders/triangle_test.vert"));
+    //shader_manager.load(Shader(GL_FRAGMENT_SHADER, "res/shaders/triangle_test.frag"));
     //program_manager.load(Program( "debug_program", shader_manager.get_by_name("res/shaders/main.vert"),
     //                                shader_manager.get_by_name("res/shaders/main.frag")));
-    program_manager.load(Program("res/programs/basic_phong.toml", shader_manager));
+    program_manager.load(Program("res/programs/triangle_test.toml", shader_manager));
+    program_manager.load(Program("res/programs/mesh_test.toml", shader_manager));
     texture_manager.load(Texture("res/textures/Planks_01_ALBEDO.png"));
+    //material_manager.load(Material("res/materials/wood_blade.mtl"));
 
     graphics_manager = GraphicsManager(& scene_manager, &texture_manager,&program_manager, this);
 
@@ -50,6 +52,7 @@ void GameApplication::init_custom() {
     scene_manager.register_node<CameraNode>();
     scene_manager.register_node<MovementNode>();
     scene_manager.register_node<TriangleDebugNode>();
+    scene_manager.register_node<MeshNode>();
 
     // s = scene_manager.load(SceneManager::load_from_file("res/scenes/main.toml"));
     scene_manager.load_from_file("res/scenes/main.toml", true);

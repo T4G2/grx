@@ -31,7 +31,7 @@ class Program : public BaseResource {
     Shader* _fragment_shader;
     Shader* _vertex_shader;
 
-    int _bindings[BIND_SIZE] = { -1 };
+    int _bindings[BIND_SIZE] = { 0 };
 
 public:
 

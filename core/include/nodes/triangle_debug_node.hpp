@@ -15,9 +15,10 @@ class TriangleDebugNode : public RenderNode {
 
 public:
 
+    inline static const std::string NODE_NAME = "__TriangleDebug";
+
     TriangleDebugNode(std::string name_a, BaseNodeInstance& instance): RenderNode(name_a, instance) {};
 
-    inline static const std::string NODE_NAME = "__TriangleDebug";
 
     void init() override {
         //instance.get_scene()->*_render_struct[priority][program_ptr]

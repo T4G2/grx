@@ -90,6 +90,7 @@ if(NOT TARGET ${PROJECT_NAME})
                 include/nodes/camera_node.hpp
                 include/nodes/render_node.hpp
                 include/nodes/triangle_debug_node.hpp
+                include/nodes/mesh_node.hpp
 
                 src/iapplication.cpp
                 src/res/opengl/shader.cpp
@@ -106,6 +107,7 @@ if(NOT TARGET ${PROJECT_NAME})
                 src/nodes/base_node.cpp
                 src/nodes/camera_node.cpp
                 src/nodes/render_node.cpp
+                src/nodes/mesh_node.cpp
                 #src/nodes/triangle_debug_node.cpp
 
                 libs/mylib.hpp
