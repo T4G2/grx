@@ -2,15 +2,26 @@
 
 
 
+struct Light {
+	vec4 position;
+	vec4 ambient_color;
+	vec4 diffuse_color;
+	vec4 specular_color;
+    float intensity;
+    float angle;
+    float _pad1;
+	float _pad2;
+};
+
+layout (binding = 0, std430) buffer Lights {
+	Light lights[];
+};
+
+
 layout(location = 12) uniform float time;
 
 layout(location = 3) uniform vec3 eye_position;
 layout(location = 1) uniform mat4 view;
-
-//layout(location = 4) uniform vec4 light_position;
-//layout(location = 5) uniform vec3 light_ambient_color;
-//layout(location = 6) uniform vec3 light_diffuse_color;
-//layout(location = 7) uniform vec3 light_specular_color;
 
 layout(location = 8) uniform vec3 material_ambient_color;
 layout(location = 9) uniform vec3 material_diffuse_color;
@@ -26,39 +37,36 @@ layout(location = 2) in vec2 fs_texture_coordinate;
 layout(location = 0) out vec4 final_color;
 
 
-/** TODO
-struct Light {
-	vec4 position;
-	vec4 ambient_color;
-	vec4 diffuse_color;
-	vec4 specular_color;
-    float intensity;
-    bool enabled;
-};
-
-layout(binding = 1, std430) buffer Lights {
-	Light lights[];
-};
-*/
-
 
 void main()
 {
 
-    vec3 color;
+    vec3 color_sum = vec3(0);
 
-    vec4 FORWARD = vec4(0, 0, 1, 0);
-    vec3 forward = vec3(view * FORWARD); 
+    for (int i = 0; i < 2; i++ ) {
 
-    vec3 N = normalize(fs_normal);
-    vec3 E = normalize(eye_position - fs_position);
-    float angle = dot(N, E);
+        Light light = lights[i];
+        vec3 light_vector = light.position.xyz - fs_position * light.position.w;
+        vec3 L = normalize(light_vector);
+        vec3 N = normalize(fs_normal);
+        vec3 E = normalize(eye_position - fs_position);
+        vec3 H = normalize(L + E);
 
-    color = material_ambient_color;
-    color.x += angle;
-    color.y += angle;
-    color.z += angle;
-    
+        float NdotL = max(dot(N, L), 0.01);
+        float NdotH = max(dot(N, H), 0.0001);
 
-    final_color = vec4(color, 1.0);
+        
+        vec3 diffuse =material_diffuse_color.rgb * light.diffuse_color.rgb;
+        vec3 specular = material_specular_color.rgb * light.specular_color.rgb;
+
+        vec3 color = NdotL * material_diffuse_color.rgb * light.intensity + light.intensity * pow(NdotH, material_shininess) * specular;
+
+        //vec3 color = material_ambient_color;  // NdotL * material_diffuse_color.rgb;
+        //color /= (length(light_vector) * length(light_vector));
+
+        color_sum += color;
+
+    }
+
+    final_color = vec4(color_sum, 1.0);
 }

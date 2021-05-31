@@ -43,3 +43,12 @@
     pos = [0.0, 0.0, 1.0]
     rot = [0.0, 0.0, 0.0]
     scl = [1.0, 1.0, 1.0]
+
+
+[[ light_]]
+    type = "Light"
+    pos = [1.0 ,1.0, 0.0]
+    ambient = [0.0 ,0.0, 0.0]
+    diffuse = [1.0 ,0.5, 1.0]
+    intensity = 10.0
+    directional = false

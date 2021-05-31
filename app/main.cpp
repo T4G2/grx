@@ -13,6 +13,7 @@
 int main(int argc, char** argv) {
     //GameApplication apk = GameApplication(1920, 1080, "Hello World", true);
     GameApplication apk = GameApplication(1080, 720, "Hello World", false);
+    //GameApplication apk = GameApplication(320, 240, "Hello World", true);
     return apk.run();
     
 }

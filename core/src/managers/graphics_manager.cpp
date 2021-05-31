@@ -19,14 +19,13 @@
 
 
 
+
 void GraphicsManager::draw() {
 
     glBindVertexArray(0);
     glViewport(0, 0, app->width, app->height);
-    //program_manager->get(0).use();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     CameraNode* active_camera = scene_manager->get_active_scene()->get_active_camera();
-    
 
     glEnable(GL_DEPTH_TEST);  
 
@@ -41,16 +40,21 @@ void GraphicsManager::draw() {
         auto view_uniform_location = program->get_binding(VIEW_MATRIX_LOCATION);
         auto eye_pos_location = program->get_binding(EYE_POS_LOCATION);
 
+        auto lights_binding = program->get_binding(LIGHTS_BINDING);
+
         auto time_uniform_location = program->get_binding(TIME_LOCATION);
 
         if (time_uniform_location != -1 ) {
         glUniform1f(time_uniform_location, glfwGetTime());
         }
 
+        if (lights_binding != -1) {
+            glBindBufferBase(GL_SHADER_STORAGE_BUFFER, lights_binding, scene_manager->get_active_scene()->_lights_buffer);
+        }
+
         if (eye_pos_location != -1) {
             auto global_pos = active_camera->get_global_pos();
-            glUniform3fv(eye_pos_location, 1, glm::value_ptr(global_pos));
-            
+            glUniform3fv(eye_pos_location, 1, glm::value_ptr(global_pos));   
         }
 
         glUniformMatrix4fv(proj_uniform_location, 1, 0, glm::value_ptr(active_camera->projection_matrix));

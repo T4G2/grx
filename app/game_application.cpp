@@ -13,6 +13,7 @@
 #include "node_instance.hpp"
 #include "base_node.hpp"
 #include "node_factory.hpp"
+#include "light_node.hpp"
 
 #include "game_application.hpp"
 
@@ -53,6 +54,7 @@ void GameApplication::init_custom() {
     scene_manager.register_node<MovementNode>();
     scene_manager.register_node<TriangleDebugNode>();
     scene_manager.register_node<MeshNode>();
+    scene_manager.register_node<LightNode>();
 
     // s = scene_manager.load(SceneManager::load_from_file("res/scenes/main.toml"));
     scene_manager.load_from_file("res/scenes/main.toml", true);

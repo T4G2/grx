@@ -8,15 +8,30 @@
 #include "scene.hpp"
 #include "toml.hpp"
 
+#include "glm/gtc/type_ptr.hpp"
+
+
 
 
 void Scene::init() {
+    glCreateBuffers(1, &_lights_buffer);
+    //lights_ssbo = std::vector<Light_SSBO>(_lights_buffer_size) = 
+    glNamedBufferStorage(_lights_buffer, sizeof(Light_SSBO) * lights_ssbo.size(), lights_ssbo.data(), GL_DYNAMIC_STORAGE_BIT);
 if (_root_i == -1) {
             std::cerr << "Scene::init| No root for scene: <" << get_path() << ">\n"; 
             return;
         }
+        
         get_root().init(); 
     };
+
+void Scene::add_light(Light_SSBO light) {
+    glDeleteBuffers(1, &_lights_buffer);
+    glCreateBuffers(1, &_lights_buffer);
+    lights_ssbo.push_back(light);
+    glNamedBufferStorage(_lights_buffer, sizeof(Light_SSBO) * lights_ssbo.size(), lights_ssbo.data(), GL_DYNAMIC_STORAGE_BIT);
+    
+}
 
 
 void Scene::update(float delta) {

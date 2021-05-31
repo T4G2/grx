@@ -17,8 +17,12 @@
 #include "node_instance.hpp"
 
 
+#include "light_ssbo.hpp"
 
 #include "camera_node.hpp"
+
+#include "glad.h"
+#include "GLFW/glfw3.h"
 //#include "program.hpp"
 //#include "material.hpp"
 
@@ -26,7 +30,14 @@ class SceneManager;
 class RenderNode;
 class Material;
 class Program;
+class LightNode;
 
+
+const Light_SSBO DEFAULT_AMBIENT_LIGHT = {
+    glm::vec4(0, 0, 0, 0), // POS
+    glm::vec4(0.04, 0.05, 0.07, 1.0), // AMBIENT
+    glm::vec4(0,0,0,0) // DIFFUSE
+};
 
 class Scene : public BaseResource {
 
@@ -41,13 +52,22 @@ class Scene : public BaseResource {
     long int _root_i = -1;
     std::vector<std::unique_ptr<BaseNodeInstance>> _nodes;
 
+    int _lights_buffer_size = 0;
+
+
 public:
+
+        GLuint _lights_buffer;
+
     /**  PRIORITY OF NODE,   PTR_TO_SHADER, PTR_TO_MATERIAL, NODE **/
     //std::map<priority_t,std::map<Program*, std::map<Material*, RenderNode*>>> _render_struct;
     //std::map<int, int> _render_struct;
 
         /** 10 LEVELS FOR RENDERING **/
     std::vector<std::map<Program*, std::map<Material*, std::vector<RenderNode*>>>> _render_struct;
+
+    std::vector<Light_SSBO> lights_ssbo = { DEFAULT_AMBIENT_LIGHT };
+
     Scene(SceneManager& scene_manager): _scene_manager(scene_manager) { _empty = true; _render_struct.resize(10); }
     Scene(SceneManager& scene_manager, std::string name): _scene_manager(scene_manager) {_path = name; _render_struct.resize(10); };
 
@@ -77,6 +97,8 @@ public:
             node->update_scene_pointer(this);
         }
     }
+
+    void add_light(Light_SSBO light);
 
 
     //virtual ~Scene() = default;
