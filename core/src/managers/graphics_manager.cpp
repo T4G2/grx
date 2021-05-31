@@ -39,11 +39,18 @@ void GraphicsManager::draw() {
         program->use();
         auto proj_uniform_location = program->get_binding(PROJECTION_MATRIX_LOCATION);
         auto view_uniform_location = program->get_binding(VIEW_MATRIX_LOCATION);
+        auto eye_pos_location = program->get_binding(EYE_POS_LOCATION);
 
         auto time_uniform_location = program->get_binding(TIME_LOCATION);
 
         if (time_uniform_location != -1 ) {
         glUniform1f(time_uniform_location, glfwGetTime());
+        }
+
+        if (eye_pos_location != -1) {
+            auto global_pos = active_camera->get_global_pos();
+            glUniform3fv(eye_pos_location, 1, glm::value_ptr(global_pos));
+            
         }
 
         glUniformMatrix4fv(proj_uniform_location, 1, 0, glm::value_ptr(active_camera->projection_matrix));

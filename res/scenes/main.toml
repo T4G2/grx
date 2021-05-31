@@ -3,19 +3,19 @@
     type = "Movement"
     sensitivity = 0.005
     speed = 0.005
+    pos = [0.0, 0.0, -1.0] 
+    rot = [0.0, 0.0, 0.0]
+    scl = [1.0, 1.0, 1.0]
     [[ mov.main_cam ]]
         type="Camera"
-        pos = [0.0, 0.0, -1.0] # if 0.0 , then all shoulde be zero (little trickt to make this less painfull :D)
-        rot = [0.0, 0.0, 0.0]
-        scl = [1.0, 1.0, 1.0]
         active_camera = true
         fov= 70
 
 [[ obj1]]
     type = "Mesh"
     program= "mesh_test"
-    mesh="res/meshs/wood_blade.obj"
-    material="res/materials/wood_blade.mtl"
+    mesh="res/meshs/Stone.obj"
+    material="res/materials/Stone.mtl"
     pos = [0.0, 0.0, 0.0]
     rot = [0.0, 0.0, 0.0]
     scl = [0.2, 0.2, 0.2]
@@ -24,6 +24,6 @@
 [[ triangle1]]
     type = "__TriangleDebug"
     program= "triangle_test"
-    pos = [0.0, 0.0, 5.0]
+    pos = [0.0, 0.0, 1.0]
     rot = [0.0, 0.0, 0.0]
-    scl = [0.2, 0.2, 0.2]
+    scl = [1.0, 1.0, 1.0]

@@ -73,6 +73,15 @@ public:
     void add_rot(glm::vec3 new_rot);
     void mul_scl(glm::vec3 new_scl);
 
+    glm::vec3 get_pos() {return pos;}
+    glm::vec3 get_rot() {return rot;}
+    glm::vec3 get_scl() {return scl;}
+
+    glm::vec3 get_global_pos() {
+        auto inverse = glm::inverse(local_space_matrix);
+        return glm::vec3(inverse[3][0], inverse[3][1], inverse[3][2]);
+    }
+
    void update_matrix_if_needed();
    void update_matrix();
 
