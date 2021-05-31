@@ -32,7 +32,7 @@ class Material : public BaseResource {
 
 public:
 
-    Material(std::string path);
+    Material(std::string path, BaseResourceManager<Texture>* texture_manager);
 
     void gl_prepare(Program& gl_program);
 

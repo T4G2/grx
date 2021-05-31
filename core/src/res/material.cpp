@@ -12,7 +12,7 @@
 #include "tiny_obj_loader.h"
 #include "mylib.hpp"
 
-Material::Material(std::string path) {
+Material::Material(std::string path, BaseResourceManager<Texture>* texture_manager) {
 
     tinyobj::ObjReader reader;
     auto [mtl_file, err] = load_file(path);
@@ -44,6 +44,19 @@ Material::Material(std::string path) {
 
     // TODO MAP
 
+    if (material.diffuse_texname != ""){
+        if (!texture_manager->exists(material.diffuse_texname)) {
+            texture_manager->load(Texture(material.diffuse_texname));
+        }
+        _albedo_map_ptr = &texture_manager->get_by_name(material.diffuse_texname);
+    }
+
+    if (material.bump_texname != ""){
+        if (!texture_manager->exists(material.bump_texname)) {
+            texture_manager->load(Texture(material.bump_texname));
+        }
+        _normal_map_ptr = &texture_manager->get_by_name(material.bump_texname);
+    }
 }
 
 
@@ -57,7 +70,7 @@ void Material::gl_prepare(Program& gl_program) {
         if (has_albedo_map()) {
             int binding = gl_program.get_binding(DIFFUSE_TEXTURE_BINDING);
             if (binding == -1) {
-                std::cerr << "WARNING : Program <" << gl_program.get_path() << "have no Binding for DIFFUSE MAP";
+                std::cerr << "WARNING : Program <" << gl_program.get_path() << "have no Binding for DIFFUSE MAP\n";
             } else {
                 glBindTextureUnit(binding, _albedo_map_ptr->get_gl_id());
             }
@@ -66,7 +79,7 @@ void Material::gl_prepare(Program& gl_program) {
         if (has_normal_map()) {
             int binding = gl_program.get_binding(NORMAL_TEXTURE_BINDING);
             if (binding == -1) {
-                std::cerr << "WARNING : Program <" << gl_program.get_path() << "have no Binding for NORMAL MAP";
+                std::cerr << "WARNING : Program <" << gl_program.get_path() << "have no Binding for NORMAL MAP\n";
             } else {
                 glBindTextureUnit(binding, _normal_map_ptr->get_gl_id());
             }
@@ -75,7 +88,7 @@ void Material::gl_prepare(Program& gl_program) {
         if (has_specular_map()) {
             int binding = gl_program.get_binding(SPECULAR_TEXTURE_BINDING);
             if (binding == -1) {
-                std::cerr << "WARNING : Program <" << gl_program.get_path() << "have no Binding for SPECULAR MAP";
+                std::cerr << "WARNING : Program <" << gl_program.get_path() << "have no Binding for SPECULAR MAP\n";
             } else {
                 glBindTextureUnit(binding, _normal_map_ptr->get_gl_id());
             }

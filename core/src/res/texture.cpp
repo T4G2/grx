@@ -75,6 +75,8 @@ void Texture::load_to_gl(){
                     _format,         // SIZED INTERNAL FORMAT
                     _width, _height);
 
+
+
     glTextureSubImage2D(_gl_id, 0, 0, 0, _width, _height, GL_RGBA, GL_UNSIGNED_BYTE, _memory_ptr);
     glGenerateTextureMipmap(_gl_id);
 

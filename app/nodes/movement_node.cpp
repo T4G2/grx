@@ -61,6 +61,13 @@ if (event.input_type == KEY_DOWN) {
         case GLFW_KEY_LEFT_SHIFT:
             movement_global.y++;
             break;
+
+        case GLFW_KEY_UP:
+            speed *= 1.2f;
+            break;
+        case GLFW_KEY_DOWN:
+            speed /= 1.2f;
+            break;
     }
     auto movement = glm::inverse(rotation_matrix) * movement_relative + movement_global;
     //std::cout << "(" << movement.x << ", " << movement.y << ", " << movement.z << ") \n";

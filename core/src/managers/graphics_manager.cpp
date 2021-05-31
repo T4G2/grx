@@ -63,6 +63,14 @@ void GraphicsManager::draw() {
         for (auto& [ material, nodes]: material_map) {
             if (!material) {
                 //std::cerr << "GraphicsManager::draw()| WARNING Some object do not have material!\n";
+                // TODO remove from where it shouldnt be
+                // ADD UNIFORM FOR  NORMAL_MAP_ENABLED, DIFFUSE_MAP_ENABLED etc..
+                if (program->get_binding(DIFFUSE_TEXTURE_BINDING) != -1) {
+                    glBindTextureUnit(program->get_binding(DIFFUSE_TEXTURE_BINDING), 0);
+                }
+                if (program->get_binding(NORMAL_TEXTURE_BINDING) != -1) {
+                    glBindTextureUnit(program->get_binding(NORMAL_TEXTURE_BINDING), 0);
+                }
             } else {
                 material->gl_prepare(*program);
             }

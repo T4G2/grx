@@ -30,7 +30,6 @@ void Scene::add_light(Light_SSBO light) {
     glCreateBuffers(1, &_lights_buffer);
     lights_ssbo.push_back(light);
     glNamedBufferStorage(_lights_buffer, sizeof(Light_SSBO) * lights_ssbo.size(), lights_ssbo.data(), GL_DYNAMIC_STORAGE_BIT);
-    
 }
 
 

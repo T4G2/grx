@@ -10,17 +10,25 @@
         type="Camera"
         active_camera = true
         fov= 70
+    
+    [[ mov.light_]]
+        type = "Light"
+        pos = [0.0 ,0.0, 0.0]
+        diffuse = [1.0 ,0.0, 0.0]
+        intensity = 10.0
+        directional = false
+        active = false
 
 [[ obj1]]
     type="Base"
-    pos = [-5.0, 0.0, 0.0]
+    pos = [-50.0, 0.0, 0.0]
     rot = [0.0, 0.0, 0.0]
     
     [[obj1.mesh]]
         type = "Mesh"
         program= "mesh_test"
-        mesh="res/meshs/Stone.obj"
-        material="res/materials/Stone.mtl"
+        mesh="res/meshs/moon.obj"
+        material="res/materials/moon.mtl"
         scl = [0.2, 0.2, 0.2]
 
 
@@ -49,6 +57,6 @@
     type = "Light"
     pos = [1.0 ,1.0, 0.0]
     ambient = [0.0 ,0.0, 0.0]
-    diffuse = [1.0 ,0.5, 1.0]
-    intensity = 10.0
-    directional = false
+    diffuse = [1.0 ,1.0, 0.95]
+    intensity = 1.0
+    directional = true

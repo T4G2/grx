@@ -51,7 +51,7 @@ void MeshNode::init_material(toml_value value) {
     auto& material_manager = instance.get_scene()->get_scene_manager().app.material_manager;
     
     if (!material_manager.exists(path)) {
-        material_manager.load(Material(path));
+        material_manager.load(Material(path, &instance.get_scene()->get_scene_manager().app.texture_manager));
     }
     material_ptr = &material_manager.get_by_name(path);
 
