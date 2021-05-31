@@ -30,6 +30,7 @@
             //scale
                 //rotate
                 // move
+                
                 local_space_matrix = glm::scale(local_space_matrix, scl);
 
                 

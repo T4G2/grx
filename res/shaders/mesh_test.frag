@@ -26,21 +26,39 @@ layout(location = 2) in vec2 fs_texture_coordinate;
 layout(location = 0) out vec4 final_color;
 
 
+/** TODO
+struct Light {
+	vec4 position;
+	vec4 ambient_color;
+	vec4 diffuse_color;
+	vec4 specular_color;
+    float intensity;
+    bool enabled;
+};
+
+layout(binding = 1, std430) buffer Lights {
+	Light lights[];
+};
+*/
+
+
 void main()
 {
+
+    vec3 color;
+
     vec4 FORWARD = vec4(0, 0, 1, 0);
     vec3 forward = vec3(view * FORWARD); 
 
     vec3 N = normalize(fs_normal);
     vec3 E = normalize(eye_position - fs_position);
-    float angle = dot(N, E );
+    float angle = dot(N, E);
 
-    float x = fs_normal.x;
-    float y = fs_normal.y;
-    float z = fs_normal.z;
+    color = material_ambient_color;
+    color.x += angle;
+    color.y += angle;
+    color.z += angle;
+    
 
-    //float fx = sin(x + time) + cos(y + time);
-    //float fy = cos(x + time) + sin(y + time);
-    //float fz = sin(time) / 2 + 0.5;
-    final_color = vec4(angle, angle, angle, 1.0);
+    final_color = vec4(color, 1.0);
 }

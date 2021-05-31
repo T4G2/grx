@@ -82,7 +82,7 @@ void GameApplication::update(double delta) {
    }
 
    scene_manager.get_active_scene()->update(delta);
-   scene_manager.get_active_scene()->draw();
+   //scene_manager.get_active_scene()->draw();
    
 }
 

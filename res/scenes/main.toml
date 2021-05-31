@@ -12,13 +12,29 @@
         fov= 70
 
 [[ obj1]]
-    type = "Mesh"
-    program= "mesh_test"
-    mesh="res/meshs/Stone.obj"
-    material="res/materials/Stone.mtl"
+    type="Base"
+    pos = [-5.0, 0.0, 0.0]
+    rot = [0.0, 0.0, 0.0]
+    
+    [[obj1.mesh]]
+        type = "Mesh"
+        program= "mesh_test"
+        mesh="res/meshs/Stone.obj"
+        material="res/materials/Stone.mtl"
+        scl = [0.2, 0.2, 0.2]
+
+
+[[ obj2]]
+    type="Base"
     pos = [0.0, 0.0, 0.0]
     rot = [0.0, 0.0, 0.0]
-    scl = [0.2, 0.2, 0.2]
+    
+    [[obj2.mesh]]
+        type="Mesh"
+        program= "mesh_test"
+        mesh="res/meshs/Stone.obj"
+        material="res/materials/Stone.mtl"
+        scl = [0.2, 0.2, 0.2]
 
 
 [[ triangle1]]
