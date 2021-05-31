@@ -26,10 +26,7 @@ void GraphicsManager::draw() {
     //program_manager->get(0).use();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     CameraNode* active_camera = scene_manager->get_active_scene()->get_active_camera();
-    auto proj_uniform_location = program_manager->get(0).get_binding(PROJECTION_MATRIX_LOCATION);
-    auto view_uniform_location = program_manager->get(0).get_binding(VIEW_MATRIX_LOCATION);
-
-    auto time_uniform_location = program_manager->get(0).get_binding(TIME_LOCATION);
+    
 
     glEnable(GL_DEPTH_TEST);  
 
@@ -40,6 +37,10 @@ void GraphicsManager::draw() {
         }
 
         program->use();
+        auto proj_uniform_location = program->get_binding(PROJECTION_MATRIX_LOCATION);
+        auto view_uniform_location = program->get_binding(VIEW_MATRIX_LOCATION);
+
+        auto time_uniform_location = program->get_binding(TIME_LOCATION);
 
         if (time_uniform_location != -1 ) {
         glUniform1f(time_uniform_location, glfwGetTime());

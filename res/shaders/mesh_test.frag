@@ -27,5 +27,12 @@ layout(location = 0) out vec4 final_color;
 
 void main()
 {
-    final_color = vec4(fs_normal, 1.0);
+    float x = fs_normal.x;
+    float y = fs_normal.y;
+    float z = fs_normal.z;
+
+    float fx = sin(x + time) + cos(y + time);
+    float fy = cos(x + time) + sin(y + time);
+    float fz = sin(time) / 2 + 0.5;
+    final_color = vec4(fx, fy, fz, 1.0);
 }
