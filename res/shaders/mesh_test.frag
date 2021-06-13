@@ -22,6 +22,7 @@ layout(location = 12) uniform float time;
 
 layout(location = 3) uniform vec3 eye_position;
 layout(location = 1) uniform mat4 view;
+layout(location = 0) uniform mat4 model;
 
 layout(location = 8) uniform vec3 material_ambient_color;
 layout(location = 9) uniform vec3 material_diffuse_color;
@@ -48,13 +49,14 @@ void main()
 
         
         vec3 texture_color_diffuse = texture(diffuse_texture, fs_texture_coordinate).rgb;    
-        vec3 texture_color_normal =  (texture(normal_texture, fs_texture_coordinate).rgb - 0.5) * 2;   
+        //vec3 texture_color_normal =  texture(normal_texture, fs_texture_coordinate).rgb * 2 - 1;  
 
+        //texture_color_normal  = (model * vec4(texture_color_normal, 1.0)).xyz;
 
         Light light = lights[i];
         vec3 light_vector = light.position.xyz - fs_position * light.position.w;
         vec3 L = normalize(light_vector);
-        vec3 N = normalize(fs_normal) + texture_color_normal;
+        vec3 N = normalize(fs_normal) /*+ texture_color_normal*/;
         vec3 E = normalize(eye_position - fs_position);
         vec3 H = normalize(L + E);
 
@@ -63,7 +65,7 @@ void main()
 
 
         float factor = light.intensity ;
-        //factor /=  (light.position.w == 0.0) ? 1 : ( pow(length(light_vector), 2));
+        factor /=  (light.position.w == 0.0) ? 1 : ( pow(length(light_vector), 2));
 
         vec3 diffuse = material_diffuse_color.rgb * light.diffuse_color.rgb * texture_color_diffuse;
         vec3 specular = material_specular_color.rgb * light.specular_color.rgb;

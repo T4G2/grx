@@ -5,6 +5,8 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/core ${CMAKE_BINARY_DIR}/core)
 
 project(pv112 CXX)
 
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
+
 # Adds a new executable target.
 add_executable(
     ${PROJECT_NAME}

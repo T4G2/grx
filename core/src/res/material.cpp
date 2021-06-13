@@ -57,6 +57,8 @@ Material::Material(std::string path, BaseResourceManager<Texture>* texture_manag
         }
         _normal_map_ptr = &texture_manager->get_by_name(material.bump_texname);
     }
+
+    _path = std::move(path);
 }
 
 

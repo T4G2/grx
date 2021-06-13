@@ -15,9 +15,9 @@
         type = "Light"
         pos = [0.0 ,0.0, 0.0]
         diffuse = [1.0 ,0.0, 0.0]
-        intensity = 10.0
+        intensity = 1.0
         directional = false
-        active = false
+        active = true
 
 [[ obj1]]
     type="Base"
@@ -34,14 +34,14 @@
 
 [[ obj2]]
     type="Base"
-    pos = [0.0, 0.0, 0.0]
+    pos = [0.0, 3.0, 0.0]
     rot = [0.0, 0.0, 0.0]
     
     [[obj2.mesh]]
         type="Mesh"
         program= "mesh_test"
-        mesh="res/meshs/Stone.obj"
-        material="res/materials/Stone.mtl"
+        mesh="res/meshs/Asteroid2.obj"
+        material="res/materials/Asteroid2.mtl"
         scl = [0.2, 0.2, 0.2]
 
 
@@ -60,3 +60,11 @@
     diffuse = [1.0 ,1.0, 0.95]
     intensity = 1.0
     directional = true
+
+
+[[ spacesship]]
+    type="Mesh"
+    program= "mesh_test"
+    mesh="res/meshs/FA59AMako.obj"
+    material="res/materials/FA59AMako.mtl"
+    scl = [0.01, 0.01, 0.01]

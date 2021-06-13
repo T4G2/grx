@@ -25,11 +25,16 @@ void GameApplication::init_custom() {
 
 
  /* TESTS*/
+
+    #ifdef DEBUG
     std::cout << "Setting path from: \n";
     std::cout << std::filesystem::current_path() << "\n";
-    change_curr_dir_debug(res_path);
-    std::cout << "to: \n";
-    std::cout << std::filesystem::current_path() << "\n";
+
+        change_curr_dir_debug(res_path);
+        std::cout << "to: \n";
+        std::cout << std::filesystem::current_path() << "\n";
+    #endif
+
     //shader_manager.load(Shader(GL_VERTEX_SHADER, "res/shaders/triangle_test.vert"));
     //shader_manager.load(Shader(GL_FRAGMENT_SHADER, "res/shaders/triangle_test.frag"));
     //program_manager.load(Program( "debug_program", shader_manager.get_by_name("res/shaders/main.vert"),
