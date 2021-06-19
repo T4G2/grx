@@ -15,11 +15,12 @@
     size = [1084 545]
 ```
 
-# Render Node
+# Mesh Node
 ```
 [[ name ]]
-    active = bool
-    obj = str
+    normal = true  // if normal mapping, it must be before MESH parameter
+    mesh = path
+    material = material
 ```
 # Light Node
 ```

@@ -24,6 +24,10 @@ class BaseResourceManager: public AbstractManager{
     std::map<std::string, uint32_t> _path_map; // 
 
 public:
+    
+    std::vector<std::unique_ptr<T>>& get_resources_raw() {
+        return _resources;
+    }
 
     ~BaseResourceManager() = default;
 

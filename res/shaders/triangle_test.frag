@@ -11,4 +11,5 @@ void main()
 {
     float r = sin(mod(time, 1.0) * PI );
     final_color = vec4(r , 1.0 - r, 0.0, 1.0);
+    //final_color = vec4(1.0 , 1.0, 1.0, 1.0);
 }

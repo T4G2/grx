@@ -122,3 +122,18 @@ Program::Program(std::string filepath, BaseResourceManager<Shader>& shader_manag
          std::cerr << e.what() << "\n";
      }
 }
+
+void Program::attach_shaders() {
+    if (_gl_loaded) {
+        _gl_loaded = false;
+
+    }
+
+    _gl_id = glCreateProgram();
+    _gl_loaded = true;
+    glAttachShader(_gl_id, _vertex_shader->get_gl_id());
+    glAttachShader(_gl_id, _fragment_shader->get_gl_id());
+
+    glLinkProgram(_gl_id);
+
+}

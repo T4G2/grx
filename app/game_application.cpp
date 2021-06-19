@@ -35,20 +35,11 @@ void GameApplication::init_custom() {
         std::cout << std::filesystem::current_path() << "\n";
     #endif
 
-    //shader_manager.load(Shader(GL_VERTEX_SHADER, "res/shaders/triangle_test.vert"));
-    //shader_manager.load(Shader(GL_FRAGMENT_SHADER, "res/shaders/triangle_test.frag"));
-    //program_manager.load(Program( "debug_program", shader_manager.get_by_name("res/shaders/main.vert"),
-    //                                shader_manager.get_by_name("res/shaders/main.frag")));
     program_manager.load(Program("res/programs/triangle_test.toml", shader_manager));
     program_manager.load(Program("res/programs/mesh_test.toml", shader_manager));
     texture_manager.load(Texture("res/textures/Planks_01_ALBEDO.png"));
-    //material_manager.load(Material("res/materials/wood_blade.mtl"));
 
     graphics_manager = GraphicsManager(& scene_manager, &texture_manager,&program_manager, this);
-
-
-    // mesh_manager.load(Mesh("res/meshs/Koenigsegg.obj"));
-
     // TRY  TO CREATE NEW NODE OF ANY TYPE
 
     glClearColor(0, 0, 0, 1);
@@ -104,7 +95,21 @@ void GameApplication::on_resize(int width_a, int height_a) {
     glViewport(0, 0, width, height);
 };
     
-void GameApplication::on_key_press(int key, int scancode, int action, int mods){
+void GameApplication::on_key_press(int key, int scancode, int action, int mods) {
+
+    // Reload shaders owhen clicking on F5
+
+    if (action == GLFW_PRESS && key == GLFW_KEY_F5) {
+        std::cout << "shader recompilating!\n";
+        for (auto& shader : shader_manager.get_resources_raw()) {
+            shader->compile_shader();
+        }
+
+        for (auto& program : program_manager.get_resources_raw()) {
+            program->attach_shaders();
+        }
+    }
+
     //std::cout << "{" << key << "} \n";
     if (action == GLFW_PRESS) {
         keys_pressed.insert(key);

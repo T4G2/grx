@@ -17,12 +17,18 @@ const int POSITION_BUFF = 0;
 const int NORMAL_BUFF = 1;
 const int UV_BUFF = 2;
 const int COLOR_BUFF = 3;
-const int BUFF_COUNT = 4;
+const int TANGENT_BUFF = 4;
+const int BITANGENT_BUFF = 5;
+const int BUFF_COUNT = 6;
 
 const int POSITION_BIND = 0;
 const int NORMAL_BIND = 1;
 const int UV_BIND = 2;
 const int COLOR_BIND = 3;
+const int TANGENT_BIND = 4;
+const int BITANGENT_BIND = 5;
+
+
 
 
 class Mesh : public BaseResource {
@@ -31,15 +37,20 @@ class Mesh : public BaseResource {
   GLuint vao;
 
   std::vector<int> indices;
-  std::vector<float> positions;
-  std::vector<float> normals;
-  std::vector<float> colors;
-  std::vector<float> uv_coords;
+  std::vector<glm::vec3> positions;
+  std::vector<glm::vec3> normals;
+  std::vector<glm::vec3> colors;
+  std::vector<glm::vec2> uv_coords;
+
+   bool normal_mapped = false;
+
+  std::vector<glm::vec3> tangents;
+  std::vector<glm::vec3> bitangents;
 
 public:
 
     int count = 0;
-    Mesh(std::string path, BaseResourceManager<Material>& material_manager);
+    Mesh(std::string path ,BaseResourceManager<Material>& material_manager, bool normal_mapping = false);
 
 
     Mesh(Mesh&&) = default; 

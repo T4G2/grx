@@ -26,6 +26,7 @@
     
     [[obj1.mesh]]
         type = "Mesh"
+        normal = true
         program= "mesh_test"
         mesh="res/meshs/moon.obj"
         material="res/materials/moon.mtl"

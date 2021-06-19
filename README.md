@@ -5,6 +5,8 @@ Glad - binding for OpenGL
 glfw - Widnwos, inputs, events
 glm - OpenGL Math
 
+you can relaod shaders/prgorams with F key
+
 Conventions:
     do not change state in render/draw
     only change state in update

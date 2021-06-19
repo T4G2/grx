@@ -21,18 +21,31 @@ Shader::Shader(GLenum shader_type, std::string path): _shader_type(shader_type) 
         std::cout << "Only implenented VERTEX and FRAGMENT shader \n";
         return;
     }
+    _path = std::move(path);
+    compile_shader();
+}
 
-    auto [source, error] = load_file(path);
+
+void Shader::compile_shader() {
+
+
+    if (_gl_compiled) {
+        _gl_compiled = false;
+        _gl_id = 0;
+        glDeleteShader(_gl_id);
+        std::cout << "recompiling shader <" << _path << ">\n";
+    }
+
+     auto [source, error] = load_file(_path);
 
 
     if (error) {
-        std::cout << "Shader::Shader| Error loading file " << path << "\n";
+        std::cout << "Shader::Shader| Error loading file " << _path << "\n";
         return;
     }
 
     _empty = false;
     _code = std::move(source);
-    _path = std::move(path);
     _gl_id = glCreateShader(_shader_type);
 
     const char* ptr = _code.data();
@@ -46,5 +59,7 @@ Shader::Shader(GLenum shader_type, std::string path): _shader_type(shader_type) 
     // Compile
     glCompileShader(_gl_id);
     std::cout << "Shader <" << _path << "> ready \n";
+    std::cout << "with code :\n\n\n-----------------------------------\n";
+    std::cout << _code << "\n\n\n--------------------------------\n";
 
 }

@@ -36,7 +36,7 @@ void MeshNode::init_mesh(toml_value value) {
     auto& mesh_manager = instance.get_scene()->get_scene_manager().app.mesh_manager;
     
     if (!mesh_manager.exists(path)) {
-        mesh_manager.load(Mesh(path, material_manager));
+        mesh_manager.load(Mesh(path, material_manager, normal_mapped));
     }
     mesh_ptr = &mesh_manager.get_by_name(path);
 
@@ -55,4 +55,13 @@ void MeshNode::init_material(toml_value value) {
     }
     material_ptr = &material_manager.get_by_name(path);
 
+}
+
+
+void MeshNode::init_normal(toml_value value) {
+     if (!value.is_boolean()) {
+        std::cerr << "WARNING, normal in <" << name << "> is not a bool. example: normal = true\n";
+        return;
+    }
+   normal_mapped = value.as_boolean();
 }

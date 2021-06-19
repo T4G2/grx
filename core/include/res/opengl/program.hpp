@@ -67,5 +67,8 @@ public:
     int get_binding(int bind) { return _bindings[bind]; }
 
 
+    void attach_shaders();
+
     //virtual ~Program() = default;
+
 };

@@ -15,13 +15,17 @@ class MeshNode: public RenderNode {
     std::map<std::string, init_prop<MeshNode>> prop_func = 
     {
        {"mesh", &MeshNode::init_mesh}, // mesh
-       {"material", &MeshNode::init_material} // mesh //material
+       {"material", &MeshNode::init_material}, // mesh //material
+       {"normal", &MeshNode::init_normal} // mesh //material
     };
 
 public:
-    Mesh* mesh_ptr;
-
     inline static const std::string NODE_NAME = "Mesh";
+
+
+    Mesh* mesh_ptr;
+    bool normal_mapped = false;
+ 
 
     MeshNode(std::string name_a, BaseNodeInstance& instance):RenderNode(name_a, instance) {};
 
@@ -34,6 +38,7 @@ public:
 
     void init_mesh(toml_value value);
     void init_material(toml_value value);
+    void init_normal(toml_value value);
 
     virtual void draw() override {
         if (mesh_ptr) {
