@@ -58,6 +58,16 @@ Material::Material(std::string path, BaseResourceManager<Texture>* texture_manag
         _normal_map_ptr = &texture_manager->get_by_name(material.bump_texname);
     }
 
+
+    if (material.specular_texname != ""){
+        if (!texture_manager->exists(material.specular_texname)) {
+            texture_manager->load(Texture(material.specular_texname));
+        }
+        _specular_map_ptr = &texture_manager->get_by_name(material.specular_texname);
+    }
+
+    
+
     _path = std::move(path);
 }
 
@@ -88,11 +98,12 @@ void Material::gl_prepare(Program& gl_program) {
         }
 
         if (has_specular_map()) {
+            //std::cout << "has specular map!\n";
             int binding = gl_program.get_binding(SPECULAR_TEXTURE_BINDING);
             if (binding == -1) {
                 std::cerr << "WARNING : Program <" << gl_program.get_path() << "have no Binding for SPECULAR MAP\n";
             } else {
-                glBindTextureUnit(binding, _normal_map_ptr->get_gl_id());
+                glBindTextureUnit(binding, _specular_map_ptr->get_gl_id());
             }
         }
 }

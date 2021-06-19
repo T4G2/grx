@@ -90,14 +90,10 @@ void main()
 
         vec3 color = NdotL * diffuse * factor  + pow(NdotH, material_shininess) * specular * factor;
 
-        //vec3 color = material_ambient_color;  // NdotL * material_diffuse_color.rgb;
-        //color /= (length(light_vector) * length(light_vector));
 
         color_sum += color;
 
     }
-
-    //color_sum += vec3(0.2 * lights.length(), 0.0, 0.0);
 
     final_color = vec4(color_sum, 1.0);
 }

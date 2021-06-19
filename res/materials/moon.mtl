@@ -9,7 +9,7 @@ newmtl 01___Default
 	illum 2
 	Ka 0.5882 0.5882 0.5882
 	Kd 0.5882 0.5882 0.5882
-	Ks 0.0000 0.0000 0.0000
+	Ks 0.1000 0.1000 0.1000
 	Ke 0.0000 0.0000 0.0000
 	map_Kd res\textures\moonmap2k.jpg
 	map_bump res\textures\moon-normal.jpg

@@ -37,10 +37,12 @@ void GameApplication::init_custom() {
 
     program_manager.load(Program("res/programs/triangle_test.toml", shader_manager));
     program_manager.load(Program("res/programs/mesh_test.toml", shader_manager));
+    program_manager.load(Program("res/programs/phong_D.toml", shader_manager));
+    program_manager.load(Program("res/programs/phong_DN.toml", shader_manager));
+    program_manager.load(Program("res/programs/phong_DNS.toml", shader_manager));
     texture_manager.load(Texture("res/textures/Planks_01_ALBEDO.png"));
 
     graphics_manager = GraphicsManager(& scene_manager, &texture_manager,&program_manager, this);
-    // TRY  TO CREATE NEW NODE OF ANY TYPE
 
     glClearColor(0, 0, 0, 1);
     glViewport(0, 0, width, height);
@@ -51,13 +53,8 @@ void GameApplication::init_custom() {
     scene_manager.register_node<TriangleDebugNode>();
     scene_manager.register_node<MeshNode>();
     scene_manager.register_node<LightNode>();
-
-    // s = scene_manager.load(SceneManager::load_from_file("res/scenes/main.toml"));
     scene_manager.load_from_file("res/scenes/main.toml", true);
-    //auto x = scene_manager.get_node_factory("Camera").get_pointer_to_new_instance(nullptr, s );
-    // WTF is happening here
-    // std::cout << typeid(x).name() <<"\n";
-    //x->init();
+
     glfwSetInputMode(get_window(),GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     scene_manager.get_active_scene()->init();
 }
