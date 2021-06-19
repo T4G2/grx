@@ -33,7 +33,7 @@ void Shader::compile_shader() {
         _gl_compiled = false;
         _gl_id = 0;
         glDeleteShader(_gl_id);
-        std::cout << "recompiling shader <" << _path << ">\n";
+        std::cout << "Recompiling shader <" << _path << ">\n";
     }
 
      auto [source, error] = load_file(_path);
@@ -59,7 +59,4 @@ void Shader::compile_shader() {
     // Compile
     glCompileShader(_gl_id);
     std::cout << "Shader <" << _path << "> ready \n";
-    std::cout << "with code :\n\n\n-----------------------------------\n";
-    std::cout << _code << "\n\n\n--------------------------------\n";
-
 }

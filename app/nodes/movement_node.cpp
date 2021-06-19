@@ -26,6 +26,17 @@ void MovementNode::draw() {
 
 
 void MovementNode::input(input_struct event) {
+
+if (event.input_type == KEY_PRESS) {
+    if ( event.key == GLFW_KEY_F2) {
+        locked = !locked;
+    }
+}
+
+
+if (locked) {
+    return;
+} 
 //std::cout << event.input_type << "\n";
 if (event.input_type == MOUSE_MOVE) {
 

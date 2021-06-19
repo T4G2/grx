@@ -26,6 +26,7 @@ public:
     inline static const std::string NODE_NAME = "Movement";
     float sensitivity = 0.01f;
     float speed = 0.01f;
+    bool locked = false;
 
     virtual void init() override;
     virtual void update(float delta) override;
