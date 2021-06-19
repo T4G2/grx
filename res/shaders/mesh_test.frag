@@ -51,7 +51,7 @@ vec3 CalcBumpedNormal() // https://www.ogldev.org/www/tutorial26/tutorial26.html
     BumpMapNormal = 2.0 * BumpMapNormal - vec3(1.0, 1.0, 1.0);
     vec3 NewNormal;
     mat3 TBN = mat3(T, BT, N);
-    NewNormal = TBN * BumpMapNormal;
+    NewNormal = fs_normal +  TBN * BumpMapNormal;
     NewNormal = normalize(NewNormal);
     return NewNormal;
 }

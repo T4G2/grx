@@ -18,15 +18,14 @@ const int NORMAL_BUFF = 1;
 const int UV_BUFF = 2;
 const int COLOR_BUFF = 3;
 const int TANGENT_BUFF = 4;
-const int BITANGENT_BUFF = 5;
-const int BUFF_COUNT = 6;
+const int BUFF_COUNT = 5;
 
 const int POSITION_BIND = 0;
 const int NORMAL_BIND = 1;
 const int UV_BIND = 2;
 const int COLOR_BIND = 3;
 const int TANGENT_BIND = 4;
-const int BITANGENT_BIND = 5;
+
 
 
 
@@ -45,7 +44,6 @@ class Mesh : public BaseResource {
    bool normal_mapped = false;
 
   std::vector<glm::vec3> tangents;
-  std::vector<glm::vec3> bitangents;
 
 public:
 

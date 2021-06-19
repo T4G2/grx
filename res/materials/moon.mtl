@@ -11,5 +11,5 @@ newmtl 01___Default
 	Kd 0.5882 0.5882 0.5882
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Kd res\textures\earth.jpg
-	map_bump res\textures\normal.png
+	map_Kd res\textures\moonmap2k.jpg
+	map_bump res\textures\moon-normal.jpg
