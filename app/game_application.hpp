@@ -24,6 +24,8 @@ public:
 
     int last_x = -1;
     int last_y = -1;
+
+    bool cursor_showing = false;
  
     std::set<int> keys_pressed = {};
     std::set<int> mouse_pressed = {};

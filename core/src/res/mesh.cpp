@@ -96,7 +96,7 @@ Mesh::Mesh(std::string path, BaseResourceManager<Material>& material_manager, bo
 
             float r = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV1.y * deltaUV2.x);
             glm::vec3 tangent = (deltaPos1 * deltaUV2.y   - deltaPos2 * deltaUV1.y)*r;
-            glm::vec3 bitangent = (deltaPos2 * deltaUV1.x   - deltaPos1 * deltaUV2.x)*r;
+            //glm::vec3 bitangent = (deltaPos2 * deltaUV1.x   - deltaPos1 * deltaUV2.x)*r;
 
             // each vertex has its own copy
             tangents.push_back(tangent);
@@ -104,9 +104,9 @@ Mesh::Mesh(std::string path, BaseResourceManager<Material>& material_manager, bo
             tangents.push_back(tangent);
 
             // Same thing for bitangents
-            bitangents.push_back(bitangent);
-            bitangents.push_back(bitangent);
-            bitangents.push_back(bitangent);
+            //bitangents.push_back(bitangent);
+            //bitangents.push_back(bitangent);
+            //bitangents.push_back(bitangent);
         }
     }
 
@@ -120,7 +120,7 @@ Mesh::Mesh(std::string path, BaseResourceManager<Material>& material_manager, bo
         glNamedBufferStorage(vbos[TANGENT_BUFF], sizeof(glm::vec3) * tangents.size(), tangents.data(), 0);
         glNamedBufferStorage(vbos[BITANGENT_BUFF], sizeof(glm::vec3) * bitangents.size(), bitangents.data(), 0);
         glVertexArrayVertexBuffer(vao, TANGENT_BIND, vbos[TANGENT_BUFF], 0, sizeof(glm::vec3));
-        glVertexArrayVertexBuffer(vao, BITANGENT_BIND, vbos[BITANGENT_BUFF], 0, sizeof(glm::vec3));     
+        //glVertexArrayVertexBuffer(vao, BITANGENT_BIND, vbos[BITANGENT_BUFF], 0, sizeof(glm::vec3));     
     }
 
     glEnableVertexArrayAttrib(vao, POSITION_BIND);
@@ -144,9 +144,9 @@ Mesh::Mesh(std::string path, BaseResourceManager<Material>& material_manager, bo
         glEnableVertexArrayAttrib(vao, TANGENT_BIND);
         glVertexArrayAttribFormat(vao, TANGENT_BIND, 3, GL_FLOAT, GL_FALSE, 0);
         glVertexArrayAttribBinding(vao, TANGENT_BIND, TANGENT_BIND);
-        glEnableVertexArrayAttrib(vao, BITANGENT_BIND);
-        glVertexArrayAttribFormat(vao, BITANGENT_BIND, 3, GL_FLOAT, GL_FALSE, 0);
-        glVertexArrayAttribBinding(vao, BITANGENT_BIND, BITANGENT_BIND);
+        //glEnableVertexArrayAttrib(vao, BITANGENT_BIND);
+        //glVertexArrayAttribFormat(vao, BITANGENT_BIND, 3, GL_FLOAT, GL_FALSE, 0);
+        ///glVertexArrayAttribBinding(vao, BITANGENT_BIND, BITANGENT_BIND);
     }
 
 }

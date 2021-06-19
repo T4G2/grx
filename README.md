@@ -5,7 +5,8 @@ Glad - binding for OpenGL
 glfw - Widnwos, inputs, events
 glm - OpenGL Math
 
-you can relaod shaders/prgorams with F key
+you can relaod shaders/prgorams with F5 key
+lock camera with F2 key
 
 Conventions:
     do not change state in render/draw

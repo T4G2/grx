@@ -108,6 +108,21 @@ void GameApplication::on_key_press(int key, int scancode, int action, int mods) 
         for (auto& program : program_manager.get_resources_raw()) {
             program->attach_shaders();
         }
+
+        return;
+    }
+
+    if (action == GLFW_PRESS && key == GLFW_KEY_F3) {
+        
+        cursor_showing = ! cursor_showing;
+        if (cursor_showing) {
+            glfwSetInputMode(get_window(),GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        } else {
+            glfwSetInputMode(get_window(),GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        }
+
+
+        return;
     }
 
     //std::cout << "{" << key << "} \n";

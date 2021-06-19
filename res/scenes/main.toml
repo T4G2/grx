@@ -40,6 +40,7 @@
     
     [[obj2.mesh]]
         type="Mesh"
+        normal = true
         program= "mesh_test"
         mesh="res/meshs/Asteroid2.obj"
         material="res/materials/Asteroid2.mtl"
@@ -66,6 +67,7 @@
 [[ spacesship]]
     type="Mesh"
     program= "mesh_test"
+    normal = true
     mesh="res/meshs/FA59AMako.obj"
     material="res/materials/FA59AMako.mtl"
     scl = [0.01, 0.01, 0.01]

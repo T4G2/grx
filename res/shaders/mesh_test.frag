@@ -35,30 +35,48 @@ layout(binding = 1) uniform sampler2D normal_texture;
 layout(location = 0) in vec3 fs_position;
 layout(location = 1) in vec3 fs_normal;
 layout(location = 2) in vec2 fs_texture_coordinate;
+layout(location = 4) in vec3 fs_tangent;
+
 
 layout(location = 0) out vec4 final_color;
 
+
+vec3 CalcBumpedNormal() // https://www.ogldev.org/www/tutorial26/tutorial26.html
+{
+    vec3 N = normalize(fs_normal);
+    vec3 T = normalize(fs_tangent);
+    T= normalize(T - dot(T, N) * N);
+    vec3 BT = cross(T, N);
+    vec3 BumpMapNormal = texture(normal_texture, fs_texture_coordinate).xyz;
+    BumpMapNormal = 2.0 * BumpMapNormal - vec3(1.0, 1.0, 1.0);
+    vec3 NewNormal;
+    mat3 TBN = mat3(T, BT, N);
+    NewNormal = TBN * BumpMapNormal;
+    NewNormal = normalize(NewNormal);
+    return NewNormal;
+}
 
 
 void main()
 {
 
     vec3 color_sum = vec3(0);
+    vec3 texture_color_diffuse = texture(diffuse_texture, fs_texture_coordinate).rgb;   
+    vec3 N = CalcBumpedNormal() ;
 
-    for (int i = 0; i < lights.length(); i++ ) {
+    //final_color = vec4(normalize(N), 1.0f);
+    //return;
 
-        
-        vec3 texture_color_diffuse = texture(diffuse_texture, fs_texture_coordinate).rgb;    
-        //vec3 texture_color_normal =  texture(normal_texture, fs_texture_coordinate).rgb * 2 - 1;  
+    for (int i = 0; i < lights.length(); i++ ) { 
 
-        //texture_color_normal  = (model * vec4(texture_color_normal, 1.0)).xyz;
 
         Light light = lights[i];
-        vec3 light_vector = light.position.xyz - fs_position * light.position.w;
-        vec3 L = normalize(light_vector);
-        vec3 N = normalize(fs_normal) /*+ texture_color_normal*/;
-        vec3 E = normalize(eye_position - fs_position);
-        vec3 H = normalize(L + E);
+        vec3 light_vector = (light.position.xyz - fs_position * light.position.w);
+        //vec3 N = fs_normal;
+        vec3 E = normalize( (eye_position - fs_position));
+        vec3 L =  normalize(light_vector);
+        vec3 H = normalize((L + E));
+
 
         float NdotL = max(dot(N, L), 0.01);
         float NdotH = max(dot(N, H), 0.0001);
