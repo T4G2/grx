@@ -1,7 +1,7 @@
 [[phong_DNSM]]
 
-vert = "res/shaders/phong_DNS.vert"
-frag = "res/shaders/phong_DNS.frag"
+vert = "res/shaders/phong_DNSM.vert"
+frag = "res/shaders/phong_DNSM.frag"
 
 # for .vert
 VIEW_MATRIX_LOCATION = 1

@@ -45,7 +45,7 @@ bool CubemapTexture::load() {
 }
 
 void CubemapTexture::bind(GLuint binding) {
-    glBindTexture(binding, _gl_id);
+    glBindTextureUnit(binding, _gl_id);
 }
 
 CubemapTexture::~CubemapTexture() {

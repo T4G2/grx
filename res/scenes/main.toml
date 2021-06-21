@@ -11,13 +11,13 @@
         active_camera = true
         fov= 70
     
-    [[ mov.light_]]
-        type = "Light"
-        pos = [0.0 ,0.0, 0.0]
-        diffuse = [1.0 ,0.0, 0.0]
-        intensity = 1.0
-        directional = false
-        active = true
+    # [[ mov.light_]]
+    #     type = "Light"
+    #     pos = [0.0 ,0.0, 0.0]
+    #     diffuse = [1.0 ,0.0, 0.0]
+    #     intensity = 1.0
+    #     directional = false
+    #     active = true
 
 # [[ obj1]]
 #     type="Base"
@@ -64,13 +64,13 @@
     directional = true
 
 
-# [[ spacesship]]
-#     type="Mesh"
-#     program= "phong_DN"
-#     normal = true
-#     mesh="res/meshs/FA59AMako.obj"
-#     material="res/materials/FA59AMako.mtl"
-#     scl = [0.01, 0.01, 0.01]
+[[ spacesship]]
+    type="Mesh"
+    program= "phong_DNSM"
+    normal = true
+    mesh="res/meshs/FA59AMako.obj"
+    material="res/materials/FA59AMako.mtl"
+    scl = [0.01, 0.01, 0.01]
 
 
 [[plane]]

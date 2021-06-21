@@ -29,6 +29,7 @@ class Material : public BaseResource {
     Texture* _albedo_map_ptr = nullptr;
     Texture* _normal_map_ptr = nullptr;
     Texture* _specular_map_ptr = nullptr;
+    Texture* _reflection_map_ptr = nullptr;
 
 public:
 
@@ -39,6 +40,7 @@ public:
     bool has_albedo_map() { return _albedo_map_ptr != nullptr; };
     bool has_normal_map() { return _normal_map_ptr != nullptr; };
     bool has_specular_map() { return _specular_map_ptr != nullptr; };
+    bool has_reflection_map() { return _reflection_map_ptr != nullptr; };
     
     //virtual ~Material() = default;
 };

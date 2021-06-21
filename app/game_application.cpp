@@ -41,7 +41,7 @@ void GameApplication::init_custom() {
     program_manager.load(Program("res/programs/phong_D.toml", shader_manager));
     program_manager.load(Program("res/programs/phong_DN.toml", shader_manager));
     program_manager.load(Program("res/programs/phong_DNS.toml", shader_manager));
-    //program_manager.load(Program("res/programs/phong_DNSM.toml", shader_manager));
+    program_manager.load(Program("res/programs/phong_DNSM.toml", shader_manager));
     program_manager.load(Program("res/programs/skybox.toml", shader_manager));
     //texture_manager.load(Texture("res/textures/Planks_01_ALBEDO.png"));
 

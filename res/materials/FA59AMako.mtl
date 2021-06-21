@@ -9,10 +9,11 @@ newmtl FA59AMako_Standard_Material
 	illum 2
 	Ka 0.5880 0.5880 0.5880
 	Kd 0.5880 0.5880 0.5880
-	Ks 0.0000 0.0000 0.0000
+	Ks 1.0000 1.0000 1.0000
 	Ke 0.0000 0.0000 0.0000
 	#map_Ka FA59AMako_BaseColor.png
 	map_Kd res/textures/spaceship/FA59AMako_BaseColor.png
-	#map_Ks FA59AMako_BaseColor.png
-	map_bump res/textures/spaceship/FA59AMako_world_space_normals.png
+	map_Ks res/textures/spaceship/FA59AMako_Glossiness_2.png
+	map_bump res/textures/spaceship/FA59AMako_Normal.png
+	refl res/textures/spaceship/FA59AMako_Glossiness_2.png
 	#bump FA59AMako_Normal.png

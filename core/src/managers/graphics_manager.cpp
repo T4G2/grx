@@ -62,14 +62,13 @@ void GraphicsManager::draw() {
         active_camera->uniform_view_matrix(view_uniform_location);
         for (auto& [ material, nodes]: material_map) {
 
-            /*if (program->get_binding(CUBEMAP_BINDING) != -1 ) {
+            if (program->get_binding(CUBEMAP_BINDING) != -1 ) {
                 if (active_skybox != nullptr) {
                     active_skybox->bind_cubemap(program->get_binding(CUBEMAP_BINDING));
                 } else {
                     std::cout << "There is enviromental mapping(metalic) texture in scene but no cubemap object\n";
                 }
-            }*/
-
+            }
             if (!material) {
                 //std::cerr << "GraphicsManager::draw()| WARNING Some object do not have material!\n";
                 // TODO remove from where it shouldnt be

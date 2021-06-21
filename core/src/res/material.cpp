@@ -66,6 +66,13 @@ Material::Material(std::string path, BaseResourceManager<Texture>* texture_manag
         _specular_map_ptr = &texture_manager->get_by_name(material.specular_texname);
     }
 
+     if (material.reflection_texname != ""){
+        if (!texture_manager->exists(material.reflection_texname)) {
+            texture_manager->load(Texture(material.reflection_texname));
+        }
+        _reflection_map_ptr = &texture_manager->get_by_name(material.reflection_texname);
+    }
+
     
 
     _path = std::move(path);
@@ -91,7 +98,7 @@ void Material::gl_prepare(Program& gl_program) {
         if (has_normal_map()) {
             int binding = gl_program.get_binding(NORMAL_TEXTURE_BINDING);
             if (binding == -1) {
-                std::cerr << "WARNING : Program <" << gl_program.get_path() << "have no Binding for NORMAL MAP\n";
+                std::cerr << "WARNING : Program <" << gl_program.get_path() << "> have no Binding for NORMAL MAP\n";
             } else {
                 glBindTextureUnit(binding, _normal_map_ptr->get_gl_id());
             }
@@ -101,9 +108,19 @@ void Material::gl_prepare(Program& gl_program) {
             //std::cout << "has specular map!\n";
             int binding = gl_program.get_binding(SPECULAR_TEXTURE_BINDING);
             if (binding == -1) {
-                std::cerr << "WARNING : Program <" << gl_program.get_path() << "have no Binding for SPECULAR MAP\n";
+                std::cerr << "WARNING : Program <" << gl_program.get_path() << "> have no Binding for SPECULAR MAP\n";
             } else {
                 glBindTextureUnit(binding, _specular_map_ptr->get_gl_id());
+            }
+        }
+
+        if (has_reflection_map()) {
+            //std::cout << "has specular map!\n";
+            int binding = gl_program.get_binding(METALIC_TEXTURE_BINDING);
+            if (binding == -1) {
+                std::cerr << "WARNING : Program <" << gl_program.get_path() << "> have no Binding for METALIC/REFLECTION MAP\n";
+            } else {
+                glBindTextureUnit(binding, _reflection_map_ptr->get_gl_id());
             }
         }
 }
