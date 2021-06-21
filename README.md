@@ -23,6 +23,13 @@ Conventions:
     you can view how to construct basic nodes in nodes_demos.md 
 
 
+Shaders:
+    D - diffuse
+    DN - diffuse/normal
+    DNS - diffuse/normal/specular
+    DNSM - diffuse/normal/specular/metalic
+
+
 Classes architecture:
    ` IApplication` - basic framework for `Application`
     res - resource Classes

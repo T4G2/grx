@@ -8,6 +8,7 @@
 #pragma once
 
 #include "base_node.hpp"
+#include "glad.h"
 
 
 
@@ -64,6 +65,10 @@ public:
     void init_size(toml_value);
     void init_active(toml_value);
 
+
+    void uniform_projection_matrix(GLuint location);
+    void uniform_view_matrix(GLuint location);
+    void uniform_eye_pos_vec3(GLuint location);
 
 
    virtual void init_custom_toml(BaseNodeInstance::toml_properties_t props) override;

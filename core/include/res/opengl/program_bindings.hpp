@@ -27,11 +27,14 @@ const int MATERIAL_SHININESS_LOCATION = 6;
 const int DIFFUSE_TEXTURE_BINDING = 7;
 const int NORMAL_TEXTURE_BINDING = 8;
 const int SPECULAR_TEXTURE_BINDING = 9;
+const int METALIC_TEXTURE_BINDING = 10;
 
-const int LIGHTS_BINDING = 10;
-const int INSTANCED_BINDING = 11;
+const int CUBEMAP_BINDING = 11;
 
-const int TIME_LOCATION = 12;
-const int EYE_POS_LOCATION = 13;
+const int LIGHTS_BINDING = 12;
+const int INSTANCED_BINDING = 13;
 
-const int BIND_SIZE = 14;
+const int TIME_LOCATION = 14;
+const int EYE_POS_LOCATION = 15;
+
+const int BIND_SIZE = 16;

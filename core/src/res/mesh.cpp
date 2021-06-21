@@ -77,7 +77,7 @@ Mesh::Mesh(std::string path, BaseResourceManager<Material>& material_manager, bo
 
     if (normal_mapping) {
         // Create tangent and bitangetns
-        std::cout << " NORMAL MAPPING  ON THIS <" << _path << "\n";
+        std::cout << " NORMAL MAPPING  ON THIS <" << _path << ">\n";
 
         for ( int i=0; i<positions.size(); i+=3){
 

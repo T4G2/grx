@@ -23,6 +23,7 @@
 
 #include "glad.h"
 #include "GLFW/glfw3.h"
+#include "skybox_node.hpp"
 //#include "program.hpp"
 //#include "material.hpp"
 
@@ -45,9 +46,6 @@ class Scene : public BaseResource {
 
     SceneManager& _scene_manager;
 
-    CameraNode* activeCamera = nullptr;
-    //std::vector<LightNode*> lights = {};
-    // material_program_sorter, // with function, which c  
 
     long int _root_i = -1;
     std::vector<std::unique_ptr<BaseNodeInstance>> _nodes;
@@ -56,6 +54,9 @@ class Scene : public BaseResource {
 
 
 public:
+
+    CameraNode* activeCamera = nullptr;
+    SkyboxNode* activeSkybox = nullptr;
 
         GLuint _lights_buffer;
 
@@ -82,7 +83,8 @@ public:
 
     BaseNodeInstance& get_root();
     BaseNodeInstance& get_child(int index){ return *_nodes[index]; }
-    CameraNode* get_active_camera() {return activeCamera; };                
+    CameraNode* get_active_camera() {return activeCamera; };     
+    SkyboxNode* get_active_skybox() {return activeSkybox;};          
 
     SceneManager& get_scene_manager() {return _scene_manager;};
 

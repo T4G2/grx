@@ -80,6 +80,7 @@ if(NOT TARGET ${PROJECT_NAME})
                 include/res/material.hpp
                 include/res/texture.hpp
                 include/res/input_struct.hpp
+                include/res/cubemap_texture.hpp
 
 
 
@@ -94,6 +95,7 @@ if(NOT TARGET ${PROJECT_NAME})
                 include/nodes/triangle_debug_node.hpp
                 include/nodes/mesh_node.hpp
                 include/nodes/light_node.hpp
+                include/nodes/skybox_node.hpp
 
                 src/iapplication.cpp
                 src/res/opengl/shader.cpp
@@ -102,6 +104,8 @@ if(NOT TARGET ${PROJECT_NAME})
                 src/res/mesh.cpp
                 src/res/scene.cpp
                 src/res/material.cpp
+                src/res/cubemap_texture.cpp
+
                 src/managers/scene_manager.cpp
                 src/managers/graphics_manager.cpp
 
@@ -112,11 +116,10 @@ if(NOT TARGET ${PROJECT_NAME})
                 src/nodes/render_node.cpp
                 src/nodes/mesh_node.cpp
                 src/nodes/light_node.cpp
-                #src/nodes/triangle_debug_node.cpp
+                src/nodes/skybox_node.cpp
 
                 libs/mylib.hpp
                 libs/open_gl_error.hpp
                 libs/glad_include.hpp
-                #libs/gvector.hpp
                 )
 endif()

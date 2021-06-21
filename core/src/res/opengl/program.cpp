@@ -106,6 +106,12 @@ Program::Program(std::string filepath, BaseResourceManager<Shader>& shader_manag
                 this->set_binding(TIME_LOCATION, n);
             } else if (name == "EYE_POS_LOCATION") {
                 this->set_binding(EYE_POS_LOCATION, n);
+            } else if (name == "EYE_POS_LOCATION") {
+                this->set_binding(EYE_POS_LOCATION, n);
+            } else if (name == "METALIC_TEXTURE_BINDING") {
+                this->set_binding(METALIC_TEXTURE_BINDING, n);
+            } else if (name == "CUBEMAP_BINDING") {
+                this->set_binding(CUBEMAP_BINDING, n);
             }
         }
 

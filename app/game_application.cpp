@@ -14,6 +14,7 @@
 #include "base_node.hpp"
 #include "node_factory.hpp"
 #include "light_node.hpp"
+#include "skybox_node.hpp"
 
 #include "game_application.hpp"
 
@@ -40,7 +41,9 @@ void GameApplication::init_custom() {
     program_manager.load(Program("res/programs/phong_D.toml", shader_manager));
     program_manager.load(Program("res/programs/phong_DN.toml", shader_manager));
     program_manager.load(Program("res/programs/phong_DNS.toml", shader_manager));
-    texture_manager.load(Texture("res/textures/Planks_01_ALBEDO.png"));
+    //program_manager.load(Program("res/programs/phong_DNSM.toml", shader_manager));
+    program_manager.load(Program("res/programs/skybox.toml", shader_manager));
+    //texture_manager.load(Texture("res/textures/Planks_01_ALBEDO.png"));
 
     graphics_manager = GraphicsManager(& scene_manager, &texture_manager,&program_manager, this);
 
@@ -53,6 +56,7 @@ void GameApplication::init_custom() {
     scene_manager.register_node<TriangleDebugNode>();
     scene_manager.register_node<MeshNode>();
     scene_manager.register_node<LightNode>();
+    scene_manager.register_node<SkyboxNode>();
     scene_manager.load_from_file("res/scenes/main.toml", true);
 
     glfwSetInputMode(get_window(),GLFW_CURSOR, GLFW_CURSOR_DISABLED);

@@ -18,12 +18,11 @@ class Texture : public BaseResource {
     int _height = 0;
     int _channels = 0;
     GLuint _format;
-
     int _mip_maps = 0; 
 
     unsigned char *_memory_ptr;
     bool _gl_loaded = false;
-    GLuint _gl_id = 0; 
+    GLuint _gl_id = 0;
 
     
     void load_to_gl();

@@ -26,6 +26,7 @@ void GraphicsManager::draw() {
     glViewport(0, 0, app->width, app->height);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     CameraNode* active_camera = scene_manager->get_active_scene()->get_active_camera();
+    SkyboxNode* active_skybox = scene_manager->get_active_scene()->get_active_skybox();
 
     glEnable(GL_DEPTH_TEST);  
 
@@ -57,10 +58,18 @@ void GraphicsManager::draw() {
             glUniform3fv(eye_pos_location, 1, glm::value_ptr(global_pos));   
         }
 
-        glUniformMatrix4fv(proj_uniform_location, 1, 0, glm::value_ptr(active_camera->projection_matrix));
-        glUniformMatrix4fv(view_uniform_location, 1, 0, glm::value_ptr(active_camera->camera_matrix));
-
+        active_camera->uniform_projection_matrix(proj_uniform_location);
+        active_camera->uniform_view_matrix(view_uniform_location);
         for (auto& [ material, nodes]: material_map) {
+
+            /*if (program->get_binding(CUBEMAP_BINDING) != -1 ) {
+                if (active_skybox != nullptr) {
+                    active_skybox->bind_cubemap(program->get_binding(CUBEMAP_BINDING));
+                } else {
+                    std::cout << "There is enviromental mapping(metalic) texture in scene but no cubemap object\n";
+                }
+            }*/
+
             if (!material) {
                 //std::cerr << "GraphicsManager::draw()| WARNING Some object do not have material!\n";
                 // TODO remove from where it shouldnt be
@@ -80,5 +89,11 @@ void GraphicsManager::draw() {
                 node->draw();
             }
         }
+    }
+
+
+    SkyboxNode* skybox = scene_manager->get_active_scene()->get_active_skybox();
+    if (skybox) {
+        skybox->draw_skybox();
     }
 };

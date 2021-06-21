@@ -9,6 +9,7 @@
 #include "glm/gtx/transform.hpp"
 #include "scene.hpp"
 #include "GLFW/glfw3.h"
+#include <glm/gtc/type_ptr.hpp>
 
 
 void CameraNode::init() {
@@ -37,6 +38,20 @@ void CameraNode::input(input_struct event) {
 BaseNode::input(event); // propagate to children
 }
 
+
+void CameraNode::uniform_projection_matrix(GLuint location) {
+    glUniformMatrix4fv(location, 1, 0, glm::value_ptr(projection_matrix));
+
+}
+void CameraNode::uniform_view_matrix(GLuint location) {
+    glUniformMatrix4fv(location, 1, 0, glm::value_ptr(camera_matrix));
+}
+
+void CameraNode::uniform_eye_pos_vec3(GLuint location) {
+
+    auto pos = this->get_global_pos();
+    glUniform3f(location, pos.x, pos.y , pos.z );
+}
 
 
 
