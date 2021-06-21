@@ -15,6 +15,11 @@
         update_matrix_if_needed();
     }   
 
+    glm::vec3 BaseNode::get_global_rotation_direction() {
+        auto inverse = glm::inverse(local_space_matrix);
+        return glm::vec3(inverse[2][0], inverse[2][1], inverse[2][2]);
+    }
+
     void BaseNode::update_matrix_if_needed() {
         if (_updated_position) {
             BaseNodeInstance* parent = instance.get_parent();
@@ -32,6 +37,8 @@
                 // move
                 
                 local_space_matrix = glm::scale(local_space_matrix, scl);
+
+                //get_rotation_matrix();
 
                 
                 rotation_matrix = glm::rotate(rot.x, glm::vec3(1, 0, 0));

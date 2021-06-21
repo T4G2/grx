@@ -10,27 +10,40 @@
         type="Camera"
         active_camera = true
         fov= 70
-    
-    # [[ mov.light_]]
-    #     type = "Light"
-    #     pos = [0.0 ,0.0, 0.0]
-    #     diffuse = [1.0 ,0.0, 0.0]
-    #     intensity = 1.0
-    #     directional = false
-    #     active = true
 
-# [[ obj1]]
-#     type="Base"
-#     pos = [-50.0, 0.0, 0.0]
-#     rot = [0.0, 0.0, 0.0]
+    [[ mov.light_]]
+        type = "Light"
+        pos = [0.0 ,0.0, 0.0]
+        diffuse = [1.0 ,1.0, 1.0]
+        intensity = 20.0
+        directional = false
+        active = true
+        angle = 17.5
+
+
+
     
-#     [[obj1.mesh]]
-#         type = "Mesh"
-#         normal = true
-#         program= "phong_DN"
-#         mesh="res/meshs/moon.obj"
-#         material="res/materials/moon.mtl"
-#         scl = [0.2, 0.2, 0.2]
+[[spacesship]]
+    type="Mesh"
+    program= "phong_DNSM"
+    normal = true
+    mesh="res/meshs/FA59AMako.obj"
+    material="res/materials/FA59AMako.mtl"
+    scl = [0.01, 0.01, 0.01]
+    
+
+[[ obj1]]
+    type="Base"
+    pos = [-50.0, 0.0, 0.0]
+    rot = [0.0, 0.0, 0.0]
+    
+    [[obj1.mesh]]
+        type = "Mesh"
+        normal = true
+        program= "phong_DN"
+        mesh="res/meshs/moon.obj"
+        material="res/materials/moon.mtl"
+        scl = [0.2, 0.2, 0.2]
 
 
 [[ obj2]]
@@ -63,14 +76,6 @@
     intensity = 1.0
     directional = true
 
-
-[[ spacesship]]
-    type="Mesh"
-    program= "phong_DNSM"
-    normal = true
-    mesh="res/meshs/FA59AMako.obj"
-    material="res/materials/FA59AMako.mtl"
-    scl = [0.01, 0.01, 0.01]
 
 
 [[plane]]

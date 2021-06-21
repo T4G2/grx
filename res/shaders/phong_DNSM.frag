@@ -4,6 +4,7 @@
 
 struct Light {
 	vec4 position;
+    vec4 rotation;
 	vec4 ambient_color;
 	vec4 diffuse_color;
 	vec4 specular_color;
@@ -81,9 +82,14 @@ void main()
     //return;
 
     for (int i = 0; i < lights.length(); i++ ) { 
-
-
         Light light = lights[i];
+
+         vec3 light_v = fs_position - light.position.xyz;
+        float theta = dot(normalize(-light.rotation.xyz),normalize(light_v ));
+
+        bool is_out = theta < cos(radians(light.angle));
+        float factor_angle = is_out && light.position.w != 0 ? 0.0 : 1.0;
+
         vec3 light_vector = (light.position.xyz - fs_position * light.position.w);
         //vec3 N = fs_normal;
         vec3 E = normalize( (eye_position - fs_position));
@@ -104,7 +110,7 @@ void main()
         vec3 color = NdotL * diffuse * factor + pow(NdotH, material_shininess) * specular * factor + reflected_color;
 
 
-        color_sum += color;
+        color_sum += color*factor_angle;
 
     }
 

@@ -4,6 +4,7 @@
 
 struct Light {
 	vec4 position;
+    vec4 rotation;
 	vec4 ambient_color;
 	vec4 diffuse_color;
 	vec4 specular_color;

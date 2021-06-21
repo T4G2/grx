@@ -82,6 +82,8 @@ public:
         return glm::vec3(inverse[3][0], inverse[3][1], inverse[3][2]);
     }
 
+    glm::vec3 get_global_rotation_direction();
+
    void update_matrix_if_needed();
    void update_matrix();
 

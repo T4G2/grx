@@ -29,6 +29,7 @@ void LightNode::init() {
         ssbo.specular_color = glm::vec4(specular_color, 1.0f);
         ssbo.intensity = intensity;
         ssbo.angle = angle;
+        ssbo.rotation = glm::vec4(get_global_rotation_direction(), 1.0); 
         
         if (!active) {
             ssbo.intensity = 0.0f;
@@ -67,7 +68,7 @@ void LightNode::init_intensity(toml_value data) {
 
 }
 void LightNode::init_angle(toml_value data) {
-    intensity = init_float(data, "angle", name);
+    angle = init_float(data, "angle", name);
 }
 void LightNode::init_directional(toml_value data) {
     directional = init_bool(data, "directional", name);
@@ -99,6 +100,7 @@ void LightNode::update_ssao() {
     ssbo->specular_color = glm::vec4(specular_color, 1.0f);
     ssbo->intensity = intensity;
     ssbo->angle = angle;
+    ssbo->rotation = glm::vec4(get_global_rotation_direction(), 1.0); 
     
     if (!active) {
         ssbo->intensity = 0.0f;

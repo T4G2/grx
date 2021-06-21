@@ -10,6 +10,7 @@
 
 struct Light_SSBO {
 	glm::vec4 position;
+	glm::vec4 rotation;
 	glm::vec4 ambient_color;
 	glm::vec4 diffuse_color;
 	glm::vec4 specular_color;
@@ -18,20 +19,3 @@ struct Light_SSBO {
 	float _pad1 = -1.0f;
 	float _pad2 = -1.0f;
 };
-
-
-/** TODO
-struct Light {
-	vec4 position;
-	vec3 ambient_color;
-	vec3 diffuse_color;
-	vec3 specular_color;
-    float intensity;
-    float angle;
-    bool enabled;
-};
-
-layout(binding = 1, std430) buffer Lights {
-	Light lights[];
-};
-*/
