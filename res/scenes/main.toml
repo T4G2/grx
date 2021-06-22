@@ -13,9 +13,18 @@
 
     [[ mov.light_]]
         type = "Light"
-        pos = [0.0 ,0.0, 0.0]
+        pos = [0.0 ,0.0, 0.1]
         diffuse = [1.0 ,1.0, 1.0]
-        intensity = 20.0
+        intensity = 5.0
+        directional = false
+        active = true
+        angle = 17.5
+    
+    [[ mov.light_2]]
+        type = "Light"
+        pos = [0.0 ,0.0, -0.1]
+        diffuse = [1.0 ,1.0, 1.0]
+        intensity = 5.0
         directional = false
         active = true
         angle = 17.5

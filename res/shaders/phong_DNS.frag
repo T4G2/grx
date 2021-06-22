@@ -58,6 +58,7 @@ vec3 CalcBumpedNormal() // https://www.ogldev.org/www/tutorial26/tutorial26.html
     return NewNormal;
 }
 
+const float CONE_LIGHT_INNER_RATIO = 0.8;
 
 void main()
 {
@@ -75,9 +76,15 @@ void main()
 
         vec3 light_v = fs_position - light.position.xyz;
         float theta = dot(normalize(-light.rotation.xyz),normalize(light_v ));
+        float outter_angle = radians(light.angle);
+        float inner_angle = outter_angle * CONE_LIGHT_INNER_RATIO;
 
-        bool is_out = theta < cos(radians(light.angle));
-        float factor_angle = is_out && light.position.w != 0 ? 0.0 : 1.0;
+        float theta_angle = acos(theta);
+
+        float factor_angle = max(0, min(1, (outter_angle - abs(theta_angle)) / (outter_angle - inner_angle)));
+
+        factor_angle = light.position.w == 0 ? 1 : factor_angle;
+
 
         vec3 light_vector = (light.position.xyz - fs_position * light.position.w);
         //vec3 N = fs_normal;
