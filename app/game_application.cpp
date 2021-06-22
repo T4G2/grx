@@ -15,12 +15,15 @@
 #include "node_factory.hpp"
 #include "light_node.hpp"
 #include "skybox_node.hpp"
+#include "triangle_debug_node.hpp"
+#include "mesh_node.hpp"
+
+
 
 #include "game_application.hpp"
 
 #include "nodes/movement_node.hpp"
-#include "triangle_debug_node.hpp"
-#include "mesh_node.hpp"
+#include "nodes/rotating_node.hpp"
 
 void GameApplication::init_custom() {
 
@@ -57,6 +60,8 @@ void GameApplication::init_custom() {
     scene_manager.register_node<MeshNode>();
     scene_manager.register_node<LightNode>();
     scene_manager.register_node<SkyboxNode>();
+    scene_manager.register_node<RotatingNode>();
+
     scene_manager.load_from_file("res/scenes/main.toml", true);
 
     glfwSetInputMode(get_window(),GLFW_CURSOR, GLFW_CURSOR_DISABLED);

@@ -16,39 +16,50 @@
     }   
 
     glm::vec3 BaseNode::get_global_rotation_direction() {
-        auto inverse = glm::inverse(local_space_matrix);
+        auto inverse = local_space_matrix;  //glm::inverse(local_space_matrix);
         return glm::vec3(inverse[2][0], inverse[2][1], inverse[2][2]);
     }
+
+    glm::vec3 BaseNode::get_global_pos() {
+        auto inverse =  local_space_matrix; //glm::inverse(local_space_matrix);
+        return glm::vec3(inverse[3][0], inverse[3][1], inverse[3][2]);
+    }
+
 
     void BaseNode::update_matrix_if_needed() {
         if (_updated_position) {
             BaseNodeInstance* parent = instance.get_parent();
-            if (parent  == nullptr) {
-                // do it by myself
-                local_space_matrix = glm::mat4(1.0f); // construct identity matrix
 
-            } else {
-                local_space_matrix = parent->get_data()->local_space_matrix;
-            }
+            local_space_matrix = glm::mat4(1.0f); // construct identity matrix
+
 
 
             //scale
-                //rotate
-                // move
-                
-                local_space_matrix = glm::scale(local_space_matrix, scl);
+            //rotate
+            // move
+            
+            local_space_matrix = glm::scale(local_space_matrix, scl);
+            
+    
+            rotation_matrix = glm::rotate(rot.x, glm::vec3(1, 0, 0));
+            rotation_matrix = glm::rotate(rot.y, glm::vec3(0, 1, 0)) * rotation_matrix;
+            rotation_matrix = glm::rotate(rot.z, glm::vec3(0, 0, 1)) * rotation_matrix;
+            local_space_matrix =  rotation_matrix * local_space_matrix;
 
-                //get_rotation_matrix();
+            
+            local_space_matrix = glm::translate(glm::mat4(1.0f), pos) * local_space_matrix;
 
-                
-                rotation_matrix = glm::rotate(rot.x, glm::vec3(1, 0, 0));
-                rotation_matrix *= glm::rotate(rot.y, glm::vec3(0, 1, 0));
-                rotation_matrix *= glm::rotate(rot.z, glm::vec3(0, 0, 1));
-                local_space_matrix = rotation_matrix * local_space_matrix;
 
-                local_space_matrix = glm::translate(local_space_matrix, pos);
+            if (parent  != nullptr) {
+                local_space_matrix = parent->get_data()->local_space_matrix * local_space_matrix;
+            }
 
         }
+
+        //std::cout << "NAME: " << name <<":\n";
+        //std::cout << "pos: " << get_global_pos().x <<","<< get_global_pos().y << "," << get_global_pos().z <<"\n";
+        //std::cout << "rot: " << get_global_rotation_direction().x <<","<< get_global_rotation_direction().y << "," << get_global_rotation_direction().z <<"\n";
+
 
         _updated_position = false;
     }

@@ -26,10 +26,23 @@ void CameraNode::update(float delta) {
 
     if (_updated_position) {
         BaseNode::update(delta);
-        camera_matrix = local_space_matrix;
+
+        glm::vec3 r_global_vec3 = get_global_rotation_direction();
+
+        glm::mat4 rot_matrix = glm::mat4(1.0f); 
+        rot_matrix = glm::rotate(r_global_vec3.x, glm::vec3(1,0,0)) * rot_matrix;
+        rot_matrix = glm::rotate(r_global_vec3.y, glm::vec3(0,1,0)) * rot_matrix;
+        rot_matrix = glm::rotate(r_global_vec3.z, glm::vec3(0,0,1)) * rot_matrix;
+
+
+        glm::vec4 look_at4 = rot_matrix * glm::vec4(1.0, 0.0, 0.0, 1.0); 
+        glm::vec4 up4 = rot_matrix * glm::vec4(0.0, 1.0, 0.0, 1.0); 
+        glm::vec3 look_at3 = glm::vec3(look_at4);
+        glm::vec3 up3 = glm::vec3(up4);
+
+        camera_matrix = glm::inverse(local_space_matrix);
+        //camera_matrix = glm::lookAt(get_global_pos(), get_global_pos() + look_at3, up3 );
     }
-
-
 }
 void CameraNode::draw() {
 }

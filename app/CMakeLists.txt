@@ -15,6 +15,8 @@ add_executable(
     game_application.hpp
     nodes/movement_node.hpp
     nodes/movement_node.cpp
+    nodes/rotating_node.hpp
+    nodes/rotating_node.cpp
 
 )
 

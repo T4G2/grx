@@ -3,17 +3,27 @@
     type = "Movement"
     sensitivity = 0.005
     speed = 0.005
-    pos = [0.0, 0.0, -1.0] 
-    rot = [0.0, 0.0, 0.0]
-    scl = [1.0, 1.0, 1.0]
-    [[ mov.main_cam ]]
+
+    [[mov.main_cam ]]
         type="Camera"
         active_camera = true
         fov= 70
+        pos = [0.0, 0.3, 0.8] 
+    [[mov.poss]]
+        type="Base"
+        [[mov.poss.spacesship]]
+            type="Mesh"
+            program= "phong_DNSM"
+            normal = true
+            mesh="res/meshs/FA59AMako.obj"
+            material="res/materials/FA59AMako.mtl"
+            scl = [0.01, 0.01, 0.01]
+            rot = [0.0, 3.1415, 0.0]
 
     [[ mov.light_]]
         type = "Light"
-        pos = [0.0 ,0.0, 0.1]
+        pos = [0.0 ,0.0, 0.0]
+        rot = [0.0, -0.2, 0.0]
         diffuse = [1.0 ,1.0, 1.0]
         intensity = 5.0
         directional = false
@@ -22,7 +32,8 @@
     
     [[ mov.light_2]]
         type = "Light"
-        pos = [0.0 ,0.0, -0.1]
+        pos = [0.0 ,0.0, 0.0]
+        rot = [0.0, 0.2, 0.0]
         diffuse = [1.0 ,1.0, 1.0]
         intensity = 5.0
         directional = false
@@ -30,51 +41,81 @@
         angle = 17.5
 
 
-
-    
-[[spacesship]]
-    type="Mesh"
-    program= "phong_DNSM"
-    normal = true
-    mesh="res/meshs/FA59AMako.obj"
-    material="res/materials/FA59AMako.mtl"
-    scl = [0.01, 0.01, 0.01]
-    
-
-[[ obj1]]
-    type="Base"
-    pos = [-50.0, 0.0, 0.0]
+[[ o1]]
+    type="Rotating"
+    pos = [70.0, 0.0, 0.0]
     rot = [0.0, 0.0, 0.0]
-    
-    [[obj1.mesh]]
-        type = "Mesh"
-        normal = true
-        program= "phong_DN"
-        mesh="res/meshs/moon.obj"
-        material="res/materials/moon.mtl"
-        scl = [0.2, 0.2, 0.2]
+    frequency = 0.01
+     [[o1.earth_mesh]]
+            type = "Mesh"
+            normal = true
+            program= "phong_DNS"
+            mesh="res/meshs/moon.obj"
+            material="res/materials/earth.mtl"
+            scl = [0.2, 0.2, 0.2]
+    [[ o1.b]]
+        type = "Base"
+        pos = [0.0, 0.0, 70.0]
+        [[ o1.b.moon_mesh]]
+            type = "Mesh"
+            normal = true
+            program= "phong_DN"
+            mesh="res/meshs/moon.obj"
+            material="res/materials/moon.mtl"
+            scl = [0.17, 0.17, 0.17]
+        [[ o1.b.o2]]
+            type="Rotating"
+            pos = [0.0, 0.0, 0.0]
+            rot = [0.0, 0.0, 0.0]
+            frequency = 0.2
+
+        [[ o1.b.o2.moon_mesh]]
+            type = "Mesh"
+            normal = true
+            program= "phong_DN"
+            mesh="res/meshs/moon.obj"
+            material="res/materials/moon.mtl"
+            scl = [0.1, 0.1, 0.1]
+            pos = [0.0, 0.0, 40.0]
 
 
-[[ obj2]]
-    type="Base"
-    pos = [-40.0, 10.0, -20.0]
-    rot = [0.0, 0.0, 0.0]
-    
-    [[obj2.mesh]]
-        type = "Mesh"
-        normal = true
-        program= "phong_DNS"
-        mesh="res/meshs/moon.obj"
-        material="res/materials/earth.mtl"
-        scl = [0.2, 0.2, 0.2]
 
 
-[[ triangle1]]
-    type = "__TriangleDebug"
-    program= "triangle_test"
-    pos = [0.0, 0.0, 1.0]
-    rot = [0.0, 0.0, 0.0]
-    scl = [1.0, 1.0, 1.0]
+
+
+# [[ o1]] # KRASNY BUG
+#     type="Rotating"
+#     pos = [10.0, 0.0, 0.0]
+#     rot = [0.0, 0.0, 0.0]
+#     frequency = 0.25
+#      [[ o1.triangle1]]
+#         type = "__TriangleDebug"
+#         program= "triangle_test"
+#         pos = [0.0, 0.0, 0.0]
+#     [[ o1.b]]
+#         type = "Base"
+#         pos = [0.0, 0.0, 5.0]
+#         [[o1.b.earth_mesh]]
+#             type = "Mesh"
+#             normal = true
+#             program= "phong_DNS"
+#             mesh="res/meshs/moon.obj"
+#             material="res/materials/earth.mtl"
+#             scl = [0.2, 0.2, 0.2]
+#         [[ o1.b.o2]]
+#             type="Rotating"
+#             pos = [0.0, 0.0, 0.0]
+#             rot = [0.0, 0.0, 0.0]
+#             frequency = 0.5
+
+#         [[ o1.b.o2.moon_mesh]]
+#             type = "Mesh"
+#             normal = true
+#             program= "phong_DN"
+#             mesh="res/meshs/moon.obj"
+#             material="res/materials/moon.mtl"
+#             scl = [0.2, 0.2, 0.2]
+
 
 
 [[ light_]]
@@ -87,14 +128,14 @@
 
 
 
-[[plane]]
-    type="Mesh"
-    normal = true
-    program= "phong_DNS"
-    mesh="res/meshs/plane.obj"
-    material="res/materials/plane.mtl"
-    scl = [1.0, 1.0, 1.0]
-    pos = [2.0, 0.0, 2.0]
+# [[plane]]
+#     type="Mesh"
+#     normal = true
+#     program= "phong_DNS"
+#     mesh="res/meshs/plane.obj"
+#     material="res/materials/plane.mtl"
+#     scl = [1.0, 1.0, 1.0]
+#     pos = [2.0, 0.0, 2.0]
 
 
 [[skybox]]

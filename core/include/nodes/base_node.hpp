@@ -77,10 +77,7 @@ public:
     glm::vec3 get_rot() {return rot;}
     glm::vec3 get_scl() {return scl;}
 
-    glm::vec3 get_global_pos() {
-        auto inverse = glm::inverse(local_space_matrix);
-        return glm::vec3(inverse[3][0], inverse[3][1], inverse[3][2]);
-    }
+    glm::vec3 get_global_pos();
 
     glm::vec3 get_global_rotation_direction();
 

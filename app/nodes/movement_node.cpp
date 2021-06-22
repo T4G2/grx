@@ -40,8 +40,8 @@ if (locked) {
 //std::cout << event.input_type << "\n";
 if (event.input_type == MOUSE_MOVE) {
 
-    float dx = event.dx * sensitivity;
-    float dy = event.dy * sensitivity;
+    float dx = -event.dx * sensitivity;
+    float dy = -event.dy * sensitivity;
     //std::cout << "<" << dx << ", " << dy << ">\n";
     add_rot(glm::vec3(dy, dx, 0));
 }
@@ -52,25 +52,35 @@ if (event.input_type == KEY_DOWN) {
     glm::vec4 movement_global = glm::vec4(0);
     movement_global.w = 1;
     movement_relative.w = 1;
+    float roll = 0.0f;
+
     switch (event.key) {
         case GLFW_KEY_W:
-            movement_relative.z++;
-            break;
-        case GLFW_KEY_S:
             movement_relative.z--;
             break;
+        case GLFW_KEY_S:
+            movement_relative.z++;
+            break;
+
+        case GLFW_KEY_Q:
+            roll += sensitivity;
+            break;
+        case GLFW_KEY_E:
+            roll -= sensitivity;
+            break;
+        
         case GLFW_KEY_A:
-            movement_relative.x++;
+            movement_relative.x--;
             break;
         case GLFW_KEY_D:
-            movement_relative.x--;
+            movement_relative.x++;
             break;
         
         case GLFW_KEY_SPACE:
-            movement_global.y--;
+            movement_relative.y++;
             break;
         case GLFW_KEY_LEFT_SHIFT:
-            movement_global.y++;
+            movement_relative.y--;
             break;
 
         case GLFW_KEY_UP:
@@ -80,8 +90,13 @@ if (event.input_type == KEY_DOWN) {
             speed /= 1.2f;
             break;
     }
-    auto movement = glm::inverse(rotation_matrix) * movement_relative + movement_global;
-    //std::cout << "(" << movement.x << ", " << movement.y << ", " << movement.z << ") \n";
+
+    if (roll) {
+        this->add_rot(glm::vec3(rotation_matrix * glm::vec4(0.0 , 0.0 , roll, 1.0)));
+    }
+
+    auto movement = rotation_matrix * movement_relative + movement_global;
+    //std::cout << "(" << get_global_pos().x << ", " << get_global_pos().y << ", " << get_global_pos().z << ") \n";
 
     add_pos(movement * speed);
 

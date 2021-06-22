@@ -24,5 +24,5 @@ void main()
 	vec3 pos = vec3(x, y, z);
 
 
-    gl_Position =  proj * view * model *vec4(pos, 1);
+    gl_Position =  proj * view * model * vec4(pos, 1);
 }

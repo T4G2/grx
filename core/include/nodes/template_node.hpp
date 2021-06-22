@@ -18,9 +18,9 @@ class TemplateNode : public BaseNode {
 
 public:
 
-     TemplateNodeNode(std::string name_a, BaseNodeInstance& instance): BaseNode(name_a, instance) {};
+     TemplateNode(std::string name_a, BaseNodeInstance& instance): BaseNode(name_a, instance) {};
 
-    inline static const std::string NODE_NAME = " Template";
+    inline static const std::string NODE_NAME = "Template";
 
 
     virtual void init() override;
