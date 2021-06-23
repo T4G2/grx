@@ -2,7 +2,9 @@
 [[ mov]]
     type = "Movement"
     sensitivity = 0.005
-    speed = 0.005
+    speed = 5.0
+    pos = [300.0, 300.0, 0.0] 
+    rot = [5.63, 8.66, 0.0]
 
     [[mov.main_cam ]]
         type="Camera"
