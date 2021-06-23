@@ -9,7 +9,9 @@ layout(location = 1) uniform mat4 view;
 layout(location = 0) uniform vec3 eye_pos;
 
 
+const float FAR_PLANE = 750.0;
+
 void main() {
     tex_coords = in_pos;
-    gl_Position =   projection * view *  vec4(eye_pos + 500.0 * in_pos, 1.0);
+    gl_Position =   projection * view *  vec4(eye_pos +  FAR_PLANE * in_pos, 1.0);
 }

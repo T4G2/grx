@@ -31,6 +31,11 @@ public:
     std::set<int> mouse_pressed = {};
 
 
+    int TIMING_INTERVAL = 50;
+    int timing_counter = 0;
+    float average_render_time = 0;
+
+
     GameApplication(int width_a = 1080, int height_a = 720, std::string name_a = "Window", bool fullscreen_a = false):
           IApplication(width_a, height_a, name_a, fullscreen_a){}
 

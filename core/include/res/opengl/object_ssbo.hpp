@@ -10,7 +10,8 @@
 
 struct Object_SSBO {
 	glm::mat4 model_matrix = glm::mat4(1.0f);
+    glm::vec4 ambient_color = glm::vec4(0.0f);
     glm::vec4 diffuse_color = glm::vec4(0.0f);
     glm::vec4 specular_color = glm::vec4(0.0f);
-    glm::vec4 ambient_color = glm::vec4(0.0f);
+
 };

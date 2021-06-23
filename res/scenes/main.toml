@@ -43,7 +43,7 @@
 
 [[ o1]]
     type="Rotating"
-    pos = [70.0, 0.0, 0.0]
+    pos = [300.0, 0.0, 0.0]
     rot = [0.0, 0.0, 0.0]
     frequency = 0.01
      [[o1.earth_mesh]]
@@ -52,17 +52,17 @@
             program= "phong_DNS"
             mesh="res/meshs/moon.obj"
             material="res/materials/earth.mtl"
-            scl = [0.2, 0.2, 0.2]
+            scl = [0.4, 0.4, 0.4]
     [[ o1.b]]
         type = "Base"
-        pos = [0.0, 0.0, 70.0]
+        pos = [0.0, 0.0, 100.0]
         [[ o1.b.moon_mesh]]
             type = "Mesh"
             normal = true
             program= "phong_DN"
             mesh="res/meshs/moon.obj"
             material="res/materials/moon.mtl"
-            scl = [0.17, 0.17, 0.17]
+            scl = [0.3, 0.3, 0.3]
         [[ o1.b.o2]]
             type="Rotating"
             pos = [0.0, 0.0, 0.0]
@@ -76,30 +76,47 @@
             mesh="res/meshs/moon.obj"
             material="res/materials/moon.mtl"
             scl = [0.1, 0.1, 0.1]
-            pos = [0.0, 0.0, 40.0]
+            pos = [0.0, 0.0, 35.0]
 
 
-[[corruscant_mesh]]
-            type = "Mesh"
-            normal = true
-            program= "phong_DNS"
-            mesh="res/meshs/moon.obj"
-            material="res/materials/corruscant.mtl"
-            scl = [0.1, 0.1, 0.1]
-            pos = [0.0, 0.0, -100.0]
+[[corr_par]]
+    type="Base"
+    pos = [0.0, 0.0, -100.0]
+
+    [[corr_par.corruscant_mesh]]
+                type = "Mesh"
+                normal = true
+                program= "phong_DNS"
+                mesh="res/meshs/moon.obj"
+                material="res/materials/corruscant.mtl"
+                scl = [0.5, 0.5, 0.5]
+                pos = [0.0, 0.0, -0.0]
 
 
-[[asteroid_mesh]]
-            type = "MeshInstanced"
-            normal = true
-            program= "phong_DN_instanced"
-            mesh="res/meshs/Stone.obj"
-            material="res/materials/Stone.mtl"
-            generator="line"
-            count = 10
+    [[corr_par.as_rot]]
+        type="Rotating"
+        pos = [0.0, 0.0, 0.0]
+        rot = [0.0, 0.0, 1.57]
+        frequency = 0.04
+        [[corr_par.as_rot.asteroid_mesh]]
+                        type = "MeshInstanced"
+                        normal = true
+                        program= "phong_DN_instanced"
+                        mesh="res/meshs/Stone.obj"
+                        material="res/materials/Stone.mtl"
+                        generator="ring"
+                        count = 1000
 
-            scl = [1.0, 1.0, 1.0]
-            pos = [0.0, 0.0, 0.0]
+                        scl = [1.0, 1.0, 1.0]
+                        pos = [0.0, 0.0, 0.0]
+                        rot = [0.0, 1.57, 0.0]
+
+# [[rot_ast]]
+#     type="Rotating"
+#     pos = [0.0, 0.0, 0.0]
+#     rot = [0.0, 0.0, 0.0]
+#     frequency = 0.5
+
 
 
 # [[ o1]] # KRASNY BUG

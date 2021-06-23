@@ -62,7 +62,10 @@ public:
     void update(float delta) override {
         bool updated_position =  _updated_position;
         RenderNode::update(delta);
-        update_ssbo_to_world();
+        if (updated_position){
+            update_ssbo_to_world();
+            update_ssbo();
+        }
     }
 
     void update_ssbo_to_world() {
@@ -72,7 +75,7 @@ public:
     }
 
     void update_ssbo() {
-        glNamedBufferSubData(object_buffer,0 , sizeof (Light_SSBO) * object_ssbo_world_space.size(), object_ssbo_world_space.data());  
+        glNamedBufferSubData(object_buffer,0 , sizeof (Object_SSBO) * (object_ssbo_world_space.size() ), object_ssbo_world_space.data());  
 
     }
 

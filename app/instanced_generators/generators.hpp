@@ -14,3 +14,8 @@ class LineGenerator : public InstancedGeneratorBase {
     virtual std::vector<Object_SSBO>  generate(int count, MeshInstancedNode* node) override;
 };
 
+class RingGenerator : public InstancedGeneratorBase {
+    virtual std::vector<Object_SSBO>  generate(int count, MeshInstancedNode* node) override;
+};
+
+

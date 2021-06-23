@@ -58,6 +58,7 @@ void GameApplication::init_custom() {
 
 
     generator_map["line"] = std::make_unique<LineGenerator>();
+    generator_map["ring"] = std::make_unique<RingGenerator>();
 
     scene_manager.register_node<BaseNode>();
     scene_manager.register_node<CameraNode>();
@@ -78,6 +79,16 @@ void GameApplication::init_custom() {
 
 
 void GameApplication::update(double delta) {
+    if (timing_counter >= TIMING_INTERVAL) {
+        std::cout << "average render_time: " << average_render_time << "\n";
+        average_render_time = 0.0f;
+        timing_counter = 0;
+    } else {
+        average_render_time += timing_counter * average_render_time + delta;
+        timing_counter++;
+        average_render_time /= timing_counter;
+    }
+
    // std::cout << "Delta time:" << delta << " \n";
    for (int key_key : keys_pressed) {
        input_struct event;
@@ -134,6 +145,14 @@ void GameApplication::on_key_press(int key, int scancode, int action, int mods) 
         } else {
             glfwSetInputMode(get_window(),GLFW_CURSOR, GLFW_CURSOR_DISABLED);
         }
+
+
+        return;
+    }
+
+    if (action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
+        
+        exit(0);
 
 
         return;

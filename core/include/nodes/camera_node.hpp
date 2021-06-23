@@ -48,7 +48,7 @@ public:
     bool is_active = false;
 
     float z_close = 0.01f;
-    float z_far = 1000.0f;
+    float z_far = 1500.0f;
 
 
     glm::mat4 camera_matrix = glm::mat4(1);
