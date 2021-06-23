@@ -10,9 +10,12 @@
 #include "scene.hpp"
 #include "GLFW/glfw3.h"
 #include <glm/gtc/type_ptr.hpp>
-
+#include "scene_manager.hpp"
+#include "iapplication.hpp"
 
 void CameraNode::init() {
+    width = instance.get_scene()->get_scene_manager().app.width;
+    height = instance.get_scene()->get_scene_manager().app.height;
     if (is_active) {
        instance.get_scene()->activeCamera = this;
        if (projection_type == ProjectionType::Perspective) {

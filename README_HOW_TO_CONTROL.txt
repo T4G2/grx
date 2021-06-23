@@ -8,3 +8,5 @@ space - go up
 arrow up/down - change speed of spaceship
 arrow left/right - change time by 10%
 
+
+ESC - close application
