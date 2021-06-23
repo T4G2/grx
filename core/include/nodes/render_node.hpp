@@ -24,10 +24,11 @@ class RenderNode: public BaseNode {
 
 protected:
 
+public:
+
+    
     Program* program_ptr = nullptr;
     Material* material_ptr = nullptr;
-
-public:
 
 
 

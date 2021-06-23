@@ -6,10 +6,11 @@
  * @date 2021-05-31
  */
 #pragma once
+
 #include "glm/glm.hpp"
 #include "base_node.hpp"
 
-glm::vec3 init_vec3( toml_value& data, const std::string& attr_name, const std::string& name) {
+inline glm::vec3 init_vec3( toml_value& data, const std::string& attr_name, const std::string& name) {
     if (!data.is_array()) {
             std::cerr << "WARNING, " << attr_name <<"  in <" << name << "> is not array. example: "<< attr_name <<" = [0.0, 0.0, 0.0]\n";
             return glm::vec3(0);
@@ -35,7 +36,7 @@ glm::vec3 init_vec3( toml_value& data, const std::string& attr_name, const std::
         return val;
 }
 
-float init_float( toml_value& data, const std::string& attr_name, const std::string& name) {
+inline float init_float( toml_value& data, const std::string& attr_name, const std::string& name) {
     if (data.is_floating()) {
         return static_cast<float>(data.as_floating());
         
@@ -50,11 +51,35 @@ float init_float( toml_value& data, const std::string& attr_name, const std::str
     return 0.0f;
 }
 
+inline int init_int( toml_value& data, const std::string& attr_name, const std::string& name) {
+    if (data.is_integer()) {
+        return static_cast<int>(data.as_integer());
+        
+    }
 
-bool init_bool( toml_value& data, const std::string& attr_name, const std::string& name) {
+    if (data.is_floating()) {
+        return static_cast<int>(data.as_floating());
+
+    }
+
+    std::cerr << "WARNING, "<< attr_name <<" in <" << name << "> is not a float or int. example: " << attr_name <<" = 90 (mainly int)\n";
+    return 0;
+}
+
+
+inline bool init_bool( toml_value& data, const std::string& attr_name, const std::string& name) {
     if (!data.is_boolean()) {
         std::cerr << "WARNING, "<< attr_name <<" in <" << name << "> is not a boolean. example: " << attr_name <<" = true\n";
         return false;
     }
     return static_cast<bool>(data.as_boolean());
+}
+
+
+inline std::string init_string( toml_value& data, const std::string& attr_name, const std::string& name) {
+    if (!data.is_string()) {
+        std::cerr << "WARNING, "<< attr_name <<" in <" << name << "> is not a string. example: " << attr_name <<" = \"example\"\n";
+        return "";
+    }
+    return data.as_string();
 }

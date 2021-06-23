@@ -77,11 +77,12 @@ if(NOT TARGET ${PROJECT_NAME})
                 include/res/opengl/program.hpp
                 include/res/opengl/shader.hpp
                 include/res/opengl/light_ssbo.hpp
+                include/res/opengl/object_ssbo.hpp
                 include/res/material.hpp
                 include/res/texture.hpp
                 include/res/input_struct.hpp
                 include/res/cubemap_texture.hpp
-
+                include/res/instanced_generator_base.hpp
 
 
                 include/nodes/base_node_instance.hpp
@@ -94,8 +95,11 @@ if(NOT TARGET ${PROJECT_NAME})
                 include/nodes/render_node.hpp
                 include/nodes/triangle_debug_node.hpp
                 include/nodes/mesh_node.hpp
+                include/nodes/mesh_instanced_node.hpp
                 include/nodes/light_node.hpp
                 include/nodes/skybox_node.hpp
+
+                
 
                 src/iapplication.cpp
                 src/res/opengl/shader.cpp
@@ -115,6 +119,7 @@ if(NOT TARGET ${PROJECT_NAME})
                 src/nodes/camera_node.cpp
                 src/nodes/render_node.cpp
                 src/nodes/mesh_node.cpp
+                src/nodes/mesh_instanced_node.cpp
                 src/nodes/light_node.cpp
                 src/nodes/skybox_node.cpp
 

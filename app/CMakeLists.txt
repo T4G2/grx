@@ -18,6 +18,10 @@ add_executable(
     nodes/rotating_node.hpp
     nodes/rotating_node.cpp
 
+    
+    instanced_generators/generators.hpp
+    instanced_generators/generators.cpp
+
 )
 
 

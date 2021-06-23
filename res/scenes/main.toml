@@ -79,8 +79,27 @@
             pos = [0.0, 0.0, 40.0]
 
 
+[[corruscant_mesh]]
+            type = "Mesh"
+            normal = true
+            program= "phong_DNS"
+            mesh="res/meshs/moon.obj"
+            material="res/materials/corruscant.mtl"
+            scl = [0.1, 0.1, 0.1]
+            pos = [0.0, 0.0, -100.0]
 
 
+[[asteroid_mesh]]
+            type = "MeshInstanced"
+            normal = true
+            program= "phong_DN_instanced"
+            mesh="res/meshs/Stone.obj"
+            material="res/materials/Stone.mtl"
+            generator="line"
+            count = 10
+
+            scl = [1.0, 1.0, 1.0]
+            pos = [0.0, 0.0, 0.0]
 
 
 # [[ o1]] # KRASNY BUG

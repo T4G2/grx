@@ -14,3 +14,4 @@ newmtl 01___Default
 	map_Kd res\textures\earth.jpg
 	map_bump res\textures\earth_normalmap.png
 	map_Ks res\textures\earth_specular_color.jpg
+

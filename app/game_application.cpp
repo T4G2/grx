@@ -17,6 +17,7 @@
 #include "skybox_node.hpp"
 #include "triangle_debug_node.hpp"
 #include "mesh_node.hpp"
+#include "mesh_instanced_node.hpp"
 
 
 
@@ -24,6 +25,7 @@
 
 #include "nodes/movement_node.hpp"
 #include "nodes/rotating_node.hpp"
+#include "instanced_generators/generators.hpp"
 
 void GameApplication::init_custom() {
 
@@ -46,20 +48,26 @@ void GameApplication::init_custom() {
     program_manager.load(Program("res/programs/phong_DNS.toml", shader_manager));
     program_manager.load(Program("res/programs/phong_DNSM.toml", shader_manager));
     program_manager.load(Program("res/programs/skybox.toml", shader_manager));
-    //texture_manager.load(Texture("res/textures/Planks_01_ALBEDO.png"));
+    program_manager.load(Program("res/programs/phong_DN_instanced.toml", shader_manager));
 
     graphics_manager = GraphicsManager(& scene_manager, &texture_manager,&program_manager, this);
+
 
     glClearColor(0, 0, 0, 1);
     glViewport(0, 0, width, height);
 
+
+    generator_map["line"] = std::make_unique<LineGenerator>();
+
     scene_manager.register_node<BaseNode>();
     scene_manager.register_node<CameraNode>();
-    scene_manager.register_node<MovementNode>();
     scene_manager.register_node<TriangleDebugNode>();
     scene_manager.register_node<MeshNode>();
+    scene_manager.register_node<MeshInstancedNode>();
     scene_manager.register_node<LightNode>();
     scene_manager.register_node<SkyboxNode>();
+
+    scene_manager.register_node<MovementNode>();
     scene_manager.register_node<RotatingNode>();
 
     scene_manager.load_from_file("res/scenes/main.toml", true);

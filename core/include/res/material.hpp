@@ -21,17 +21,19 @@ class Material : public BaseResource {
 
 
 
-    glm::vec3 _ambient_color = glm::vec3(0, 0, 0);
+public:
+
+        glm::vec3 _ambient_color = glm::vec3(0, 0, 0);
     glm::vec3 _diffuse_color = glm::vec3(0, 0, 0);
     glm::vec3 _specular_color = glm::vec3(0, 0, 0);
     float _shininess = -1;
-
+    
     Texture* _albedo_map_ptr = nullptr;
     Texture* _normal_map_ptr = nullptr;
     Texture* _specular_map_ptr = nullptr;
     Texture* _reflection_map_ptr = nullptr;
 
-public:
+
 
     Material(std::string path, BaseResourceManager<Texture>* texture_manager);
 

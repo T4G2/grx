@@ -27,6 +27,7 @@
 #include "material.hpp"
 #include "scene_manager.hpp"
 #include "graphics_manager.hpp"
+#include "instanced_generator_base.hpp"
 
 class IApplication {
 
@@ -64,6 +65,8 @@ public:
     BaseResourceManager<Material> material_manager;
     SceneManager scene_manager;
     GraphicsManager graphics_manager;
+
+    std::map<std::string, std::unique_ptr<InstancedGeneratorBase>> generator_map;
 
     int width;
     int height;
