@@ -104,7 +104,7 @@ void GameApplication::update(double delta) {
        scene_manager.input(event); 
    }
 
-   scene_manager.get_active_scene()->update(delta);
+   scene_manager.get_active_scene()->update(delta * time_factor);
    //scene_manager.get_active_scene()->draw();
    
 }
@@ -155,6 +155,15 @@ void GameApplication::on_key_press(int key, int scancode, int action, int mods) 
         exit(0);
 
 
+        return;
+    }
+
+    if (action == GLFW_PRESS && key == GLFW_KEY_RIGHT) {
+        time_factor *= 1.1f;
+        return;
+    }
+    if (action == GLFW_PRESS && key == GLFW_KEY_LEFT) {
+        time_factor /= 1.1f;
         return;
     }
 

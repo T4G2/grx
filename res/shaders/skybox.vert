@@ -9,7 +9,7 @@ layout(location = 1) uniform mat4 view;
 layout(location = 0) uniform vec3 eye_pos;
 
 
-const float FAR_PLANE = 750.0;
+const float FAR_PLANE = 1700.0;
 
 void main() {
     tex_coords = in_pos;

@@ -96,7 +96,7 @@ void main()
 
         float theta_angle = acos(theta);
         float factor_angle = max(0, min(1, (outter_angle - abs(theta_angle)) / (outter_angle - inner_angle)));
-        factor_angle = light.position.w == 0 ? 1 : factor_angle;
+        factor_angle = light.position.w == 0 || light.angle == 0? 1 : factor_angle;
 
 
 

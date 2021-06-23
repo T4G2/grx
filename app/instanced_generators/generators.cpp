@@ -59,7 +59,7 @@ std::vector<Object_SSBO>  RingGenerator::generate(int count, MeshInstancedNode* 
     float size = 125.0f;
     float freq = 5.0f;
 
-    float rand_z = 7.5f;
+    float rand_z = 3.5f;
     float rand_xy = 23.0f;
 
     float rand_size_var = 0.5f;

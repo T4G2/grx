@@ -96,7 +96,7 @@ void main()
 
         float factor_angle = max(0, min(1, (outter_angle - abs(theta_angle)) / (outter_angle - inner_angle)));
 
-        factor_angle = light.position.w == 0 ? 1 : factor_angle;
+        factor_angle = light.position.w == 0  || light.angle == 0 ? 1 : factor_angle;
 
 
         vec3 light_vector = (light.position.xyz - fs_position * light.position.w);
@@ -111,7 +111,7 @@ void main()
 
 
         float factor = light.intensity ;
-        factor /=  (light.position.w == 0.0) ? 1 : ( pow(length(light_vector), 2));
+        factor /=  (light.position.w == 0.0)  ? 1  : ( pow(length(light_vector), 2));
 
         vec3 diffuse = material_diffuse_color.rgb * light.diffuse_color.rgb * texture_color_diffuse;
         vec3 specular = specular_texture * material_specular_color.rgb * light.specular_color.rgb;
